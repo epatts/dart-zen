@@ -17,13 +17,16 @@ class ScoreViewModel: ObservableObject {
     @Published var gameOver = false
     @Published var scoreString = ""
     @Published var overallAverage: Double = 0
+    @Published var numDartsUsedForCheckout: Int = 3
+    
+    @Published var showingCheckoutPopup = false
         
     var numberTapWorkItem: DispatchWorkItem?
 
     func newGame() {
         if gameOver {
             gameOver = false
-            totalDartsThrown += scoreHistory.count * 3
+            totalDartsThrown += (scoreHistory.count - 1) * 3 + numDartsUsedForCheckout
             gamesPlayed += 1
         } else {
             resetOverallAverage()
@@ -31,6 +34,13 @@ class ScoreViewModel: ObservableObject {
         
         scoreHistory.removeAll()
         total = ScoreViewModel.GAME_MODE
+    }
+    
+    func checkout(_ score: String?, _ numDarts: Int) {
+        setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
+        numDartsUsedForCheckout = numDarts
+        gameOver = true
+        newGame()
     }
     
     func undoLastScore() {
@@ -54,11 +64,11 @@ class ScoreViewModel: ObservableObject {
         }
     }
     
-    func setOverallAverage(_ score: Int, adding: Bool = true) {
-        let numberOfTotalDartsThrown = totalDartsThrown + scoreHistory.count * 3
+    func setOverallAverage(_ score: Int, adding: Bool = true, dartsThrownOnTurn: Int = 3) {
+        let numberOfTotalDartsThrown = totalDartsThrown + (scoreHistory.count - 1) * 3 + dartsThrownOnTurn
         
         if adding {
-            overallAverage = (overallAverage + ((Double(score) - overallAverage) / (Double(numberOfTotalDartsThrown) / 3)))
+            overallAverage = overallAverage + (((Double(score) * (3 / Double(dartsThrownOnTurn))) - overallAverage) / (Double(numberOfTotalDartsThrown) / Double(dartsThrownOnTurn)))
         } else {
             if numberOfTotalDartsThrown == 3 {
                 overallAverage = 0
@@ -92,14 +102,15 @@ class ScoreViewModel: ObservableObject {
                     total -= score
                 }
                 scoreHistory.append("\(score)")
+                setOverallAverage(score)
             } else if total - score == 0 {
                 withAnimation {
                     total -= score
                 }
                 scoreHistory.append("\(score)")
-                gameOver = true
+                showingCheckoutPopup = true
             }
-            setOverallAverage(score)
+//            setOverallAverage(score)
         }
     }
 }

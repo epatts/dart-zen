@@ -40,9 +40,10 @@ struct ContentView: View {
                 
 //                if !viewModel.gameOver {
                     Text("\(viewModel.total)")
-                        .font(Theme.Fonts.ralewaySemiBold(140, .largeTitle))
+                        .font(Theme.Fonts.ralewaySemiBold(180, .largeTitle))
                         .frame(maxWidth: .infinity)
                         .contentTransition(.numericText(countsDown: true))
+                        .padding(.top, -40)
 //                }
                 
                 Divider()
@@ -123,6 +124,22 @@ struct ContentView: View {
                 }
             }
             .padding()
+            .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
+                Button("1") {
+                    viewModel.checkout(viewModel.scoreHistory.last, 1)
+                }
+                Button("2") { 
+                    viewModel.checkout(viewModel.scoreHistory.last, 2)
+                }
+                Button("3") { 
+                    viewModel.checkout(viewModel.scoreHistory.last, 3)
+                }
+                Button("Cancel", role: .cancel) { 
+                    viewModel.undoLastScore()
+                }
+            } message: {
+                Text("How many darts did it take you to checkout?")
+            }
         }
         .background(Color(.neutralXlight))
         .toolbar {

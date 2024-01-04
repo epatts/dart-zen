@@ -37,6 +37,7 @@
 		07E6F9852B4737CE00F69020 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9732B4737CE00F69020 /* Raleway-ThinItalic.ttf */; };
 		07E6F9862B4737CE00F69020 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */; };
 		07E6F9872B4737CE00F69020 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */; };
+		07E6F9892B47573600F69020 /* Todo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9882B47573600F69020 /* Todo.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		07E6F9732B4737CE00F69020 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
 		07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
+		07E6F9882B47573600F69020 /* Todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Todo.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */,
 				07E6F95E2B4231D900F69020 /* Theme.swift */,
 				07E6F9602B42320300F69020 /* Color+.swift */,
+				07E6F9882B47573600F69020 /* Todo.rtf */,
 			);
 			path = Dart01;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				07E6F97C2B4737CE00F69020 /* Raleway-ExtraBold.ttf in Resources */,
 				07E6F97E2B4737CE00F69020 /* Raleway-BlackItalic.ttf in Resources */,
 				077DBFE32B3F37B20024B293 /* Assets.xcassets in Resources */,
+				07E6F9892B47573600F69020 /* Todo.rtf in Resources */,
 				07E6F9872B4737CE00F69020 /* Raleway-Medium.ttf in Resources */,
 				07E6F9792B4737CE00F69020 /* Raleway-LightItalic.ttf in Resources */,
 				07E6F9812B4737CE00F69020 /* Raleway-SemiBold.ttf in Resources */,
