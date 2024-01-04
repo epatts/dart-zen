@@ -14,6 +14,29 @@
 		077DBFF02B3F37B20024B293 /* Dart01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFEF2B3F37B20024B293 /* Dart01Tests.swift */; };
 		077DBFFA2B3F37B20024B293 /* Dart01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFF92B3F37B20024B293 /* Dart01UITests.swift */; };
 		077DBFFC2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */; };
+		077DC0092B3F38E80024B293 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC0082B3F38E80024B293 /* SpeechRecognizer.swift */; };
+		077DC00B2B3F546C0024B293 /* TouchRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */; };
+		077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */; };
+		07E6F95F2B4231D900F69020 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E6F95E2B4231D900F69020 /* Theme.swift */; };
+		07E6F9612B42320300F69020 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E6F9602B42320300F69020 /* Color+.swift */; };
+		07E6F9762B4737CE00F69020 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9642B4737CD00F69020 /* Raleway-Thin.ttf */; };
+		07E6F9772B4737CE00F69020 /* Raleway-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9652B4737CD00F69020 /* Raleway-MediumItalic.ttf */; };
+		07E6F9782B4737CE00F69020 /* Raleway-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9662B4737CD00F69020 /* Raleway-ExtraLight.ttf */; };
+		07E6F9792B4737CE00F69020 /* Raleway-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9672B4737CD00F69020 /* Raleway-LightItalic.ttf */; };
+		07E6F97A2B4737CE00F69020 /* Raleway-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9682B4737CD00F69020 /* Raleway-ExtraBoldItalic.ttf */; };
+		07E6F97B2B4737CE00F69020 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9692B4737CD00F69020 /* Raleway-Black.ttf */; };
+		07E6F97C2B4737CE00F69020 /* Raleway-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F96A2B4737CD00F69020 /* Raleway-ExtraBold.ttf */; };
+		07E6F97D2B4737CE00F69020 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F96B2B4737CD00F69020 /* Raleway-Regular.ttf */; };
+		07E6F97E2B4737CE00F69020 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F96C2B4737CD00F69020 /* Raleway-BlackItalic.ttf */; };
+		07E6F97F2B4737CE00F69020 /* Raleway-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F96D2B4737CE00F69020 /* Raleway-Light.ttf */; };
+		07E6F9802B4737CE00F69020 /* Raleway-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F96E2B4737CE00F69020 /* Raleway-BoldItalic.ttf */; };
+		07E6F9812B4737CE00F69020 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F96F2B4737CE00F69020 /* Raleway-SemiBold.ttf */; };
+		07E6F9822B4737CE00F69020 /* Raleway-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9702B4737CE00F69020 /* Raleway-ExtraLightItalic.ttf */; };
+		07E6F9832B4737CE00F69020 /* Raleway-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9712B4737CE00F69020 /* Raleway-Italic.ttf */; };
+		07E6F9842B4737CE00F69020 /* Raleway-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9722B4737CE00F69020 /* Raleway-SemiBoldItalic.ttf */; };
+		07E6F9852B4737CE00F69020 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9732B4737CE00F69020 /* Raleway-ThinItalic.ttf */; };
+		07E6F9862B4737CE00F69020 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */; };
+		07E6F9872B4737CE00F69020 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +67,30 @@
 		077DBFF52B3F37B20024B293 /* Dart01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dart01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		077DBFF92B3F37B20024B293 /* Dart01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart01UITests.swift; sourceTree = "<group>"; };
 		077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart01UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		077DC0082B3F38E80024B293 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchRecognizer.swift; sourceTree = "<group>"; };
+		077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
+		07E6F95E2B4231D900F69020 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		07E6F9602B42320300F69020 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		07E6F9622B47364A00F69020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		07E6F9642B4737CD00F69020 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
+		07E6F9652B4737CD00F69020 /* Raleway-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-MediumItalic.ttf"; sourceTree = "<group>"; };
+		07E6F9662B4737CD00F69020 /* Raleway-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLight.ttf"; sourceTree = "<group>"; };
+		07E6F9672B4737CD00F69020 /* Raleway-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-LightItalic.ttf"; sourceTree = "<group>"; };
+		07E6F9682B4737CD00F69020 /* Raleway-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		07E6F9692B4737CD00F69020 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
+		07E6F96A2B4737CD00F69020 /* Raleway-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBold.ttf"; sourceTree = "<group>"; };
+		07E6F96B2B4737CD00F69020 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		07E6F96C2B4737CD00F69020 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
+		07E6F96D2B4737CE00F69020 /* Raleway-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Light.ttf"; sourceTree = "<group>"; };
+		07E6F96E2B4737CE00F69020 /* Raleway-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BoldItalic.ttf"; sourceTree = "<group>"; };
+		07E6F96F2B4737CE00F69020 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
+		07E6F9702B4737CE00F69020 /* Raleway-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		07E6F9712B4737CE00F69020 /* Raleway-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Italic.ttf"; sourceTree = "<group>"; };
+		07E6F9722B4737CE00F69020 /* Raleway-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		07E6F9732B4737CE00F69020 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
+		07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +141,17 @@
 		077DBFDD2B3F37AF0024B293 /* Dart01 */ = {
 			isa = PBXGroup;
 			children = (
+				07E6F9632B4736E300F69020 /* Fonts */,
+				07E6F9622B47364A00F69020 /* Info.plist */,
 				077DBFDE2B3F37AF0024B293 /* Dart01App.swift */,
 				077DBFE02B3F37AF0024B293 /* ContentView.swift */,
 				077DBFE22B3F37B20024B293 /* Assets.xcassets */,
 				077DBFE42B3F37B20024B293 /* Preview Content */,
+				077DC0082B3F38E80024B293 /* SpeechRecognizer.swift */,
+				077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */,
+				077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */,
+				07E6F95E2B4231D900F69020 /* Theme.swift */,
+				07E6F9602B42320300F69020 /* Color+.swift */,
 			);
 			path = Dart01;
 			sourceTree = "<group>";
@@ -125,6 +179,31 @@
 				077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */,
 			);
 			path = Dart01UITests;
+			sourceTree = "<group>";
+		};
+		07E6F9632B4736E300F69020 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				07E6F9692B4737CD00F69020 /* Raleway-Black.ttf */,
+				07E6F96C2B4737CD00F69020 /* Raleway-BlackItalic.ttf */,
+				07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */,
+				07E6F96E2B4737CE00F69020 /* Raleway-BoldItalic.ttf */,
+				07E6F96A2B4737CD00F69020 /* Raleway-ExtraBold.ttf */,
+				07E6F9682B4737CD00F69020 /* Raleway-ExtraBoldItalic.ttf */,
+				07E6F9662B4737CD00F69020 /* Raleway-ExtraLight.ttf */,
+				07E6F9702B4737CE00F69020 /* Raleway-ExtraLightItalic.ttf */,
+				07E6F9712B4737CE00F69020 /* Raleway-Italic.ttf */,
+				07E6F96D2B4737CE00F69020 /* Raleway-Light.ttf */,
+				07E6F9672B4737CD00F69020 /* Raleway-LightItalic.ttf */,
+				07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */,
+				07E6F9652B4737CD00F69020 /* Raleway-MediumItalic.ttf */,
+				07E6F96B2B4737CD00F69020 /* Raleway-Regular.ttf */,
+				07E6F96F2B4737CE00F69020 /* Raleway-SemiBold.ttf */,
+				07E6F9722B4737CE00F69020 /* Raleway-SemiBoldItalic.ttf */,
+				07E6F9642B4737CD00F69020 /* Raleway-Thin.ttf */,
+				07E6F9732B4737CE00F69020 /* Raleway-ThinItalic.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +310,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E6F9822B4737CE00F69020 /* Raleway-ExtraLightItalic.ttf in Resources */,
+				07E6F97A2B4737CE00F69020 /* Raleway-ExtraBoldItalic.ttf in Resources */,
+				07E6F97D2B4737CE00F69020 /* Raleway-Regular.ttf in Resources */,
+				07E6F9842B4737CE00F69020 /* Raleway-SemiBoldItalic.ttf in Resources */,
+				07E6F9762B4737CE00F69020 /* Raleway-Thin.ttf in Resources */,
+				07E6F9852B4737CE00F69020 /* Raleway-ThinItalic.ttf in Resources */,
+				07E6F97F2B4737CE00F69020 /* Raleway-Light.ttf in Resources */,
+				07E6F9772B4737CE00F69020 /* Raleway-MediumItalic.ttf in Resources */,
+				07E6F9832B4737CE00F69020 /* Raleway-Italic.ttf in Resources */,
+				07E6F9802B4737CE00F69020 /* Raleway-BoldItalic.ttf in Resources */,
+				07E6F9782B4737CE00F69020 /* Raleway-ExtraLight.ttf in Resources */,
+				07E6F9862B4737CE00F69020 /* Raleway-Bold.ttf in Resources */,
+				07E6F97B2B4737CE00F69020 /* Raleway-Black.ttf in Resources */,
 				077DBFE62B3F37B20024B293 /* Preview Assets.xcassets in Resources */,
+				07E6F97C2B4737CE00F69020 /* Raleway-ExtraBold.ttf in Resources */,
+				07E6F97E2B4737CE00F69020 /* Raleway-BlackItalic.ttf in Resources */,
 				077DBFE32B3F37B20024B293 /* Assets.xcassets in Resources */,
+				07E6F9872B4737CE00F69020 /* Raleway-Medium.ttf in Resources */,
+				07E6F9792B4737CE00F69020 /* Raleway-LightItalic.ttf in Resources */,
+				07E6F9812B4737CE00F69020 /* Raleway-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +354,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E6F9612B42320300F69020 /* Color+.swift in Sources */,
 				077DBFE12B3F37AF0024B293 /* ContentView.swift in Sources */,
+				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,
+				07E6F95F2B4231D900F69020 /* Theme.swift in Sources */,
+				077DC0092B3F38E80024B293 /* SpeechRecognizer.swift in Sources */,
+				077DC00B2B3F546C0024B293 /* TouchRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,8 +524,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dart01/Preview Content\"";
+				DEVELOPMENT_TEAM = 2H39PVH779;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dart01/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "I need this too";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "I need it bro";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -450,8 +556,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dart01/Preview Content\"";
+				DEVELOPMENT_TEAM = 2H39PVH779;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dart01/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "I need this too";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "I need it bro";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
