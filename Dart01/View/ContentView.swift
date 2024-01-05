@@ -10,38 +10,12 @@ import AVFoundation
 
 struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
-        
-    @State private var isRecording = false
-    @State private var transcript = "Test"
-    
-    @GestureState private var isDetectingPress = false
-    
-    let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "←", "0", "Enter"]
-    
-    let commonScores = ["26", "41", "45", "60", "81", "85", "100", "121", "125", "133", "140", "180"]
-    
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-    
-    let commonScoreColumns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     
     var body: some View {
         ScrollView {
             VStack (spacing: 0) {
                 
-                Text("\(viewModel.total)")
-                    .font(Theme.Fonts.ralewaySemiBold(180, .largeTitle))
-                    .frame(maxWidth: .infinity)
-                    .contentTransition(.numericText(countsDown: true))
-                    .padding(.top, -40)
+                ScoreView(score: $viewModel.total)
                 
                 Divider()
                     .overlay(Color(.neutralXdark))
@@ -79,58 +53,13 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-                    ForEach(numbers, id: \.self) { number in
-                        Text(number)
-                            .font(Theme.Fonts.ralewaySemiBold(.title2, .title2))
-                            .frame(maxWidth: .infinity, maxHeight: 60)
-                            .padding(14)
-                            .foregroundStyle(Color(.textXlight))
-                            .background(Color(.primaryDark))
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
-                            .onTapGesture {
-                                if number == "←" {
-                                    if !viewModel.scoreString.isEmpty {
-                                        viewModel.scoreString.removeLast()
-                                        if viewModel.scoreString.count > 1 {
-                                            viewModel.startTimer()
-                                        } else if viewModel.scoreString.count == 1 {
-                                            viewModel.numberTapWorkItem?.cancel()
-                                        }
-                                    }
-                                } else if number == "Enter" {
-                                    viewModel.numberTapWorkItem?.cancel()
-                                    viewModel.handleScore(viewModel.scoreString)
-                                    viewModel.scoreString.removeAll()
-                                } else {
-                                    if viewModel.scoreString.count < 3 {
-                                        viewModel.scoreString.append(number)
-                                    }
-                                    viewModel.startTimer()
-                                }
-                            }
-                    }
-                }
+                NumberPad(viewModel: viewModel)
                 
                 Divider()
                     .overlay(Color(.neutralXdark))
                     .padding(.vertical)
                 
-                LazyVGrid(columns: commonScoreColumns, alignment: .center, spacing: 10) {
-                    ForEach(commonScores, id: \.self) { number in
-                        Text(number)
-                            .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                            .frame(maxWidth: .infinity, maxHeight: 80)
-                            .padding(10)
-                            .foregroundStyle(Color(.textBase))
-                            .background(Color(.neutralLight))
-                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
-                            .blur(radius: isRecording ? 4 : 0)
-                            .onTapGesture {
-                                viewModel.handleScore(number)
-                            }
-                    }
-                }
+                CommonScoresPad(viewModel: viewModel)
             }
             .padding()
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {

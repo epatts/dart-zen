@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		077D45952B48A11B000831B0 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45942B48A11B000831B0 /* ScoreView.swift */; };
+		077D45972B48A209000831B0 /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45962B48A209000831B0 /* NumberPad.swift */; };
+		077D45992B48A4FF000831B0 /* CommonScoresPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45982B48A4FF000831B0 /* CommonScoresPad.swift */; };
 		077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFDE2B3F37AF0024B293 /* Dart01App.swift */; };
 		077DBFE12B3F37AF0024B293 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFE02B3F37AF0024B293 /* ContentView.swift */; };
 		077DBFE32B3F37B20024B293 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 077DBFE22B3F37B20024B293 /* Assets.xcassets */; };
@@ -57,6 +60,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		077D45942B48A11B000831B0 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		077D45962B48A209000831B0 /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
+		077D45982B48A4FF000831B0 /* CommonScoresPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonScoresPad.swift; sourceTree = "<group>"; };
 		077DBFDB2B3F37AF0024B293 /* Dart01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dart01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		077DBFDE2B3F37AF0024B293 /* Dart01App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart01App.swift; sourceTree = "<group>"; };
 		077DBFE02B3F37AF0024B293 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +124,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		077D45932B48A103000831B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				077DBFE02B3F37AF0024B293 /* ContentView.swift */,
+				077D45942B48A11B000831B0 /* ScoreView.swift */,
+				077D45962B48A209000831B0 /* NumberPad.swift */,
+				077D45982B48A4FF000831B0 /* CommonScoresPad.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		077DBFD22B3F37AF0024B293 = {
 			isa = PBXGroup;
 			children = (
@@ -141,10 +158,10 @@
 		077DBFDD2B3F37AF0024B293 /* Dart01 */ = {
 			isa = PBXGroup;
 			children = (
+				077D45932B48A103000831B0 /* View */,
 				07E6F9632B4736E300F69020 /* Fonts */,
 				07E6F9622B47364A00F69020 /* Info.plist */,
 				077DBFDE2B3F37AF0024B293 /* Dart01App.swift */,
-				077DBFE02B3F37AF0024B293 /* ContentView.swift */,
 				077DBFE22B3F37B20024B293 /* Assets.xcassets */,
 				077DBFE42B3F37B20024B293 /* Preview Content */,
 				077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */,
@@ -355,12 +372,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				077D45972B48A209000831B0 /* NumberPad.swift in Sources */,
 				07E6F9612B42320300F69020 /* Color+.swift in Sources */,
 				077DBFE12B3F37AF0024B293 /* ContentView.swift in Sources */,
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,
+				077D45952B48A11B000831B0 /* ScoreView.swift in Sources */,
 				07E6F95F2B4231D900F69020 /* Theme.swift in Sources */,
 				077DC00B2B3F546C0024B293 /* TouchRecognizer.swift in Sources */,
+				077D45992B48A4FF000831B0 /* CommonScoresPad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
