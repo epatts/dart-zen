@@ -20,7 +20,9 @@ class ScoreViewModel: ObservableObject {
     @Published var numDartsUsedForCheckout: Int = 3
     
     @Published var showingCheckoutPopup = false
-        
+    
+    @Published var games: [Game] = []
+            
     var numberTapWorkItem: DispatchWorkItem?
 
     func newGame() {
@@ -28,6 +30,8 @@ class ScoreViewModel: ObservableObject {
             gameOver = false
             totalDartsThrown += (scoreHistory.count - 1) * 3 + numDartsUsedForCheckout
             gamesPlayed += 1
+            
+            games.append(Game(gameType: GameType(rawValue: ScoreViewModel.GAME_MODE) ?? ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: overallAverage))
         } else {
             resetOverallAverage()
         }
@@ -124,13 +128,13 @@ public extension String {
     }
 }
 
-struct Fixtures {
-    var scoreViewModel = ScoreViewModel()
-    
-    func getScoreViewModel() -> ScoreViewModel {
-        scoreViewModel.total = 188
-        scoreViewModel.scoreHistory = ["45", "52", "121", "55", "40"]
-        
-        return scoreViewModel
-    }
-}
+//struct Fixtures {
+//    var scoreViewModel = ScoreViewModel()
+//    
+//    func getScoreViewModel() -> ScoreViewModel {
+//        scoreViewModel.total = 188
+//        scoreViewModel.scoreHistory = ["45", "52", "121", "55", "40"]
+//        
+//        return scoreViewModel
+//    }
+//}

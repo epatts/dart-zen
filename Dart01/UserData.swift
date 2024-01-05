@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class UserData: ObservableObject {
+@MainActor class UserData: ObservableObject {
     @Published var games: [Game] = []
     
     static var orientation = UIDeviceOrientation.portrait

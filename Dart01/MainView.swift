@@ -13,7 +13,8 @@ struct MainView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
-        ContentView(games: $games)
+//        ContentView(games: $games)
+        ContentView()
             .onRotate { newOrientation in
                 UserData.orientation = newOrientation
             }

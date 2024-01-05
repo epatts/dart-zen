@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScoreView: View {
-    @Binding var score: Int
+    var score: Int
     
     var body: some View {
         Text("\(score)")
@@ -20,5 +20,5 @@ struct ScoreView: View {
 }
 
 #Preview {
-    ScoreView(score: .constant(501))
+    ScoreView(score: 501)
 }

@@ -6,18 +6,17 @@
 //
 
 import SwiftUI
-import AVFoundation
 
 struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
     
-    @Binding var games: [Game]
+//    @Binding var games: [Game]
     
     var body: some View {
         ScrollView {
             VStack (spacing: 0) {
                 
-                ScoreView(score: $viewModel.total)
+                ScoreView(score: viewModel.total)
                 
                 Divider()
                     .overlay(Color(.neutralXdark))
@@ -45,6 +44,9 @@ struct ContentView: View {
                 
                 CommonScoresPad(viewModel: viewModel)
             }
+//            .onChange(of: viewModel.games) {
+//                games = viewModel.games
+//            }
             .padding()
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
                 Button("1") {
@@ -105,6 +107,7 @@ struct ContentView: View {
 #Preview {
     NavigationView {
 //        ContentView(viewModel: Fixtures().getScoreViewModel())
-        ContentView(games: .constant([]))
+//        ContentView(games: .constant([]))
+        ContentView()
     }
 }

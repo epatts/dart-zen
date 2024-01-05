@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct Game: Identifiable, Codable {
+struct Game: Identifiable, Codable, Equatable {
     var id = UUID()
     
     var gameType: GameType
-    var scores: [Int]
-    var checkoutScore: Int
+    var scores: [String]
+    var checkoutScore: String?
     var average: Double
 }
 
