@@ -11,6 +11,8 @@ import AVFoundation
 struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
     
+    @Binding var games: [Game]
+    
     var body: some View {
         ScrollView {
             VStack (spacing: 0) {
@@ -103,6 +105,6 @@ struct ContentView: View {
 #Preview {
     NavigationView {
 //        ContentView(viewModel: Fixtures().getScoreViewModel())
-        ContentView()
+        ContentView(games: .constant([]))
     }
 }
