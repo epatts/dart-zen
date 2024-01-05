@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NumberPad: View {
-    var viewModel: ScoreViewModel
+    @ObservedObject var viewModel: ScoreViewModel
     
     let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "←", "0", "Enter"]
         

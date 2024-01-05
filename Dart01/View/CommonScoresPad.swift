@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CommonScoresPad: View {
-    var viewModel: ScoreViewModel
+    @ObservedObject var viewModel: ScoreViewModel
     
     let commonScores = ["26", "41", "45", "60", "81", "85", "100", "121", "125", "133", "140", "180"]
     

@@ -21,25 +21,7 @@ struct ContentView: View {
                     .overlay(Color(.neutralXdark))
                     .padding(.vertical)
                 
-                HStack {
-                    Text("Last: \(viewModel.scoreHistory.last ?? "-")")
-                        .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                    
-                    Spacer()
-                    
-                    Text("Darts thrown: \(viewModel.scoreHistory.count * 3)")
-                        .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                    
-                    Spacer()
-                    
-                    if !viewModel.scoreHistory.isEmpty || viewModel.totalDartsThrown != 0 {
-                        Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
-                            .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                    } else {
-                        Text("Avg: -")
-                            .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                    }
-                }
+                InGameStatsBar(viewModel: viewModel)
                 
                 Spacer()
                 
