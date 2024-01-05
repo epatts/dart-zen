@@ -10,7 +10,9 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
     
-//    @Binding var games: [Game]
+    @Binding var games: [Game]
+    
+    let saveAction: ()-> Void
     
     var body: some View {
         ScrollView {
@@ -107,7 +109,7 @@ struct ContentView: View {
 #Preview {
     NavigationView {
 //        ContentView(viewModel: Fixtures().getScoreViewModel())
-//        ContentView(games: .constant([]))
-        ContentView()
+        ContentView(games: .constant([]), saveAction: {})
+//        ContentView()
     }
 }

@@ -9,18 +9,20 @@ import SwiftUI
 
 struct MainView: View {
     @Binding var games: [Game]
-    let saveAction: ()->Void
+    let saveAction: ()-> Void
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
-//        ContentView(games: $games)
-        ContentView()
-            .onRotate { newOrientation in
-                UserData.orientation = newOrientation
-            }
-            .onChange(of: scenePhase) {
-                if scenePhase == .inactive { saveAction() }
-            }
+        VStack {
+//            ContentView(games: $games)
+            //        ContentView()
+        }
+        .onRotate { newOrientation in
+            UserData.orientation = newOrientation
+        }
+        .onChange(of: scenePhase) {
+            if scenePhase == .inactive { saveAction() }
+        }
     }
 }
 
