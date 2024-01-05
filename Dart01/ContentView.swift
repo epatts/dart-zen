@@ -11,7 +11,6 @@ import AVFoundation
 struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
         
-    @StateObject var speechRecognizer = SpeechRecognizer()
     @State private var isRecording = false
     @State private var transcript = "Test"
     

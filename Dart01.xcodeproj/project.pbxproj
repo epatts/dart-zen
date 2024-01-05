@@ -14,7 +14,6 @@
 		077DBFF02B3F37B20024B293 /* Dart01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFEF2B3F37B20024B293 /* Dart01Tests.swift */; };
 		077DBFFA2B3F37B20024B293 /* Dart01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFF92B3F37B20024B293 /* Dart01UITests.swift */; };
 		077DBFFC2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */; };
-		077DC0092B3F38E80024B293 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC0082B3F38E80024B293 /* SpeechRecognizer.swift */; };
 		077DC00B2B3F546C0024B293 /* TouchRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */; };
 		077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */; };
 		07E6F95F2B4231D900F69020 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E6F95E2B4231D900F69020 /* Theme.swift */; };
@@ -68,7 +67,6 @@
 		077DBFF52B3F37B20024B293 /* Dart01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dart01UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		077DBFF92B3F37B20024B293 /* Dart01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart01UITests.swift; sourceTree = "<group>"; };
 		077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart01UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		077DC0082B3F38E80024B293 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchRecognizer.swift; sourceTree = "<group>"; };
 		077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
 		07E6F95E2B4231D900F69020 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				077DBFE02B3F37AF0024B293 /* ContentView.swift */,
 				077DBFE22B3F37B20024B293 /* Assets.xcassets */,
 				077DBFE42B3F37B20024B293 /* Preview Content */,
-				077DC0082B3F38E80024B293 /* SpeechRecognizer.swift */,
 				077DC00A2B3F546C0024B293 /* TouchRecognizer.swift */,
 				077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */,
 				07E6F95E2B4231D900F69020 /* Theme.swift */,
@@ -363,7 +360,6 @@
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,
 				07E6F95F2B4231D900F69020 /* Theme.swift in Sources */,
-				077DC0092B3F38E80024B293 /* SpeechRecognizer.swift in Sources */,
 				077DC00B2B3F546C0024B293 /* TouchRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,8 +528,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dart01/Info.plist;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "I need this too";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "I need it bro";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dart Zen";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -564,8 +559,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Dart01/Info.plist;
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "I need this too";
-				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "I need it bro";
+				INFOPLIST_KEY_CFBundleDisplayName = "Dart Zen";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
