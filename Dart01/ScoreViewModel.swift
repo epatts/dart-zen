@@ -79,7 +79,9 @@ class ScoreViewModel: ObservableObject {
     }
     
     func resetOverallAverage() {
-        overallAverage = Double(gamesPlayed) * Double(ScoreViewModel.GAME_MODE) / Double(totalDartsThrown) * 3
+        if totalDartsThrown > 0 {
+            overallAverage = Double(gamesPlayed) * Double(ScoreViewModel.GAME_MODE) / Double(totalDartsThrown) * 3
+        }
     }
     
     func startTimer() {
@@ -110,7 +112,6 @@ class ScoreViewModel: ObservableObject {
                 scoreHistory.append("\(score)")
                 showingCheckoutPopup = true
             }
-//            setOverallAverage(score)
         }
     }
 }

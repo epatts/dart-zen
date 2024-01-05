@@ -17,7 +17,7 @@ struct ContentView: View {
     
     @GestureState private var isDetectingPress = false
     
-    let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "00", "0", "←"]
+    let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "←", "0", "Enter"]
     
     let commonScores = ["26", "41", "45", "60", "81", "85", "100", "121", "125", "133", "140", "180"]
     
@@ -95,9 +95,20 @@ struct ContentView: View {
                                 if number == "←" {
                                     if !viewModel.scoreString.isEmpty {
                                         viewModel.scoreString.removeLast()
+                                        if viewModel.scoreString.count > 1 {
+                                            viewModel.startTimer()
+                                        } else if viewModel.scoreString.count == 1 {
+                                            viewModel.numberTapWorkItem?.cancel()
+                                        }
                                     }
+                                } else if number == "Enter" {
+                                    viewModel.numberTapWorkItem?.cancel()
+                                    viewModel.handleScore(viewModel.scoreString)
+                                    viewModel.scoreString.removeAll()
                                 } else {
-                                    viewModel.scoreString.append(number)
+                                    if viewModel.scoreString.count < 3 {
+                                        viewModel.scoreString.append(number)
+                                    }
                                     viewModel.startTimer()
                                 }
                             }
