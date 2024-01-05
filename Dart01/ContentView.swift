@@ -37,13 +37,11 @@ struct ContentView: View {
         ScrollView {
             VStack (spacing: 0) {
                 
-//                if !viewModel.gameOver {
-                    Text("\(viewModel.total)")
-                        .font(Theme.Fonts.ralewaySemiBold(180, .largeTitle))
-                        .frame(maxWidth: .infinity)
-                        .contentTransition(.numericText(countsDown: true))
-                        .padding(.top, -40)
-//                }
+                Text("\(viewModel.total)")
+                    .font(Theme.Fonts.ralewaySemiBold(180, .largeTitle))
+                    .frame(maxWidth: .infinity)
+                    .contentTransition(.numericText(countsDown: true))
+                    .padding(.top, -40)
                 
                 Divider()
                     .overlay(Color(.neutralXdark))
@@ -115,7 +113,8 @@ struct ContentView: View {
                 }
                 
                 Divider()
-                    .padding()
+                    .overlay(Color(.neutralXdark))
+                    .padding(.vertical)
                 
                 LazyVGrid(columns: commonScoreColumns, alignment: .center, spacing: 10) {
                     ForEach(commonScores, id: \.self) { number in
