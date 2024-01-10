@@ -6,6 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
+
+@Model
+class Leg {
+    var gameType: GameType
+    var scores: [String]
+    var checkoutScore: String?
+    var average: Double
+    
+    init(gameType: GameType, scores: [String], checkoutScore: String? = nil, average: Double) {
+        self.gameType = gameType
+        self.scores = scores
+        self.checkoutScore = checkoutScore
+        self.average = average
+    }
+}
 
 struct Game: Identifiable, Codable, Equatable {
     var id = UUID()

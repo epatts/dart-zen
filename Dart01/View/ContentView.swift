@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.modelContext) var context
+    
     @ObservedObject var viewModel = ScoreViewModel()
     
     @Binding var games: [Game]
+    
+    @Query(sort: \Leg.average) var legs: [Leg]
     
     let saveAction: ()-> Void
     
@@ -25,6 +31,9 @@ struct ContentView: View {
                     .padding(.vertical)
                 
                 InGameStatsBar(viewModel: viewModel)
+                
+                Text("Legs: \(legs.count)")
+                    .font(Theme.Fonts.raleway(.body, .body))
                 
                 Spacer()
                 
@@ -53,12 +62,15 @@ struct ContentView: View {
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
                 Button("1") {
                     viewModel.checkout(viewModel.scoreHistory.last, 1)
+                    context.insert(Leg(gameType: ._501, scores: viewModel.scoreHistory, checkoutScore: viewModel.scoreHistory.last, average: viewModel.overallAverage))
                 }
                 Button("2") { 
                     viewModel.checkout(viewModel.scoreHistory.last, 2)
+                    context.insert(Leg(gameType: ._501, scores: viewModel.scoreHistory, checkoutScore: viewModel.scoreHistory.last, average: viewModel.overallAverage))
                 }
                 Button("3") { 
                     viewModel.checkout(viewModel.scoreHistory.last, 3)
+                    context.insert(Leg(gameType: ._501, scores: viewModel.scoreHistory, checkoutScore: viewModel.scoreHistory.last, average: viewModel.overallAverage))
                 }
                 Button("Cancel", role: .cancel) { 
                     viewModel.undoLastScore()
@@ -68,6 +80,9 @@ struct ContentView: View {
             }
         }
         .background(Color(.neutralXlight))
+        .onChange(of: scenePhase) {
+            if scenePhase == .inactive { saveAction() }
+        }
         .toolbar {
             ToolbarItemGroup(placement: .topBarLeading) {
                 if !viewModel.scoreHistory.isEmpty {
