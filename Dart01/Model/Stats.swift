@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  Stats.swift
 //  Dart01
 //
 //  Created by Eric Patterson on 1/5/24.
@@ -23,27 +23,12 @@ class Leg {
     }
 }
 
-struct Game: Identifiable, Codable, Equatable {
-    var id = UUID()
-    
-    var gameType: GameType
-    var scores: [String]
-    var checkoutScore: String?
-    var average: Double
-}
-
-enum GameType: Int, CaseIterable, Identifiable, Codable {
-    var id: Self {
-        return self
-    }
-    
+enum GameType: Int, CaseIterable, Codable {
     case _501 = 501
     case _301 = 301
 }
 
-struct Checkout: Identifiable, Codable {
-    var id = UUID()
-    
+struct Checkout: Codable {
     var score: Int
     var numDarts: Int
 }

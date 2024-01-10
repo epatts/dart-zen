@@ -13,9 +13,7 @@ struct ContentView: View {
     @Environment(\.modelContext) var context
     
     @ObservedObject var viewModel = ScoreViewModel()
-    
-    @Binding var games: [Game]
-    
+        
     @Query(sort: \Leg.average) var legs: [Leg]
     
     let saveAction: ()-> Void
@@ -124,7 +122,7 @@ struct ContentView: View {
 #Preview {
     NavigationView {
 //        ContentView(viewModel: Fixtures().getScoreViewModel())
-        ContentView(games: .constant([]), saveAction: {})
+        ContentView(saveAction: {})
 //        ContentView()
     }
 }
