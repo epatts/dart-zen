@@ -28,9 +28,6 @@ struct ContentView: View {
                 
                 InGameStatsBar(viewModel: viewModel)
                 
-                Text("Legs: \(legs.count)")
-                    .font(Theme.Fonts.raleway(.body, .body))
-                
                 Spacer()
                 
                 HStack {
@@ -54,16 +51,13 @@ struct ContentView: View {
             .padding()
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
                 Button("1") {
-                    viewModel.checkout(viewModel.scoreHistory.last, 1)
-                    viewModel.updateContext(context: context)
+                    viewModel.checkout(viewModel.scoreHistory.last, 1, context: context)
                 }
                 Button("2") { 
-                    viewModel.checkout(viewModel.scoreHistory.last, 2)
-                    viewModel.updateContext(context: context)
+                    viewModel.checkout(viewModel.scoreHistory.last, 2, context: context)
                 }
                 Button("3") { 
-                    viewModel.checkout(viewModel.scoreHistory.last, 3)
-                    viewModel.updateContext(context: context)
+                    viewModel.checkout(viewModel.scoreHistory.last, 3, context: context)
                 }
                 Button("Cancel", role: .cancel) { 
                     viewModel.undoLastScore()
@@ -71,6 +65,9 @@ struct ContentView: View {
             } message: {
                 Text("How many darts did it take you to checkout?")
             }
+        }
+        .onAppear {
+            viewModel.setUpData(legs)
         }
         .background(Color(.neutralXlight))
         .toolbar {

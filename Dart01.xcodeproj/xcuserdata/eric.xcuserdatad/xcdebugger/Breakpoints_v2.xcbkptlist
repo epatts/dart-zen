@@ -3,4 +3,85 @@
    uuid = "03A574F5-628E-4202-916C-3ACC773BE42A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "902E1136-E57D-4E01-A318-554275813362"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dart01/ScoreViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "checkout(_:_:context:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "902E1136-E57D-4E01-A318-554275813362 - 832e5164452e1854"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dart01.ScoreViewModel.updateContext(context: SwiftData.ModelContext) -&gt; ()"
+                  moduleName = "Dart01"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eric/Documents/Xcode%20Projects/Dart01/Dart01/ScoreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "902E1136-E57D-4E01-A318-554275813362 - 832e5164452e1bc9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dart01.ScoreViewModel.updateContext(context: SwiftData.ModelContext) -&gt; ()"
+                  moduleName = "Dart01"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eric/Documents/Xcode%20Projects/Dart01/Dart01/ScoreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "902E1136-E57D-4E01-A318-554275813362 - 832e5164452e1bc9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dart01.ScoreViewModel.updateContext(context: SwiftData.ModelContext) -&gt; ()"
+                  moduleName = "Dart01"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eric/Documents/Xcode%20Projects/Dart01/Dart01/ScoreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4B9F34A-FAB4-4C76-86BA-EB7535F2B641"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dart01/ScoreViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "setUpData(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -18,34 +18,49 @@ class ScoreViewModel: ObservableObject {
     @Published var gameOver = false
     @Published var scoreString = ""
     @Published var overallAverage: Double = 0
-    @Published var numDartsUsedForCheckout: Int = 3
     
     @Published var showingCheckoutPopup = false
             
     var numberTapWorkItem: DispatchWorkItem?
     
-    func updateContext(context: ModelContext) {
-        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: overallAverage, numDarts: totalDartsThrown, dartsAtDouble: 3, completed: true))
+    func setUpData(_ legs: [Leg]) {
+        if !legs.isEmpty {
+            var totalScore: Int = 0
+            var totalDarts: Int = 0
+            
+            for leg in legs {
+                totalScore += leg.gameType.rawValue
+                totalDarts += leg.numDarts
+            }
+            
+            totalDartsThrown = totalDarts
+            overallAverage = Double(totalScore) / Double(totalDarts) * 3
+        }
+    }
+    
+    func checkout(_ score: String?, _ numDarts: Int, context: ModelContext) {
+        let dartsThrown = (scoreHistory.count - 1) * 3 + numDarts
+        
+        setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
+        gameOver = true
+        newGame()
+        
+        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: Double(total) / Double(dartsThrown) * 3, numDarts: dartsThrown, dartsAtDouble: 3, completed: true))
+        
+        totalDartsThrown += dartsThrown
+        
+        scoreHistory.removeAll()
     }
 
     func newGame() {
         if gameOver {
             gameOver = false
-            totalDartsThrown += (scoreHistory.count - 1) * 3 + numDartsUsedForCheckout
             gamesPlayed += 1
         } else {
             resetOverallAverage()
         }
         
-        scoreHistory.removeAll()
         total = ScoreViewModel.GAME_MODE
-    }
-    
-    func checkout(_ score: String?, _ numDarts: Int) {
-        setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
-        numDartsUsedForCheckout = numDarts
-        gameOver = true
-        newGame()
     }
     
     func undoLastScore() {

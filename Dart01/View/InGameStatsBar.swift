@@ -22,14 +22,8 @@ struct InGameStatsBar: View {
             
             Spacer()
             
-            if !viewModel.scoreHistory.isEmpty || viewModel.totalDartsThrown != 0 {
-                Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-            } else {
-                Text("Avg: -")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-            }
-        }
+            Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
+                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))        }
     }
 }
 
