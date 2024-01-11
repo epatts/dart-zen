@@ -14,12 +14,18 @@ class Leg {
     var scores: [String]
     var checkoutScore: String?
     var average: Double
+    var numDarts: Int
+    var dartsAtDouble: Int
+    var completed: Bool = true
     
-    init(gameType: GameType, scores: [String], checkoutScore: String? = nil, average: Double) {
+    init(gameType: GameType, scores: [String], checkoutScore: String? = nil, average: Double, numDarts: Int, dartsAtDouble: Int, completed: Bool) {
         self.gameType = gameType
         self.scores = scores
         self.checkoutScore = checkoutScore
         self.average = average
+        self.numDarts = numDarts
+        self.dartsAtDouble = dartsAtDouble
+        self.completed = completed
     }
 }
 

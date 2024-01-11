@@ -9,8 +9,6 @@ import SwiftUI
 import SwiftData
 
 class ScoreViewModel: ObservableObject {
-//    var context: ModelContext?
-    
     static let GAME_MODE: Int = 501
     @Published var total = GAME_MODE
     @Published var gamesPlayed: Int = 0
@@ -23,21 +21,18 @@ class ScoreViewModel: ObservableObject {
     @Published var numDartsUsedForCheckout: Int = 3
     
     @Published var showingCheckoutPopup = false
-    
-//    @Query(sort: \Leg.average) var legs: [Leg]
-//    @Published var legs: [Leg] = []
             
     var numberTapWorkItem: DispatchWorkItem?
+    
+    func updateContext(context: ModelContext) {
+        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: overallAverage, numDarts: totalDartsThrown, dartsAtDouble: 3, completed: true))
+    }
 
     func newGame() {
         if gameOver {
             gameOver = false
             totalDartsThrown += (scoreHistory.count - 1) * 3 + numDartsUsedForCheckout
             gamesPlayed += 1
-            
-//            legs.append(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: overallAverage))
-//            context?.insert(leg)
-            
         } else {
             resetOverallAverage()
         }

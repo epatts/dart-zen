@@ -60,15 +60,15 @@ struct ContentView: View {
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
                 Button("1") {
                     viewModel.checkout(viewModel.scoreHistory.last, 1)
-                    context.insert(Leg(gameType: ._501, scores: viewModel.scoreHistory, checkoutScore: viewModel.scoreHistory.last, average: viewModel.overallAverage))
+                    viewModel.updateContext(context: context)
                 }
                 Button("2") { 
                     viewModel.checkout(viewModel.scoreHistory.last, 2)
-                    context.insert(Leg(gameType: ._501, scores: viewModel.scoreHistory, checkoutScore: viewModel.scoreHistory.last, average: viewModel.overallAverage))
+                    viewModel.updateContext(context: context)
                 }
                 Button("3") { 
                     viewModel.checkout(viewModel.scoreHistory.last, 3)
-                    context.insert(Leg(gameType: ._501, scores: viewModel.scoreHistory, checkoutScore: viewModel.scoreHistory.last, average: viewModel.overallAverage))
+                    viewModel.updateContext(context: context)
                 }
                 Button("Cancel", role: .cancel) { 
                     viewModel.undoLastScore()
