@@ -13,7 +13,7 @@ struct Dart01App: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView() {}
+                ContentView()
             }
         }
         .modelContainer(for: [Leg.self])

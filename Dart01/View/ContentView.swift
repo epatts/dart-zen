@@ -15,9 +15,7 @@ struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
         
     @Query(sort: \Leg.average) var legs: [Leg]
-    
-    let saveAction: ()-> Void
-    
+        
     var body: some View {
         ScrollView {
             VStack (spacing: 0) {
@@ -53,9 +51,6 @@ struct ContentView: View {
                 
                 CommonScoresPad(viewModel: viewModel)
             }
-//            .onChange(of: viewModel.games) {
-//                games = viewModel.games
-//            }
             .padding()
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
                 Button("1") {
@@ -78,9 +73,6 @@ struct ContentView: View {
             }
         }
         .background(Color(.neutralXlight))
-        .onChange(of: scenePhase) {
-            if scenePhase == .inactive { saveAction() }
-        }
         .toolbar {
             ToolbarItemGroup(placement: .topBarLeading) {
                 if !viewModel.scoreHistory.isEmpty {
@@ -122,7 +114,7 @@ struct ContentView: View {
 #Preview {
     NavigationView {
 //        ContentView(viewModel: Fixtures().getScoreViewModel())
-        ContentView(saveAction: {})
+        ContentView()
 //        ContentView()
     }
 }
