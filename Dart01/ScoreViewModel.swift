@@ -23,20 +23,21 @@ class ScoreViewModel: ObservableObject {
     var numberTapWorkItem: DispatchWorkItem?
     
     func setUpData(_ legs: [Leg]) {
+        var totalScore: Int = 0
+        var totalDarts: Int = 0
+        
         if !legs.isEmpty {
-            var totalScore: Int = 0
-            var totalDarts: Int = 0
-            
             for leg in legs {
                 totalScore += leg.gameType.rawValue
                 totalDarts += leg.numDarts
             }
-            
-            totalDartsThrown = totalDarts
-            overallAverage = Double(totalScore) / Double(totalDarts) * 3
-            total = ScoreViewModel.GAME_MODE
-            scoreHistory.removeAll()
         }
+        
+        totalDartsThrown = totalDarts
+        overallAverage = totalDarts == 0 ? 0 : Double(totalScore) / Double(totalDarts) * 3
+        
+        total = ScoreViewModel.GAME_MODE
+        scoreHistory.removeAll()
     }
     
     func checkout(_ score: String?, _ numDarts: Int, context: ModelContext) {
