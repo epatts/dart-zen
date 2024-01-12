@@ -41,6 +41,11 @@ class ScoreViewModel: ObservableObject {
     }
     
     func checkout(_ score: String?, _ numDarts: Int, context: ModelContext) {
+        withAnimation {
+            total -= total
+        }
+        scoreHistory.append("\(total)")
+        
         let dartsThrown = (scoreHistory.count - 1) * 3 + numDarts
         
         setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
@@ -52,6 +57,16 @@ class ScoreViewModel: ObservableObject {
         scoreHistory.removeAll()
         
         total = ScoreViewModel.GAME_MODE
+    }
+    
+    func getCheckoutType() -> Int {
+        if CheckoutNumbers.shared.isOneDartCheckout(total) {
+            return 1
+        } else if CheckoutNumbers.shared.isTwoDartCheckout(total) {
+            return 2
+        } else {
+            return 3
+        }
     }
     
     func undoLastScore() {
