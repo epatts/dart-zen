@@ -15,7 +15,6 @@ class ScoreViewModel: ObservableObject {
     @Published var scoreHistory: [String] = []
     @Published var averageHistory: [Double] = []
     @Published var totalDartsThrown: Int = 0
-    @Published var gameOver = false
     @Published var scoreString = ""
     @Published var overallAverage: Double = 0
     
@@ -35,6 +34,8 @@ class ScoreViewModel: ObservableObject {
             
             totalDartsThrown = totalDarts
             overallAverage = Double(totalScore) / Double(totalDarts) * 3
+            total = ScoreViewModel.GAME_MODE
+            scoreHistory.removeAll()
         }
     }
     
@@ -42,23 +43,12 @@ class ScoreViewModel: ObservableObject {
         let dartsThrown = (scoreHistory.count - 1) * 3 + numDarts
         
         setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
-        gameOver = true
-        newGame()
         
         context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: Double(total) / Double(dartsThrown) * 3, numDarts: dartsThrown, dartsAtDouble: 3, completed: true))
         
         totalDartsThrown += dartsThrown
         
         scoreHistory.removeAll()
-    }
-
-    func newGame() {
-        if gameOver {
-            gameOver = false
-            gamesPlayed += 1
-        } else {
-            resetOverallAverage()
-        }
         
         total = ScoreViewModel.GAME_MODE
     }
@@ -73,7 +63,6 @@ class ScoreViewModel: ObservableObject {
         }
         
         scoreHistory.removeLast()
-        gameOver = false
     }
     
     func handleScore(_ newScoreString: String) {

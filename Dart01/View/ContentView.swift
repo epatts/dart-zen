@@ -91,14 +91,14 @@ struct ContentView: View {
             
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button() {
-                    viewModel.newGame()
+                    viewModel.setUpData(legs)
                 } label: {
                     HStack {
                         Image(systemName: "plus")
                             .font(Theme.Fonts.ralewaySemiBold(.body, .body))
                             .foregroundStyle(Color(.primaryDark))
 
-                        Text(viewModel.gameOver ? "New Game" : "Restart Game")
+                        Text("Restart Game")
                             .font(Theme.Fonts.ralewaySemiBold(.body, .body))
                             .foregroundStyle(Color(.primaryDark))
                     }
