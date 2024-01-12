@@ -23,7 +23,8 @@ struct InGameStatsBar: View {
             Spacer()
             
             Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))        }
+                .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+        }
     }
 }
 

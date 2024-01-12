@@ -27,8 +27,7 @@ struct ContentView: View {
                     .padding(.vertical)
                 
                 InGameStatsBar(viewModel: viewModel)
-                
-                Spacer()
+                    .padding(.horizontal)
                 
                 HStack {
                     Text(" ")
@@ -48,7 +47,6 @@ struct ContentView: View {
                 
                 CommonScoresPad(viewModel: viewModel)
             }
-            .padding()
             .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
                 Button("1") {
                     viewModel.checkout(viewModel.scoreHistory.last, 1, context: context)

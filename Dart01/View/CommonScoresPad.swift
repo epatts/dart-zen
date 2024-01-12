@@ -13,22 +13,21 @@ struct CommonScoresPad: View {
     let commonScores = ["26", "41", "45", "60", "81", "85", "100", "121", "125", "133", "140", "180"]
     
     let commonScoreColumns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2)
     ]
     
     var body: some View {
-        LazyVGrid(columns: commonScoreColumns, alignment: .center, spacing: 10) {
+        LazyVGrid(columns: commonScoreColumns, alignment: .center, spacing: 2) {
             ForEach(commonScores, id: \.self) { number in
                 Text(number)
                     .font(Theme.Fonts.ralewaySemiBold(.body, .body))
                     .frame(maxWidth: .infinity, maxHeight: 80)
-                    .padding(10)
+                    .padding(14)
                     .foregroundStyle(Color(.textBase))
                     .background(Color(.neutralLight))
-                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
                     .onTapGesture {
                         viewModel.handleScore(number)
                         viewModel.numberTapWorkItem?.cancel()

@@ -13,21 +13,20 @@ struct NumberPad: View {
     let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "←", "0", "Enter"]
         
     let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2),
+        GridItem(.flexible(), spacing: 2)
     ]
     
     var body: some View {
-        LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+        LazyVGrid(columns: columns, alignment: .center, spacing: 2) {
             ForEach(numbers, id: \.self) { number in
                 Text(number)
                     .font(Theme.Fonts.ralewaySemiBold(.title2, .title2))
                     .frame(maxWidth: .infinity, maxHeight: 60)
-                    .padding(14)
+                    .padding(20)
                     .foregroundStyle(Color(.textXlight))
                     .background(Color(.primaryDark))
-                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
                     .onTapGesture {
                         if number == "←" {
                             if !viewModel.scoreString.isEmpty {
