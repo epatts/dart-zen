@@ -31,6 +31,8 @@ struct CommonScoresPad: View {
                     .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
                     .onTapGesture {
                         viewModel.handleScore(number)
+                        viewModel.numberTapWorkItem?.cancel()
+                        viewModel.scoreString.removeAll()
                     }
             }
         }
