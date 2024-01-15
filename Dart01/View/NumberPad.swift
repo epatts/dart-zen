@@ -21,33 +21,28 @@ struct NumberPad: View {
     var body: some View {
         LazyVGrid(columns: columns, alignment: .center, spacing: 2) {
             ForEach(numbers, id: \.self) { number in
-                Text(number)
-                    .font(Theme.Fonts.ralewaySemiBold(.title2, .title2))
-                    .frame(maxWidth: .infinity, maxHeight: 60)
-                    .padding(20)
-                    .foregroundStyle(Color(.textXlight))
-                    .background(Color(.primaryDark))
-                    .onTapGesture {
-                        if number == "←" {
-                            if !viewModel.scoreString.isEmpty {
-                                viewModel.scoreString.removeLast()
-                                if viewModel.scoreString.count > 1 {
-                                    viewModel.startTimer()
-                                } else if viewModel.scoreString.count == 1 {
-                                    viewModel.numberTapWorkItem?.cancel()
-                                }
+                Button (number) {
+                    if number == "←" {
+                        if !viewModel.scoreString.isEmpty {
+                            viewModel.scoreString.removeLast()
+                            if viewModel.scoreString.count > 1 {
+                                viewModel.startTimer()
+                            } else if viewModel.scoreString.count == 1 {
+                                viewModel.numberTapWorkItem?.cancel()
                             }
-                        } else if number == "Enter" {
-                            viewModel.numberTapWorkItem?.cancel()
-                            viewModel.handleScore(viewModel.scoreString)
-                            viewModel.scoreString.removeAll()
-                        } else {
-                            if viewModel.scoreString.count < 3 {
-                                viewModel.scoreString.append(number)
-                            }
-                            viewModel.startTimer()
                         }
+                    } else if number == "Enter" {
+                        viewModel.numberTapWorkItem?.cancel()
+                        viewModel.handleScore(viewModel.scoreString)
+                        viewModel.scoreString.removeAll()
+                    } else {
+                        if viewModel.scoreString.count < 3 {
+                            viewModel.scoreString.append(number)
+                        }
+                        viewModel.startTimer()
                     }
+                }
+                .buttonStyle(NumberPadButtonStyle())
             }
         }
     }

@@ -122,6 +122,8 @@ struct ContentView: View {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button() {
                     viewModel.setUpData(legs)
+                    viewModel.numberTapWorkItem?.cancel()
+                    viewModel.scoreString.removeAll()
                 } label: {
                     HStack {
                         Image(systemName: "plus")

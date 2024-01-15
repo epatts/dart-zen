@@ -22,17 +22,24 @@ struct CommonScoresPad: View {
     var body: some View {
         LazyVGrid(columns: commonScoreColumns, alignment: .center, spacing: 2) {
             ForEach(commonScores, id: \.self) { number in
-                Text(number)
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                    .frame(maxWidth: .infinity, maxHeight: 80)
-                    .padding(14)
-                    .foregroundStyle(Color(.textBase))
-                    .background(Color(.neutralLight))
-                    .onTapGesture {
-                        viewModel.handleScore(number)
-                        viewModel.numberTapWorkItem?.cancel()
-                        viewModel.scoreString.removeAll()
-                    }
+                Button (number) {
+                    viewModel.handleScore(number)
+                    viewModel.numberTapWorkItem?.cancel()
+                    viewModel.scoreString.removeAll()
+                }
+                .buttonStyle(CommonScoreButtonStyle())
+                
+//                Text(number)
+//                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+//                    .frame(maxWidth: .infinity, maxHeight: 80)
+//                    .padding(14)
+//                    .foregroundStyle(Color(.textBase))
+//                    .background(Color(.neutralLight))
+//                    .onTapGesture {
+//                        viewModel.handleScore(number)
+//                        viewModel.numberTapWorkItem?.cancel()
+//                        viewModel.scoreString.removeAll()
+//                    }
             }
         }
     }

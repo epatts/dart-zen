@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075E0E602B55DA040064AE0B /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = 075E0E5F2B55DA040064AE0B /* Pow */; };
+		075E0E622B55DC670064AE0B /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075E0E612B55DC670064AE0B /* ViewStyles.swift */; };
 		077D45952B48A11B000831B0 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45942B48A11B000831B0 /* ScoreView.swift */; };
 		077D45972B48A209000831B0 /* NumberPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45962B48A209000831B0 /* NumberPad.swift */; };
 		077D45992B48A4FF000831B0 /* CommonScoresPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45982B48A4FF000831B0 /* CommonScoresPad.swift */; };
@@ -62,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		075E0E612B55DC670064AE0B /* ViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyles.swift; sourceTree = "<group>"; };
 		077D45942B48A11B000831B0 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		077D45962B48A209000831B0 /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
 		077D45982B48A4FF000831B0 /* CommonScoresPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonScoresPad.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075E0E602B55DA040064AE0B /* Pow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +187,7 @@
 				07E6F95E2B4231D900F69020 /* Theme.swift */,
 				07E6F9602B42320300F69020 /* Color+.swift */,
 				07E6F9882B47573600F69020 /* Todo.rtf */,
+				075E0E612B55DC670064AE0B /* ViewStyles.swift */,
 			);
 			path = Dart01;
 			sourceTree = "<group>";
@@ -253,6 +258,9 @@
 			dependencies = (
 			);
 			name = Dart01;
+			packageProductDependencies = (
+				075E0E5F2B55DA040064AE0B /* Pow */,
+			);
 			productName = Dart01;
 			productReference = 077DBFDB2B3F37AF0024B293 /* Dart01.app */;
 			productType = "com.apple.product-type.application";
@@ -325,6 +333,9 @@
 				Base,
 			);
 			mainGroup = 077DBFD22B3F37AF0024B293;
+			packageReferences = (
+				075E0E5E2B55DA040064AE0B /* XCRemoteSwiftPackageReference "Pow" */,
+			);
 			productRefGroup = 077DBFDC2B3F37AF0024B293 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -392,6 +403,7 @@
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,
 				077D45952B48A11B000831B0 /* ScoreView.swift in Sources */,
+				075E0E622B55DC670064AE0B /* ViewStyles.swift in Sources */,
 				077D45A02B48A878000831B0 /* Stats.swift in Sources */,
 				07E6F95F2B4231D900F69020 /* Theme.swift in Sources */,
 				077DC00B2B3F546C0024B293 /* UtilFunctions.swift in Sources */,
@@ -726,6 +738,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		075E0E5E2B55DA040064AE0B /* XCRemoteSwiftPackageReference "Pow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EmergeTools/Pow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		075E0E5F2B55DA040064AE0B /* Pow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 075E0E5E2B55DA040064AE0B /* XCRemoteSwiftPackageReference "Pow" */;
+			productName = Pow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 077DBFD32B3F37AF0024B293 /* Project object */;
 }

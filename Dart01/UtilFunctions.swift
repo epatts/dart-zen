@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import Pow
 
 extension View {
     func onRotate(perform action: @escaping (UIDeviceOrientation) -> Void) -> some View {
