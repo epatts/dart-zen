@@ -17,8 +17,8 @@ class ScoreViewModel: ObservableObject {
     @Published var totalDartsThrown: Int = 0
     @Published var scoreString = ""
     @Published var overallAverage: Double = 0
-    
     @Published var showingCheckoutPopup = false
+    @Published var scoreIsInvalid = false
             
     var numberTapWorkItem: DispatchWorkItem?
     
@@ -82,9 +82,7 @@ class ScoreViewModel: ObservableObject {
     }
     
     func handleScore(_ newScoreString: String) {
-        if let score = newScoreString.wordToInteger() {
-            calculateNewScore(score)
-        } else if let score = Int(newScoreString) {
+        if let score = Int(newScoreString) {
             calculateNewScore(score)
         }
     }
@@ -136,7 +134,11 @@ class ScoreViewModel: ObservableObject {
                 }
                 scoreHistory.append("\(score)")
                 showingCheckoutPopup = true
+            } else {
+                scoreIsInvalid.toggle()
             }
+        } else {
+            scoreIsInvalid.toggle()
         }
     }
 }

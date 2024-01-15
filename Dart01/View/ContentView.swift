@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Pow
 
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
@@ -20,7 +21,7 @@ struct ContentView: View {
         ScrollView {
             VStack (spacing: 0) {
                 
-                ScoreView(score: viewModel.total)
+                ScoreView(viewModel: viewModel, score: viewModel.total)
                 
                 if CheckoutNumbers.shared.isCheckoutNumber(viewModel.total) {
                     HStack {

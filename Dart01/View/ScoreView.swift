@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import Pow
 
 struct ScoreView: View {
+    @ObservedObject var viewModel: ScoreViewModel
     var score: Int
     
     var body: some View {
@@ -16,9 +18,10 @@ struct ScoreView: View {
             .frame(maxWidth: .infinity)
             .contentTransition(.numericText(countsDown: true))
             .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? -30 : -40)
+            .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
     }
 }
 
 #Preview {
-    ScoreView(score: 501)
+    ScoreView(viewModel: ScoreViewModel(), score: 501)
 }
