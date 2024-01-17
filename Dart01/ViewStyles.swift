@@ -13,9 +13,9 @@ struct CommonScoreButtonStyle: ButtonStyle {
     configuration.label
             .font(Theme.Fonts.ralewaySemiBold(.body, .body))
             .frame(maxWidth: .infinity, maxHeight: 80)
-            .foregroundStyle(Color(.textBase))
+            .foregroundStyle(Color(.textXlight))
             .padding(14)
-            .background(Color(.neutralLight))
+            .background(Color(.secondaryDark))
             .opacity(configuration.isPressed ? 0.75 : 1)
             .conditionalEffect(
                 .pushDown,
