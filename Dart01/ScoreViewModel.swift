@@ -11,46 +11,73 @@ import SwiftData
 class ScoreViewModel: ObservableObject {
     static let GAME_MODE: Int = 501
     @Published var total = GAME_MODE
-    @Published var gamesPlayed: Int = 0
     @Published var scoreHistory: [String] = []
     @Published var averageHistory: [Double] = []
     @Published var totalDartsThrown: Int = 0
     @Published var scoreString = ""
     @Published var overallAverage: Double = 0
+    @Published var first9Average: Double = 0
     @Published var showingCheckoutPopup = false
     @Published var scoreIsInvalid = false
+    @Published var legsPlayed: Int = 0
             
     var numberTapWorkItem: DispatchWorkItem?
     
     func setUpData(_ legs: [Leg]) {
         var totalScore: Int = 0
         var totalDarts: Int = 0
+        var total9DartScore: Int = 0
         
         if !legs.isEmpty {
             for leg in legs {
                 totalScore += leg.gameType.rawValue
                 totalDarts += leg.numDarts
+                legsPlayed += 1
+                
+                for score in leg.scores.prefix(3) {
+                    total9DartScore += Int(score) ?? 0
+                }
             }
         }
         
         totalDartsThrown = totalDarts
         overallAverage = totalDarts == 0 ? 0 : Double(totalScore) / Double(totalDarts) * 3
+        first9Average = legsPlayed == 0 ? 0 : Double(total9DartScore) / Double(legsPlayed * 9) * 3
         
         total = ScoreViewModel.GAME_MODE
         scoreHistory.removeAll()
     }
     
+    func resetStats() {
+        overallAverage = 0
+        first9Average = 0
+        legsPlayed = 0
+        scoreHistory.removeAll()
+        scoreString.removeAll()
+        numberTapWorkItem?.cancel()
+        total = ScoreViewModel.GAME_MODE
+        totalDartsThrown = 0
+        averageHistory.removeAll()
+    }
+    
     func checkout(_ score: String?, _ numDarts: Int, context: ModelContext) {
+        scoreHistory.append(score ?? "0")
+
         withAnimation {
             total -= total
         }
-        scoreHistory.append("\(total)")
+        
+        if scoreHistory.count < 4 {
+            setFirst9Average(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
+        }
         
         let dartsThrown = (scoreHistory.count - 1) * 3 + numDarts
         
         setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
         
         context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: Double(total) / Double(dartsThrown) * 3, numDarts: dartsThrown, dartsAtDouble: 3, completed: true))
+        
+        legsPlayed += 1
         
         totalDartsThrown += dartsThrown
         
@@ -76,6 +103,10 @@ class ScoreViewModel: ObservableObject {
             }
             
             setOverallAverage(lastScore, adding: false)
+            
+            if scoreHistory.count < 4 {
+                setFirst9Average(lastScore, adding: false)
+            }
         }
         
         scoreHistory.removeLast()
@@ -101,9 +132,17 @@ class ScoreViewModel: ObservableObject {
         }
     }
     
-    func resetOverallAverage() {
-        if totalDartsThrown > 0 {
-            overallAverage = Double(gamesPlayed) * Double(ScoreViewModel.GAME_MODE) / Double(totalDartsThrown) * 3
+    func setFirst9Average(_ score: Int, adding: Bool = true, dartsThrownOnTurn: Int = 3) {
+        let numberOfTotalDartsThrown = (legsPlayed * 9) + ((scoreHistory.count < 4 ? scoreHistory.count : 3) - 1) * 3 + dartsThrownOnTurn
+        
+        if adding {
+            first9Average = first9Average + (((Double(score) * (3 / Double(dartsThrownOnTurn))) - first9Average) / (Double(numberOfTotalDartsThrown) / Double(dartsThrownOnTurn)))
+        } else {
+            if numberOfTotalDartsThrown == 3 {
+                first9Average = 0
+            } else {
+                first9Average = first9Average + ((first9Average - Double(score)) / ((Double(numberOfTotalDartsThrown) - 3) / 3))
+            }
         }
     }
     
@@ -128,11 +167,11 @@ class ScoreViewModel: ObservableObject {
                 }
                 scoreHistory.append("\(score)")
                 setOverallAverage(score)
-            } else if total - score == 0 {
-                withAnimation {
-                    total -= score
+                
+                if scoreHistory.count < 4 {
+                    setFirst9Average(score)
                 }
-                scoreHistory.append("\(score)")
+            } else if total - score == 0 {
                 showingCheckoutPopup = true
             } else {
                 scoreIsInvalid.toggle()

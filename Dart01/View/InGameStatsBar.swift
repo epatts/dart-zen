@@ -6,24 +6,46 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct InGameStatsBar: View {
     @ObservedObject var viewModel: ScoreViewModel
+    var legs: Int = 0
 
     var body: some View {
-        HStack {
-            Text("Last: \(viewModel.scoreHistory.last ?? "-")")
-                .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+        HStack (alignment: .top) {
+            VStack (alignment: .trailing, spacing: 5) {
+                Text("Last: \(viewModel.scoreHistory.last ?? "-")")
+                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                
+                Text("# Legs: \(legs)")
+                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+            }
             
             Spacer()
             
-            Text("Darts thrown: \(viewModel.scoreHistory.count * 3)")
-                .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+            VStack (alignment: .center, spacing: 5) {
+                Text("Darts thrown: \(viewModel.scoreHistory.count * 3)")
+                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                
+                HStack {
+                    Text(" ")
+                        .font(Theme.Fonts.ralewaySemiBold(.title, .title))
+                    
+                    Text(viewModel.scoreString)
+                        .font(Theme.Fonts.ralewaySemiBold(.title, .title))
+                }
+            }
             
             Spacer()
             
-            Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
-                .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+            VStack (alignment: .trailing, spacing: 5) {
+                Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
+                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                
+                Text("1st 9: \(viewModel.first9Average, specifier: "%.2f")")
+                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+            }
         }
     }
 }

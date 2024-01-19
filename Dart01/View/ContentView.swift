@@ -57,16 +57,8 @@ struct ContentView: View {
                     .overlay(Color(.neutralXdark))
                     .padding(.vertical, 10)
                 
-                InGameStatsBar(viewModel: viewModel)
+                InGameStatsBar(viewModel: viewModel, legs: legs.count)
                     .padding(.horizontal)
-                                
-                HStack {
-                    Text(" ")
-                        .font(Theme.Fonts.ralewaySemiBold(.title, .title))
-                    
-                    Text(viewModel.scoreString)
-                        .font(Theme.Fonts.ralewaySemiBold(.title, .title))
-                }
                 
                 Spacer()
                 
@@ -122,16 +114,19 @@ struct ContentView: View {
             
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button() {
-                    viewModel.setUpData(legs)
-                    viewModel.numberTapWorkItem?.cancel()
-                    viewModel.scoreString.removeAll()
+                    do {
+                        try context.delete(model: Leg.self)
+                    } catch {
+                        print("Failed to delete legs.")
+                    }
+                    viewModel.resetStats()
                 } label: {
                     HStack {
-                        Image(systemName: "plus")
+                        Image(systemName: "arrow.clockwise.circle")
                             .font(Theme.Fonts.ralewaySemiBold(.body, .body))
                             .foregroundStyle(Color(.primaryDark))
-
-                        Text("Restart Game")
+                        
+                        Text("Reset Stats")
                             .font(Theme.Fonts.ralewaySemiBold(.body, .body))
                             .foregroundStyle(Color(.primaryDark))
                     }
@@ -145,6 +140,5 @@ struct ContentView: View {
     NavigationView {
 //        ContentView(viewModel: Fixtures().getScoreViewModel())
         ContentView()
-//        ContentView()
     }
 }
