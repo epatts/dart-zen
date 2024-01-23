@@ -15,6 +15,7 @@ struct Dart01App: App {
             NavigationView {
                 ContentView()
             }
+            .navigationViewStyle(.stack)
         }
         .modelContainer(for: [Leg.self])
     }

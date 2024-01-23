@@ -20,14 +20,18 @@ struct CommonScoresPad: View {
     ]
     
     var body: some View {
-        LazyVGrid(columns: commonScoreColumns, alignment: .center, spacing: 2) {
-            ForEach(commonScores, id: \.self) { number in
-                Button (number) {
-                    viewModel.handleScore(number)
-                    viewModel.numberTapWorkItem?.cancel()
-                    viewModel.scoreString.removeAll()
+        VStack (spacing: 2) {
+            ForEach(0...2, id: \.self) { row in
+                HStack (spacing: 2) {
+                    ForEach(commonScores[(row * 4)...(row * 4 + 3)], id: \.self) { number in
+                        Button (number) {
+                            viewModel.handleScore(number)
+                            viewModel.numberTapWorkItem?.cancel()
+                            viewModel.scoreString.removeAll()
+                        }
+                        .buttonStyle(CommonScoreButtonStyle())
+                    }
                 }
-                .buttonStyle(CommonScoreButtonStyle())
             }
         }
     }
