@@ -18,59 +18,62 @@ struct ContentView: View {
     @Query(sort: \Leg.average) var legs: [Leg]
         
     var body: some View {
-        ScrollView {
-            VStack (spacing: 0) {
-                
-                ScoreView(viewModel: viewModel, score: viewModel.total)
-                
-                if CheckoutNumbers.shared.isCheckoutNumber(viewModel.total) {
-                    HStack {
-                        ForEach((viewModel.getCheckoutType()...3), id: \.self) { number in
-                            if viewModel.getCheckoutType() == 2 {
-                                Spacer()
-                            }
-                            
-                            ZStack {
-                                Image(systemName: "app.badge.checkmark")
-                                    .font(.largeTitle)
-                                    .symbolRenderingMode(.palette)
-                                    .foregroundStyle(Color(.primaryDark), Color(.textBase))
+        GeometryReader { proxy in
+            ScrollView {
+                VStack (spacing: 0) {
+                    
+                    ScoreView(viewModel: viewModel, score: viewModel.total)
+                    
+                    if CheckoutNumbers.shared.isCheckoutNumber(viewModel.total) {
+                        HStack {
+                            ForEach((viewModel.getCheckoutType()...3), id: \.self) { number in
+                                if viewModel.getCheckoutType() == 2 {
+                                    Spacer()
+                                }
                                 
-                                Text("\(number)")
-                                    .font(Theme.Fonts.ralewaySemiBold(.title3, .title3))
-                                    .foregroundStyle(Color(.textBase))
-                                    .padding(.bottom, 10)
-                            }
-                            .onTapGesture {
-                                viewModel.checkout("\(viewModel.total)", number, context: context)
-                            }
-                            
-                            if number < 3 || viewModel.getCheckoutType() == 2 {
-                                Spacer()
+                                ZStack {
+                                    Image(systemName: "app.badge.checkmark")
+                                        .font(.largeTitle)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(Color(.primaryDark), Color(.textBase))
+                                    
+                                    Text("\(number)")
+                                        .font(Theme.Fonts.ralewaySemiBold(.title3, .title3))
+                                        .foregroundStyle(Color(.textBase))
+                                        .padding(.bottom, 10)
+                                }
+                                .onTapGesture {
+                                    viewModel.checkout("\(viewModel.total)", number, context: context)
+                                }
+                                
+                                if number < 3 || viewModel.getCheckoutType() == 2 {
+                                    Spacer()
+                                }
                             }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                    
+                    Divider()
+                        .overlay(Color(.neutralXdark))
+                        .padding(.vertical, 10)
+                    
+                    InGameStatsBar(viewModel: viewModel, legs: legs.count)
+                        .padding(.horizontal)
+                    
+                    Spacer()
+                    
+                    NumberPad(viewModel: viewModel)
+                    
+                    Divider()
+                        .overlay(Color(.neutralXdark))
+                        .padding(.vertical, 10)
+                    
+                    CommonScoresPad(viewModel: viewModel)
                 }
-                
-                Divider()
-                    .overlay(Color(.neutralXdark))
-                    .padding(.vertical, 10)
-                
-                InGameStatsBar(viewModel: viewModel, legs: legs.count)
-                    .padding(.horizontal)
-                
-                Spacer()
-                
-                NumberPad(viewModel: viewModel)
-                
-                Divider()
-                    .overlay(Color(.neutralXdark))
-                    .padding(.vertical, 10)
-                
-                CommonScoresPad(viewModel: viewModel)
+                .frame(minHeight: proxy.size.height)
+                .padding(.bottom)
             }
-            .padding(.bottom)
         }
         .keyboardAvoiding()
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
