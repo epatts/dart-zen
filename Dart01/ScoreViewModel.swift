@@ -20,6 +20,21 @@ class ScoreViewModel: ObservableObject {
     @Published var showingCheckoutPopup = false
     @Published var scoreIsInvalid = false
     @Published var legsPlayed: Int = 0
+    
+    @Published var commonScores = [
+        Score(scoreString: "26"),
+        Score(scoreString: "41"),
+        Score(scoreString: "45"),
+        Score(scoreString: "60"),
+        Score(scoreString: "81"),
+        Score(scoreString: "85"),
+        Score(scoreString: "100"),
+        Score(scoreString: "121"),
+        Score(scoreString: "125"),
+        Score(scoreString: "133"),
+        Score(scoreString: "140"),
+        Score(scoreString: "180")
+    ]
             
     var numberTapWorkItem: DispatchWorkItem?
     
@@ -46,6 +61,12 @@ class ScoreViewModel: ObservableObject {
         
         total = ScoreViewModel.GAME_MODE
         scoreHistory.removeAll()
+    }
+    
+    func setUpCommonScores(_ scorePads: [CommonScorePad]) {
+        if !scorePads.isEmpty, let scores = scorePads.last {
+            commonScores = scores.commonScores
+        }
     }
     
     func resetStats() {

@@ -29,6 +29,19 @@ class Leg {
     }
 }
 
+@Model
+class CommonScorePad {
+    var commonScores: [Score]
+    
+    init(commonScores: [Score]) {
+        self.commonScores = commonScores
+    }
+}
+
+struct Score: Codable, Hashable {
+    var scoreString: String
+}
+
 enum GameType: Int, CaseIterable, Codable {
     case _501 = 501
     case _301 = 301

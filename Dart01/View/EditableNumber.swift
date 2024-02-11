@@ -6,26 +6,43 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EditableNumber: View {
+    @Environment(\.modelContext) var context
+    
     @ObservedObject var viewModel: ScoreViewModel
     @State var lastNumber: String
-    @State var number: String
+    @State var score: Score
     @State var isEditing = false
     @FocusState var isInputActive: Bool
+    
+    func submit() {
+        self.isEditing = false
+        
+        if Int(score.scoreString) ?? -1 < 0 || Int(score.scoreString) ?? 181 > 180 {
+            score.scoreString = lastNumber
+        } else {
+            viewModel.commonScores = viewModel.commonScores.map { $0.scoreString == lastNumber ? Score(scoreString: score.scoreString) : $0 }
+
+            lastNumber = score.scoreString
+            
+            do {
+                try context.delete(model: CommonScorePad.self)
+            } catch {
+                print("Failed to delete common scores.")
+            }
+            
+            context.insert(CommonScorePad(commonScores: viewModel.commonScores))
+        }
+    }
     
     var body: some View {
         if isEditing {
             Button {} label: {
-                TextField("", text: $number)
+                TextField("", text: $score.scoreString)
                     .onSubmit {
-                        self.isEditing = false
-                        
-                        if Int(number) ?? -1 < 0 || Int(number) ?? 181 > 180 {
-                            number = lastNumber
-                        } else {
-                            lastNumber = number
-                        }
+                        submit()
                     }
                     .keyboardType(.numberPad)
                     .focused($isInputActive)
@@ -39,19 +56,11 @@ struct EditableNumber: View {
                                 
                                 self.isEditing = false
                                 
-                                number = lastNumber
+                                score.scoreString = lastNumber
                             }
                                                         
                             Button("Done") {
-                                isInputActive = false
-                                
-                                self.isEditing = false
-                                
-                                if Int(number) ?? -1 < 0 || Int(number) ?? 181 > 180 {
-                                    number = lastNumber
-                                } else {
-                                    lastNumber = number
-                                }
+                                submit()
                             }
                             .padding(.leading)
                         }
@@ -62,14 +71,14 @@ struct EditableNumber: View {
             Button {
                 
             } label: {
-                Text(number)
+                Text(score.scoreString)
             }
             .buttonStyle(CommonScoreButtonStyle())
             .simultaneousGesture(LongPressGesture().onEnded { _ in
                 self.isEditing = true
             })
             .simultaneousGesture(TapGesture().onEnded {
-                viewModel.handleScore(number)
+                viewModel.handleScore(score.scoreString)
                 viewModel.numberTapWorkItem?.cancel()
                 viewModel.scoreString.removeAll()
             })
@@ -78,5 +87,5 @@ struct EditableNumber: View {
 }
 
 #Preview {
-    EditableNumber(viewModel: ScoreViewModel(), lastNumber: "45", number: "45")
+    EditableNumber(viewModel: ScoreViewModel(), lastNumber: "45", score: Score(scoreString: "45"))
 }

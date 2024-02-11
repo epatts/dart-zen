@@ -17,6 +17,6 @@ struct Dart01App: App {
             }
             .navigationViewStyle(.stack)
         }
-        .modelContainer(for: [Leg.self])
+        .modelContainer(for: [Leg.self, CommonScorePad.self])
     }
 }

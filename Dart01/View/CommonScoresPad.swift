@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CommonScoresPad: View {
     @ObservedObject var viewModel: ScoreViewModel
     
-    let commonScores = ["26", "41", "45", "60", "81", "85", "100", "121", "125", "133", "140", "180"]
+    @Query var commonScorePads: [CommonScorePad]
     
     let commonScoreColumns = [
         GridItem(.flexible(), spacing: 2),
@@ -23,11 +24,14 @@ struct CommonScoresPad: View {
         VStack (spacing: 2) {
             ForEach(0...2, id: \.self) { row in
                 HStack (spacing: 2) {
-                    ForEach(commonScores[(row * 4)...(row * 4 + 3)], id: \.self) { number in
-                        EditableNumber(viewModel: viewModel, lastNumber: number, number: number)
+                    ForEach(viewModel.commonScores[(row * 4)...(row * 4 + 3)], id: \.self) { score in
+                        EditableNumber(viewModel: viewModel, lastNumber: score.scoreString, score: score)
                     }
                 }
             }
+        }
+        .onAppear {
+            viewModel.setUpCommonScores(commonScorePads)
         }
     }
 }
