@@ -56,7 +56,7 @@ public struct KeyboardAvoiding: ViewModifier {
                 EmptyView().frame(height: 0)
             }
             .onReceive(Publishers.keyboardHeight) {
-                self.keyboardActiveAdjustment = min($0, 18)
+                self.keyboardActiveAdjustment = min($0, 20)
             }
     }
 }

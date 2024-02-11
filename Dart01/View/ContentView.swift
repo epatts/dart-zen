@@ -72,7 +72,6 @@ struct ContentView: View {
                     CommonScoresPad(viewModel: viewModel)
                 }
                 .frame(minHeight: proxy.size.height)
-                .padding(.bottom)
             }
         }
         .keyboardAvoiding()
