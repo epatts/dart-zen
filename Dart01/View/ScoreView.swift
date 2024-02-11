@@ -13,12 +13,17 @@ struct ScoreView: View {
     var score: Int
     
     var body: some View {
-        Text("\(score)")
-            .font(Theme.Fonts.ralewaySemiBold(CheckoutNumbers.shared.isCheckoutNumber(score) ? 137 : 180, .largeTitle))
-            .frame(maxWidth: .infinity)
-            .contentTransition(.numericText(countsDown: true))
-            .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? -30 : -40)
-            .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
+        GeometryReader { geo in
+            Text("\(score)")
+                .font(.custom("Raleway-SemiBold", size: geo.size.height * 1, relativeTo: .largeTitle))
+                .frame(maxWidth: .infinity)
+                .contentTransition(.numericText(countsDown: true))
+                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? geo.size.height * -0.1645 : geo.size.height * -0.219)
+                .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
+                .onTapGesture {
+                    print("\(geo.size.height)")
+                }
+        }
     }
 }
 
