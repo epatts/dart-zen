@@ -12,6 +12,7 @@ struct EditableNumber: View {
     @State var lastNumber: String
     @State var number: String
     @State var isEditing = false
+    @FocusState var isInputActive: Bool
     
     var body: some View {
         if isEditing {
@@ -27,6 +28,34 @@ struct EditableNumber: View {
                         }
                     }
                     .keyboardType(.numberPad)
+                    .focused($isInputActive)
+                    .toolbar {
+                        ToolbarItemGroup(placement: .keyboard) {
+                            
+                            Spacer()
+                            
+                            Button("Cancel") {
+                                isInputActive = false
+                                
+                                self.isEditing = false
+                                
+                                number = lastNumber
+                            }
+                                                        
+                            Button("Done") {
+                                isInputActive = false
+                                
+                                self.isEditing = false
+                                
+                                if Int(number) ?? -1 < 0 || Int(number) ?? 181 > 180 {
+                                    number = lastNumber
+                                } else {
+                                    lastNumber = number
+                                }
+                            }
+                            .padding(.leading)
+                        }
+                    }
             }
             .buttonStyle(CommonScoreTextFieldStyle())
         } else {

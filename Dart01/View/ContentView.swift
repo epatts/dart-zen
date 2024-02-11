@@ -72,6 +72,7 @@ struct ContentView: View {
             }
             .padding(.bottom)
         }
+        .keyboardAvoiding()
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
             Button("1") {
                 viewModel.checkout(viewModel.scoreHistory.last, 1, context: context)
