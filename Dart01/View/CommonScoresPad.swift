@@ -24,12 +24,7 @@ struct CommonScoresPad: View {
             ForEach(0...2, id: \.self) { row in
                 HStack (spacing: 2) {
                     ForEach(commonScores[(row * 4)...(row * 4 + 3)], id: \.self) { number in
-                        Button (number) {
-                            viewModel.handleScore(number)
-                            viewModel.numberTapWorkItem?.cancel()
-                            viewModel.scoreString.removeAll()
-                        }
-                        .buttonStyle(CommonScoreButtonStyle())
+                        EditableNumber(viewModel: viewModel, lastNumber: number, number: number)
                     }
                 }
             }

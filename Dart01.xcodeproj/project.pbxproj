@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0734C1702B78586800CFCAC9 /* EditableNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0734C16F2B78586800CFCAC9 /* EditableNumber.swift */; };
 		075E0E602B55DA040064AE0B /* Pow in Frameworks */ = {isa = PBXBuildFile; productRef = 075E0E5F2B55DA040064AE0B /* Pow */; };
 		075E0E622B55DC670064AE0B /* ViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075E0E612B55DC670064AE0B /* ViewStyles.swift */; };
 		077D45952B48A11B000831B0 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077D45942B48A11B000831B0 /* ScoreView.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0734C16F2B78586800CFCAC9 /* EditableNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNumber.swift; sourceTree = "<group>"; };
 		075E0E612B55DC670064AE0B /* ViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStyles.swift; sourceTree = "<group>"; };
 		077D45942B48A11B000831B0 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		077D45962B48A209000831B0 /* NumberPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPad.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				077D45962B48A209000831B0 /* NumberPad.swift */,
 				077D45982B48A4FF000831B0 /* CommonScoresPad.swift */,
 				077D459A2B48A5F6000831B0 /* InGameStatsBar.swift */,
+				0734C16F2B78586800CFCAC9 /* EditableNumber.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				077D45972B48A209000831B0 /* NumberPad.swift in Sources */,
+				0734C1702B78586800CFCAC9 /* EditableNumber.swift in Sources */,
 				07E6F9612B42320300F69020 /* Color+.swift in Sources */,
 				077DBFE12B3F37AF0024B293 /* ContentView.swift in Sources */,
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
@@ -572,7 +576,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Dart01/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2H39PVH779;
@@ -608,7 +612,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Dart01/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2H39PVH779;
