@@ -20,7 +20,7 @@ struct EditableNumber: View {
     func submit() {
         self.isEditing = false
         
-        if Int(score.scoreString) ?? -1 < 0 || Int(score.scoreString) ?? 181 > 180 {
+        if Int(score.scoreString) ?? -1 < 0 || Int(score.scoreString) ?? 181 > 180 || viewModel.commonScores.contains(score) {
             score.scoreString = lastNumber
         } else {
             viewModel.commonScores = viewModel.commonScores.map { $0.scoreString == lastNumber ? Score(scoreString: score.scoreString) : $0 }
