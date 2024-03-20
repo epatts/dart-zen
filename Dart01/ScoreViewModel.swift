@@ -19,6 +19,7 @@ class ScoreViewModel: ObservableObject {
     @Published var first9Average: Double = 0
     @Published var showingCheckoutPopup = false
     @Published var scoreIsInvalid = false
+    @Published var scoreIsZero = false
     @Published var legsPlayed: Int = 0
     @Published var showStatsSheet = false
     
@@ -192,6 +193,10 @@ class ScoreViewModel: ObservableObject {
                 
                 if scoreHistory.count < 4 {
                     setFirst9Average(score)
+                }
+                
+                if score == 0 {
+                    scoreIsZero.toggle()
                 }
             } else if total - score == 0 {
                 showingCheckoutPopup = true

@@ -20,6 +20,7 @@ struct ScoreView: View {
                 .contentTransition(.numericText(countsDown: true))
                 .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? geo.size.height * -0.1645 : geo.size.height * -0.219)
                 .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
+                .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
                 .onTapGesture {
                     print("\(geo.size.height)")
                 }
