@@ -20,7 +20,7 @@ struct StatsMenuView: View {
         VStack (spacing: 0) {
             if !legs.isEmpty {
                 List {
-                    ForEach(legs) { leg in
+                    ForEach(legs.reversed()) { leg in
                         VStack (spacing: 0) {
                             StatsLegListItemView(leg: leg)
                             
