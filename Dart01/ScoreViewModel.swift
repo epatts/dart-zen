@@ -20,6 +20,7 @@ class ScoreViewModel: ObservableObject {
     @Published var showingCheckoutPopup = false
     @Published var scoreIsInvalid = false
     @Published var legsPlayed: Int = 0
+    @Published var showStatsSheet = false
     
     @Published var commonScores = [
         Score(scoreString: "26"),

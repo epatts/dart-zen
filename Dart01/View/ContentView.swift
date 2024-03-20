@@ -58,8 +58,8 @@ struct ContentView: View {
                         .overlay(Color(.neutralXdark))
                         .padding(.vertical, 10)
                     
-                    NavigationLink {
-                        StatsMenuView()
+                    Button {
+                        viewModel.showStatsSheet = true
                     } label: {
                         InGameStatsBar(viewModel: viewModel, legs: legs.count)
                             .padding(.horizontal)
@@ -122,6 +122,11 @@ struct ContentView: View {
             
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Text("")
+            }
+        }
+        .sheet(isPresented: $viewModel.showStatsSheet) {
+            NavigationView {
+                StatsMenuView()
             }
         }
     }
