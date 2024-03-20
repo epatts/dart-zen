@@ -52,6 +52,7 @@
 		07F28CE22BAB5D6900F2141E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE12BAB5D6900F2141E /* BackButton.swift */; };
 		07F28CE42BAB5E9300F2141E /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */; };
 		07F28CE62BAB5FD700F2141E /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE52BAB5FD700F2141E /* View+.swift */; };
+		07F28CE82BAB68A600F2141E /* LegStatsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		07F28CE12BAB5D6900F2141E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		07F28CE52BAB5FD700F2141E /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegStatsDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				07F28CD92BAB33FA00F2141E /* StatsMenuView.swift */,
 				07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */,
 				07F28CE12BAB5D6900F2141E /* BackButton.swift */,
+				07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F28CE82BAB68A600F2141E /* LegStatsDetailView.swift in Sources */,
 				07F28CE02BAB38DC00F2141E /* Font+.swift in Sources */,
 				077D45972B48A209000831B0 /* NumberPad.swift in Sources */,
 				0734C1702B78586800CFCAC9 /* EditableNumber.swift in Sources */,

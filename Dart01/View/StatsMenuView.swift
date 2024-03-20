@@ -16,7 +16,7 @@ struct StatsMenuView: View {
     @Query(sort: \Leg.date) var legs: [Leg]
     
     var body: some View {
-        VStack {
+        VStack (spacing: 0) {
             if !legs.isEmpty {
                 List {
                     ForEach(legs) { leg in
@@ -25,6 +25,10 @@ struct StatsMenuView: View {
                             
                             Divider()
                                 .overlay(Color(.neutralLight))
+                        }
+                        .overlay {
+                            NavigationLink("", destination: LegStatsDetailView(leg: leg))
+                                .opacity(0)
                         }
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
@@ -71,7 +75,7 @@ struct StatsMenuView: View {
         let container = try! ModelContainer(for: Leg.self, configurations: config)
 
         for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: ["100, 140, 100, 81, 60, 20"], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+            let leg = Leg(gameType: ._501, scores: ["100", "140", "100", "81", "60", "20"], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
             container.mainContext.insert(leg)
         }
 
