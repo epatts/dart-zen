@@ -96,7 +96,7 @@ class ScoreViewModel: ObservableObject {
         
         setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
         
-        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: Double(total) / Double(dartsThrown) * 3, numDarts: dartsThrown, dartsAtDouble: 3, completed: true))
+        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: Double(ScoreViewModel.GAME_MODE) / Double(dartsThrown) * 3, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
         
         legsPlayed += 1
         

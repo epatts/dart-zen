@@ -16,24 +16,24 @@ struct InGameStatsBar: View {
         HStack (alignment: .top) {
             VStack (alignment: .trailing, spacing: 5) {
                 Text("Last: \(viewModel.scoreHistory.last ?? "-")")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                    .font(.bodySemiBold)
                 
                 Text("# Legs: \(legs)")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                    .font(.bodySemiBold)
             }
             
             Spacer()
             
             VStack (alignment: .center, spacing: 5) {
                 Text("Darts thrown: \(viewModel.scoreHistory.count * 3)")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                    .font(.bodySemiBold)
                 
                 HStack {
                     Text(" ")
-                        .font(Theme.Fonts.ralewaySemiBold(.title, .title))
+                        .font(.bodySemiBold)
                     
                     Text(viewModel.scoreString)
-                        .font(Theme.Fonts.ralewaySemiBold(.title, .title))
+                        .font(.bodySemiBold)
                 }
             }
             
@@ -41,15 +41,17 @@ struct InGameStatsBar: View {
             
             VStack (alignment: .trailing, spacing: 5) {
                 Text("Avg: \(viewModel.overallAverage, specifier: "%.2f")")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                    .font(.bodySemiBold)
                 
                 Text("1st 9: \(viewModel.first9Average, specifier: "%.2f")")
-                    .font(Theme.Fonts.ralewaySemiBold(.body, .body))
+                    .font(.bodySemiBold)
             }
         }
+        .foregroundStyle(.textBase)
     }
 }
 
 #Preview {
     InGameStatsBar(viewModel: ScoreViewModel())
+        .padding(.medium)
 }

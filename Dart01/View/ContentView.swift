@@ -58,8 +58,12 @@ struct ContentView: View {
                         .overlay(Color(.neutralXdark))
                         .padding(.vertical, 10)
                     
-                    InGameStatsBar(viewModel: viewModel, legs: legs.count)
-                        .padding(.horizontal)
+                    NavigationLink {
+                        StatsMenuView()
+                    } label: {
+                        InGameStatsBar(viewModel: viewModel, legs: legs.count)
+                            .padding(.horizontal)
+                    }
                     
                     Spacer()
                     
@@ -117,33 +121,24 @@ struct ContentView: View {
             }
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Button() {
-                    do {
-                        try context.delete(model: Leg.self)
-                    } catch {
-                        print("Failed to delete legs.")
-                    }
-                    viewModel.resetStats()
-                } label: {
-                    HStack {
-                        Image(systemName: "arrow.clockwise.circle")
-                            .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                            .foregroundStyle(Color(.primaryDark))
-                        
-                        Text("Reset Stats")
-                            .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                            .foregroundStyle(Color(.primaryDark))
-                    }
-                }
+                Text("")
             }
         }
     }
 }
 
 #Preview {
-    NavigationView {
-//        ContentView(viewModel: Fixtures().getScoreViewModel())
-        ContentView()
-    }
-    .navigationViewStyle(.stack)
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
+
+        for i in 1..<4 {
+            let leg = Leg(gameType: ._501, scores: ["100, 140, 100, 81, 60, 20"], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+            container.mainContext.insert(leg)
+        }
+
+        return NavigationView {
+                    ContentView()
+                }
+                .navigationViewStyle(.stack)
+                .modelContainer(container)
 }

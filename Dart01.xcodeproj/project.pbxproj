@@ -45,6 +45,13 @@
 		07E6F9862B4737CE00F69020 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */; };
 		07E6F9872B4737CE00F69020 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */; };
 		07E6F9892B47573600F69020 /* Todo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9882B47573600F69020 /* Todo.rtf */; };
+		07F28CDA2BAB33FA00F2141E /* StatsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CD92BAB33FA00F2141E /* StatsMenuView.swift */; };
+		07F28CDC2BAB341600F2141E /* StatsLegListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */; };
+		07F28CDE2BAB381700F2141E /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CDD2BAB381700F2141E /* CGFloat+.swift */; };
+		07F28CE02BAB38DC00F2141E /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CDF2BAB38DC00F2141E /* Font+.swift */; };
+		07F28CE22BAB5D6900F2141E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE12BAB5D6900F2141E /* BackButton.swift */; };
+		07F28CE42BAB5E9300F2141E /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */; };
+		07F28CE62BAB5FD700F2141E /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE52BAB5FD700F2141E /* View+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +113,13 @@
 		07E6F9742B4737CE00F69020 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
 		07E6F9882B47573600F69020 /* Todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Todo.rtf; sourceTree = "<group>"; };
+		07F28CD92BAB33FA00F2141E /* StatsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMenuView.swift; sourceTree = "<group>"; };
+		07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsLegListItemView.swift; sourceTree = "<group>"; };
+		07F28CDD2BAB381700F2141E /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
+		07F28CDF2BAB38DC00F2141E /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		07F28CE12BAB5D6900F2141E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		07F28CE52BAB5FD700F2141E /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +157,9 @@
 				077D45982B48A4FF000831B0 /* CommonScoresPad.swift */,
 				077D459A2B48A5F6000831B0 /* InGameStatsBar.swift */,
 				0734C16F2B78586800CFCAC9 /* EditableNumber.swift */,
+				07F28CD92BAB33FA00F2141E /* StatsMenuView.swift */,
+				07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */,
+				07F28CE12BAB5D6900F2141E /* BackButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +208,10 @@
 				07E6F9602B42320300F69020 /* Color+.swift */,
 				07E6F9882B47573600F69020 /* Todo.rtf */,
 				075E0E612B55DC670064AE0B /* ViewStyles.swift */,
+				07F28CDD2BAB381700F2141E /* CGFloat+.swift */,
+				07F28CDF2BAB38DC00F2141E /* Font+.swift */,
+				07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */,
+				07F28CE52BAB5FD700F2141E /* View+.swift */,
 			);
 			path = Dart01;
 			sourceTree = "<group>";
@@ -400,18 +421,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F28CE02BAB38DC00F2141E /* Font+.swift in Sources */,
 				077D45972B48A209000831B0 /* NumberPad.swift in Sources */,
 				0734C1702B78586800CFCAC9 /* EditableNumber.swift in Sources */,
+				07F28CE42BAB5E9300F2141E /* ViewModifiers.swift in Sources */,
 				07E6F9612B42320300F69020 /* Color+.swift in Sources */,
 				077DBFE12B3F37AF0024B293 /* ContentView.swift in Sources */,
+				07F28CDE2BAB381700F2141E /* CGFloat+.swift in Sources */,
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
+				07F28CE62BAB5FD700F2141E /* View+.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,
 				077D45952B48A11B000831B0 /* ScoreView.swift in Sources */,
 				075E0E622B55DC670064AE0B /* ViewStyles.swift in Sources */,
 				077D45A02B48A878000831B0 /* Stats.swift in Sources */,
+				07F28CDA2BAB33FA00F2141E /* StatsMenuView.swift in Sources */,
 				07E6F95F2B4231D900F69020 /* Theme.swift in Sources */,
 				077DC00B2B3F546C0024B293 /* UtilFunctions.swift in Sources */,
+				07F28CE22BAB5D6900F2141E /* BackButton.swift in Sources */,
 				077D459B2B48A5F6000831B0 /* InGameStatsBar.swift in Sources */,
+				07F28CDC2BAB341600F2141E /* StatsLegListItemView.swift in Sources */,
 				077D45992B48A4FF000831B0 /* CommonScoresPad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,10 @@ struct Theme {
         static func raleway(_ size: FontSize, _ style: Font.TextStyle) -> Font { return Font.custom("Raleway-Regular", size: size.rawValue, relativeTo: style) }
 
         static func ralewaySemiBold(_ size: FontSize, _ style: Font.TextStyle) -> Font { return Font.custom("Raleway-SemiBold", size: size.rawValue, relativeTo: style) }
+        
+        static func ralewayBold(_ size: FontSize, _ style: Font.TextStyle) -> Font { return Font.custom("Raleway-Bold", size: size.rawValue, relativeTo: style) }
+        
+        static func ralewayBold(_ size: CGFloat, _ style: Font.TextStyle) -> Font { return Font.custom("Raleway-Bold", size: size, relativeTo: style) }
     }
     
     enum FontSize: CGFloat {
@@ -30,6 +34,16 @@ struct Theme {
         case footnote = 13.0
         case caption = 12.0
         case caption2 = 11.0
+    }
+    
+    struct Spacing {
+        static let extraExtraSmall: CGFloat = 5.0
+        static let extraSmall: CGFloat = 10.0
+        static let small: CGFloat = 12.0
+        static let medium: CGFloat = 15.0
+        static let large: CGFloat = 20.0
+        static let extraLarge: CGFloat = 25.0
+        static let extraExtraLarge: CGFloat = 30.0
     }
     
     struct CornerRadius {
