@@ -50,6 +50,12 @@ struct LegStatsDetailView: View {
                             .listRowBackground(Color(.neutralXxlight))
                     }
                 }
+                
+                if let date = leg.date {
+                    Section() {
+                        LabeledContent("Date", value: "\(date.formatted())")
+                    }
+                }
             }
             .scrollContentBackground(.hidden)
             .listStyle(.plain)

@@ -18,11 +18,6 @@ struct StatsLegListItemView: View {
                 
                 VStack (spacing: .extraSmall) {
                     HStack {
-                        //                Text("\(leg.numDarts) Dart Leg")
-                        //                    .font(.title2Bold)
-                        //
-                        //                Spacer()
-                        
                         if let legDate = leg.date {
                             Text("\(legDate.formatted())")
                                 .font(.subheadlineRegular)
