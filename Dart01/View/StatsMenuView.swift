@@ -10,6 +10,7 @@ import SwiftData
 
 struct StatsMenuView: View {
     @Environment(\.modelContext) var context
+    @Environment(\.dismiss) private var dismiss
     
     @ObservedObject var viewModel = ScoreViewModel()
 
@@ -49,8 +50,25 @@ struct StatsMenuView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.neutralXlight))
-        .backButtonWithTitleNavBarStyle(title: "Statistics")
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItemGroup(placement: .topBarLeading) {
+                Button() {
+                    dismiss()
+                } label: {
+                    Text("Close")
+                        .font(.bodySemiBold)
+                        .foregroundStyle(Color(.primaryDark))
+                }
+            }
+            
+            ToolbarItemGroup(placement: .principal) {
+                Text("Statistics")
+                    .foregroundStyle(Color(.textBase))
+                    .font(.title3SemiBold)
+            }
+            
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button() {
                     do {
