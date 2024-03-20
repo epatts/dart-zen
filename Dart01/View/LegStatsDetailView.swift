@@ -61,7 +61,7 @@ struct LegStatsDetailView: View {
             .listStyle(.plain)
         }
         .background(Color(.neutralXlight))
-        .backButtonWithTitleNavBarStyle(title: "\(leg.gameType.rawValue) Leg")
+        .backButtonWithTitleNavBarStyle(title: "Leg Statistics")
     }
 }
 
