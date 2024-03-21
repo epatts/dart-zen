@@ -13,13 +13,6 @@ struct CommonScoresPad: View {
     
     @Query var commonScorePads: [CommonScorePad]
     
-    let commonScoreColumns = [
-        GridItem(.flexible(), spacing: 2),
-        GridItem(.flexible(), spacing: 2),
-        GridItem(.flexible(), spacing: 2),
-        GridItem(.flexible(), spacing: 2)
-    ]
-    
     var body: some View {
         VStack (spacing: 2) {
             ForEach(0...2, id: \.self) { row in

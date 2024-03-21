@@ -126,7 +126,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $viewModel.showStatsSheet) {
             NavigationView {
-                StatsMenuView()
+                StatsMenuView(viewModel: viewModel)
             }
         }
     }

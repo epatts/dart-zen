@@ -13,12 +13,108 @@ struct StatsMenuView: View {
     @Environment(\.dismiss) private var dismiss
     
     @ObservedObject var viewModel = ScoreViewModel()
-
+    
     @Query(sort: \Leg.date) var legs: [Leg]
     
     var body: some View {
-        VStack (spacing: 0) {
+        VStack (alignment: .leading, spacing: 0) {
             if !legs.isEmpty {
+                VStack (alignment: .leading, spacing: 0) {
+                    
+                    HStack (alignment: .top) {
+                        VStack (alignment: .leading, spacing: .extraSmall) {
+                            Text(" ")
+                                .font(.bodySemiBold)
+                                .accessibilityHidden(true)
+                            
+                            Text("Average")
+                                .foregroundStyle(Color(.textBase))
+                                .font(.bodySemiBold)
+                                                    
+                            Text("First 9 Avg")
+                                .foregroundStyle(Color(.textBase))
+                                .font(.bodySemiBold)
+                                                    
+                            Text("Checkout %")
+                                .foregroundStyle(Color(.textBase))
+                                .font(.bodySemiBold)
+                        }
+                        
+                        HStack (alignment: .top) {
+                            Spacer()
+                            
+                            VStack (alignment: .center, spacing: .extraSmall) {
+                                Text("Average")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(viewModel.overallAverage, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(viewModel.first9Average, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                            }
+                            
+                            Spacer()
+                            
+                            VStack (alignment: .center, spacing: .extraSmall) {
+                                Text("Best")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(viewModel.averageHistory.max() ?? 0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(viewModel.first9AverageHistory.max() ?? 0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                            }
+                            
+                            Spacer()
+                            
+                            VStack (alignment: .center, spacing: .extraSmall) {
+                                Text("Worst")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(viewModel.averageHistory.min() ?? 0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(viewModel.first9AverageHistory.min() ?? 0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                                
+                                Text("\(0, specifier: "%.2f")")
+                                    .foregroundStyle(Color(.textBase))
+                                    .font(.bodySemiBold)
+                            }
+                        }
+                    }
+                }
+                
+                Divider()
+                    .overlay {
+                        Color(.neutralXdark)
+                    }
+                    .padding(.vertical, .medium)
+                
+                Text("Legs")
+                    .foregroundStyle(Color(.textBase))
+                    .font(.title3SemiBold)
+                    .padding(.bottom, .extraSmall)
+                
                 List {
                     ForEach(legs.reversed()) { leg in
                         VStack (spacing: 0) {
@@ -48,6 +144,7 @@ struct StatsMenuView: View {
                     .font(.title3Regular)
             }
         }
+        .padding(.medium)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.neutralXlight))
         .navigationBarBackButtonHidden()

@@ -17,6 +17,7 @@ class ScoreViewModel: ObservableObject {
     @Published var scoreString = ""
     @Published var overallAverage: Double = 0
     @Published var first9Average: Double = 0
+    @Published var first9AverageHistory: [Double] = []
     @Published var showingCheckoutPopup = false
     @Published var scoreIsInvalid = false
     @Published var scoreIsZero = false
@@ -81,6 +82,17 @@ class ScoreViewModel: ObservableObject {
         total = ScoreViewModel.GAME_MODE
         totalDartsThrown = 0
         averageHistory.removeAll()
+        first9AverageHistory.removeAll()
+    }
+    
+    func getFirst9Average() -> Double {
+        var total: Double = 0
+        
+        for score in scoreHistory.prefix(3) {
+            total += Double(score) ?? 0
+        }
+        
+        return total / 3
     }
     
     func checkout(_ score: String?, _ numDarts: Int, context: ModelContext) {
@@ -98,7 +110,12 @@ class ScoreViewModel: ObservableObject {
         
         setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
         
-        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: Double(ScoreViewModel.GAME_MODE) / Double(dartsThrown) * 3, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
+        let gameAverage = Double(ScoreViewModel.GAME_MODE) / Double(dartsThrown) * 3
+        
+        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: gameAverage, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
+        
+        averageHistory.append(gameAverage)
+        first9AverageHistory.append(getFirst9Average())
         
         legsPlayed += 1
         
