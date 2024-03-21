@@ -23,6 +23,7 @@ class ScoreViewModel: ObservableObject {
     @Published var scoreIsZero = false
     @Published var legsPlayed: Int = 0
     @Published var showStatsSheet = false
+    @Published var undoingScore = false
     
     @Published var commonScores = [
         Score(scoreString: "26"),
@@ -138,6 +139,8 @@ class ScoreViewModel: ObservableObject {
     
     func undoLastScore() {
         if let lastScore = Int(scoreHistory.last ?? "0") {
+            undoingScore = true
+            
             withAnimation {
                 total += lastScore
             }
@@ -154,6 +157,8 @@ class ScoreViewModel: ObservableObject {
     
     func handleScore(_ newScoreString: String) {
         if let score = Int(newScoreString) {
+            undoingScore = false
+            
             calculateNewScore(score)
         }
     }

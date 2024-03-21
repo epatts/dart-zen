@@ -77,3 +77,14 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         return viewControllers.count > 1
     }
 }
+
+extension String {
+
+  func CGFloatValue() -> CGFloat? {
+    guard let doubleValue = Double(self) else {
+      return nil
+    }
+
+    return CGFloat(doubleValue)
+  }
+}
