@@ -14,7 +14,7 @@ struct StatsMenuView: View {
     
     @ObservedObject var viewModel = ScoreViewModel()
     
-    @Query(sort: \Leg.date) var legs: [Leg]
+    @Query(sort: \Leg.date, order: .reverse) var legs: [Leg]
     
     var body: some View {
         VStack (alignment: .leading, spacing: 0) {
@@ -116,7 +116,7 @@ struct StatsMenuView: View {
                     .padding(.bottom, .extraSmall)
                 
                 List {
-                    ForEach(legs.reversed()) { leg in
+                    ForEach(legs) { leg in
                         VStack (spacing: 0) {
                             StatsLegListItemView(leg: leg)
                             
