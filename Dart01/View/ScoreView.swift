@@ -25,6 +25,20 @@ struct ScoreView: View {
                     print("\(geo.size.height)")
                 }
         }
+        .changeEffect(
+            .rise(origin: UnitPoint(x: 0.5, y: 0.15)) {
+                if viewModel.undoingScore {
+                    EmptyView()
+                } else {
+                    Text(viewModel.scoreHistory.last ?? "")
+                        .foregroundStyle(viewModel.scoreHistory.last ?? "0" == "180" ? Color(.primaryDark) : Color(.textLight))
+                        .font(.customSemiBold(
+                            Double(viewModel.scoreHistory.last ?? "0") ?? 0 > 20 ? (((viewModel.scoreHistory.last ?? "400").CGFloatValue()?.squareRoot() ?? 20) * 4) : 18
+                        ))
+                }
+            }, value: viewModel.total
+        )
+        .transition(.movingParts.poof)
     }
 }
 

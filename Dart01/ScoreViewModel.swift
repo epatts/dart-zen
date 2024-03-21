@@ -24,6 +24,7 @@ class ScoreViewModel: ObservableObject {
     @Published var legsPlayed: Int = 0
     @Published var showStatsSheet = false
     @Published var undoingScore = false
+    @Published var checkedOut = false
     
     @Published var commonScores = [
         Score(scoreString: "26"),
@@ -100,6 +101,7 @@ class ScoreViewModel: ObservableObject {
         scoreHistory.append(score ?? "0")
 
         withAnimation {
+            checkedOut.toggle()
             total -= total
         }
         
