@@ -11,15 +11,15 @@ import SwiftData
 @Model
 class Leg {
     var gameType: GameType
-    var scores: [String]
-    var checkoutScore: String?
+    var scores: [Int]
+    var checkoutScore: Int?
     var average: Double
     var numDarts: Int
     var dartsAtDouble: Int
     var completed: Bool = true
     var date: Date?
     
-    init(gameType: GameType, scores: [String], checkoutScore: String? = nil, average: Double, numDarts: Int, dartsAtDouble: Int, completed: Bool, date: Date? = nil) {
+    init(gameType: GameType, scores: [Int], checkoutScore: Int? = nil, average: Double, numDarts: Int, dartsAtDouble: Int, completed: Bool, date: Date? = nil) {
         self.gameType = gameType
         self.scores = scores
         self.checkoutScore = checkoutScore

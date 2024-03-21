@@ -12,7 +12,7 @@ struct StatsMenuView: View {
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) private var dismiss
     
-    @ObservedObject var viewModel = ScoreViewModel()
+    @ObservedObject var viewModel: ScoreViewModel
     
     @Query(sort: \Leg.date, order: .reverse) var legs: [Leg]
     
@@ -134,6 +134,9 @@ struct StatsMenuView: View {
                     .onDelete { indexSet in
                         for index in indexSet {
                             context.delete(legs[index])
+                            try? context.save()
+                            viewModel.resetStats()
+                            viewModel.setUpData(legs)
                         }
                     }
                 }
@@ -190,12 +193,12 @@ struct StatsMenuView: View {
         let container = try! ModelContainer(for: Leg.self, configurations: config)
 
         for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: ["100", "140", "100", "81", "60", "20"], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
             container.mainContext.insert(leg)
         }
 
         return NavigationView {
-            StatsMenuView()
+            StatsMenuView(viewModel: ScoreViewModel())
         }
         .navigationViewStyle(.stack)
         .modelContainer(container)

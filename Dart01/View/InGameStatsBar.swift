@@ -15,7 +15,7 @@ struct InGameStatsBar: View {
     var body: some View {
         HStack (alignment: .top) {
             VStack (alignment: .trailing, spacing: 5) {
-                Text("Last: \(viewModel.scoreHistory.last ?? "-")")
+                Text("Last: \(viewModel.scoreHistory.last ?? 0)")
                     .font(.bodySemiBold)
                 
                 Text("# Legs: \(legs)")

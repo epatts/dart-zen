@@ -15,7 +15,7 @@ struct LegStatsDetailView: View {
         var total: Double = 0
         
         for score in leg.scores.prefix(3) {
-            total += Double(score) ?? 0
+            total += Double(score) 
         }
         
         return total / 3
@@ -46,7 +46,7 @@ struct LegStatsDetailView: View {
                 
                 Section("Scores") {
                     ForEach(leg.scores, id: \.self) { score in
-                        Text(score)
+                        Text("\(score)")
                             .listRowBackground(Color(.neutralXxlight))
                     }
                 }
@@ -69,10 +69,8 @@ struct LegStatsDetailView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Leg.self, configurations: config)
 
-    let leg = Leg(gameType: ._501, scores: ["100", "140", "100", "81", "60", "20"], average: 83.50, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
-    
-    let leg2 = Leg(gameType: ._501, scores: ["100", "140", "100", "81", "60", "20"], average: 93.94, numDarts: 16, dartsAtDouble: 1, completed: true, date: Date.distantPast)
-    
+    let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.50, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+        
     return NavigationView {
             LegStatsDetailView(leg: leg)
     }

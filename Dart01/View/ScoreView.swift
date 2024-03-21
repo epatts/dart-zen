@@ -30,11 +30,13 @@ struct ScoreView: View {
                 if viewModel.undoingScore {
                     EmptyView()
                 } else {
-                    Text(viewModel.scoreHistory.last ?? "")
-                        .foregroundStyle(viewModel.scoreHistory.last ?? "0" == "180" ? Color(.primaryDark) : Color(.textLight))
-                        .font(.customSemiBold(
-                            Double(viewModel.scoreHistory.last ?? "0") ?? 0 > 20 ? (((viewModel.scoreHistory.last ?? "400").CGFloatValue()?.squareRoot() ?? 20) * 4) : 18
-                        ))
+                    if let last = viewModel.scoreHistory.last, last != 0 {
+                        Text("\(last)")
+                            .foregroundStyle(viewModel.scoreHistory.last ?? 0 == 180 ? Color(.primaryDark) : Color(.textLight))
+                            .font(.customSemiBold(
+                                (Double(viewModel.scoreHistory.last ?? 0) > 20) ? (CGFloat(integerLiteral: (viewModel.scoreHistory.last ?? 400)).squareRoot()) * 4 : 18
+                            ))
+                    }
                 }
             }, value: viewModel.total
         )

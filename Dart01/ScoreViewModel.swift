@@ -11,7 +11,7 @@ import SwiftData
 class ScoreViewModel: ObservableObject {
     static let GAME_MODE: Int = 501
     @Published var total = GAME_MODE
-    @Published var scoreHistory: [String] = []
+    @Published var scoreHistory: [Int] = []
     @Published var averageHistory: [Double] = []
     @Published var totalDartsThrown: Int = 0
     @Published var scoreString = ""
@@ -55,8 +55,11 @@ class ScoreViewModel: ObservableObject {
                 legsPlayed += 1
                 
                 for score in leg.scores.prefix(3) {
-                    total9DartScore += Int(score) ?? 0
+                    total9DartScore += score
                 }
+                
+                averageHistory.append(leg.average)
+                first9AverageHistory.append(Double(leg.scores.prefix(3).reduce(0, +)) / 3)
             }
         }
         
@@ -91,14 +94,14 @@ class ScoreViewModel: ObservableObject {
         var total: Double = 0
         
         for score in scoreHistory.prefix(3) {
-            total += Double(score) ?? 0
+            total += Double(score)
         }
         
         return total / 3
     }
     
-    func checkout(_ score: String?, _ numDarts: Int, context: ModelContext) {
-        scoreHistory.append(score ?? "0")
+    func checkout(_ score: Int?, _ numDarts: Int, context: ModelContext) {
+        scoreHistory.append(score ?? 0)
 
         withAnimation {
             checkedOut.toggle()
@@ -106,12 +109,12 @@ class ScoreViewModel: ObservableObject {
         }
         
         if scoreHistory.count < 4 {
-            setFirst9Average(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
+            setFirst9Average(score ?? 0, dartsThrownOnTurn: numDarts)
         }
         
         let dartsThrown = (scoreHistory.count - 1) * 3 + numDarts
         
-        setOverallAverage(Int(score ?? "0") ?? 0, dartsThrownOnTurn: numDarts)
+        setOverallAverage(score ?? 0, dartsThrownOnTurn: numDarts)
         
         let gameAverage = Double(ScoreViewModel.GAME_MODE) / Double(dartsThrown) * 3
         
@@ -140,7 +143,7 @@ class ScoreViewModel: ObservableObject {
     }
     
     func undoLastScore() {
-        if let lastScore = Int(scoreHistory.last ?? "0") {
+        if let lastScore = scoreHistory.last {
             undoingScore = true
             
             withAnimation {
@@ -212,7 +215,7 @@ class ScoreViewModel: ObservableObject {
                 withAnimation {
                     total -= score
                 }
-                scoreHistory.append("\(score)")
+                scoreHistory.append(score)
                 setOverallAverage(score)
                 
                 if scoreHistory.count < 4 {

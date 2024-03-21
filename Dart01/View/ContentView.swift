@@ -48,7 +48,7 @@ struct ContentView: View {
                                         .padding(.bottom, 10)
                                 }
                                 .onTapGesture {
-                                    viewModel.checkout("\(viewModel.total)", number, context: context)
+                                    viewModel.checkout(viewModel.total, number, context: context)
                                 }
                                 
                                 if number < 3 || viewModel.getCheckoutType() == 2 {
@@ -142,7 +142,7 @@ struct ContentView: View {
     let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
 
         for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: ["100", "140", "100", "81", "60", "20"], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
             container.mainContext.insert(leg)
         }
 
