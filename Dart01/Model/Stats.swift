@@ -40,6 +40,36 @@ class CommonScorePad {
     }
 }
 
+struct BigScoreTotals {
+    var _100s: Int = 0
+    var _120s: Int = 0
+    var _140s: Int = 0
+    var _160s: Int = 0
+    var _180s: Int = 0
+    
+    mutating func inputScore(_ score: Int) {
+        if score == 180 {
+            _180s += 1
+        } else if score >= 100 && score < 120 {
+            _100s += 1
+        } else if score >= 120 && score < 140 {
+            _120s += 1
+        } else if score >= 140 && score < 160 {
+            _140s += 1
+        } else if score >= 160 && score < 180 {
+            _160s += 1
+        }
+    }
+    
+    mutating func reset() {
+        _100s = 0
+        _120s = 0
+        _140s = 0
+        _160s = 0
+        _180s = 0
+    }
+}
+
 struct Score: Codable, Hashable {
     var scoreString: String
 }

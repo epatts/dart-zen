@@ -19,128 +19,52 @@ struct StatsMenuView: View {
     var body: some View {
         VStack (alignment: .leading, spacing: 0) {
             if !legs.isEmpty {
-                VStack (alignment: .leading, spacing: 0) {
-                    
-                    HStack (alignment: .top) {
-                        VStack (alignment: .leading, spacing: .extraSmall) {
-                            Text(" ")
-                                .font(.bodySemiBold)
-                                .accessibilityHidden(true)
-                            
-                            Text("Average")
-                                .foregroundStyle(Color(.textBase))
-                                .font(.bodySemiBold)
-                                                    
-                            Text("First 9 Avg")
-                                .foregroundStyle(Color(.textBase))
-                                .font(.bodySemiBold)
-                                                    
-                            Text("Checkout %")
-                                .foregroundStyle(Color(.textBase))
-                                .font(.bodySemiBold)
-                        }
+                
+                VStack (alignment: .leading, spacing: 0) {                    
+                        CollapsableContent(
+                            title: "Stats",
+                            content: StatsAveragesView(viewModel: viewModel))
                         
-                        HStack (alignment: .top) {
-                            Spacer()
-                            
-                            VStack (alignment: .center, spacing: .extraSmall) {
-                                Text("Average")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(viewModel.overallAverage, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(viewModel.first9Average, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
+                        
+                        Divider()
+                            .overlay {
+                                Color(.neutralXdark)
                             }
-                            
-                            Spacer()
-                            
-                            VStack (alignment: .center, spacing: .extraSmall) {
-                                Text("Best")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(viewModel.averageHistory.max() ?? 0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(viewModel.first9AverageHistory.max() ?? 0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                            }
-                            
-                            Spacer()
-                            
-                            VStack (alignment: .center, spacing: .extraSmall) {
-                                Text("Worst")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(viewModel.averageHistory.min() ?? 0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(viewModel.first9AverageHistory.min() ?? 0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                                
-                                Text("\(0, specifier: "%.2f")")
-                                    .foregroundStyle(Color(.textBase))
-                                    .font(.bodySemiBold)
-                            }
-                        }
-                    }
+                            .padding(.vertical, .medium)
                 }
                 
-                Divider()
-                    .overlay {
-                        Color(.neutralXdark)
+                CollapsableContent(
+                    title: "Legs",
+                    content: 
+                        List {
+                        ForEach(legs) { leg in
+                            VStack (spacing: 0) {
+                                StatsLegListItemView(leg: leg)
+                                
+                                Divider()
+                                    .overlay(Color(.neutralLight))
+                            }
+                            .overlay {
+                                NavigationLink("", destination: LegStatsDetailView(leg: leg))
+                                    .opacity(0)
+                            }
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets())
+                        }
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                context.delete(legs[index])
+                                try? context.save()
+                                viewModel.resetStats()
+                                viewModel.setUpData(legs)
+                            }
+                        }
                     }
-                    .padding(.vertical, .medium)
+                    .listStyle(.plain)
+                )
                 
-                Text("Legs")
-                    .foregroundStyle(Color(.textBase))
-                    .font(.title3SemiBold)
-                    .padding(.bottom, .extraSmall)
-                
-                List {
-                    ForEach(legs) { leg in
-                        VStack (spacing: 0) {
-                            StatsLegListItemView(leg: leg)
-                            
-                            Divider()
-                                .overlay(Color(.neutralLight))
-                        }
-                        .overlay {
-                            NavigationLink("", destination: LegStatsDetailView(leg: leg))
-                                .opacity(0)
-                        }
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
-                    }
-                    .onDelete { indexSet in
-                        for index in indexSet {
-                            context.delete(legs[index])
-                            try? context.save()
-                            viewModel.resetStats()
-                            viewModel.setUpData(legs)
-                        }
-                    }
-                }
-                .listStyle(.plain)
+                Spacer()
             } else {
                 Text("Go play some darts!")
                     .foregroundStyle(Color(.textLight))

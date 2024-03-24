@@ -25,6 +25,7 @@ class ScoreViewModel: ObservableObject {
     @Published var showStatsSheet = false
     @Published var undoingScore = false
     @Published var checkedOut = false
+    @Published var bigScoreTotals = BigScoreTotals()
     
     @Published var commonScores = [
         Score(scoreString: "26"),
@@ -56,6 +57,11 @@ class ScoreViewModel: ObservableObject {
                 
                 for score in leg.scores.prefix(3) {
                     total9DartScore += score
+                    bigScoreTotals.inputScore(score)
+                }
+                
+                for score in leg.scores {
+                    bigScoreTotals.inputScore(score)
                 }
                 
                 averageHistory.append(leg.average)
@@ -88,6 +94,7 @@ class ScoreViewModel: ObservableObject {
         totalDartsThrown = 0
         averageHistory.removeAll()
         first9AverageHistory.removeAll()
+        bigScoreTotals.reset()
     }
     
     func getFirst9Average() -> Double {
@@ -165,6 +172,8 @@ class ScoreViewModel: ObservableObject {
             undoingScore = false
             
             calculateNewScore(score)
+        } else {
+            scoreIsInvalid.toggle()
         }
     }
     
@@ -225,6 +234,8 @@ class ScoreViewModel: ObservableObject {
                 if score == 0 {
                     scoreIsZero.toggle()
                 }
+                
+                bigScoreTotals.inputScore(score)
             } else if total - score == 0 {
                 showingCheckoutPopup = true
             } else {

@@ -53,6 +53,8 @@
 		07F28CE42BAB5E9300F2141E /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */; };
 		07F28CE62BAB5FD700F2141E /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE52BAB5FD700F2141E /* View+.swift */; };
 		07F28CE82BAB68A600F2141E /* LegStatsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */; };
+		07F28CEA2BAFBF7800F2141E /* CollapsableContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE92BAFBF7800F2141E /* CollapsableContent.swift */; };
+		07F28CEC2BAFC41200F2141E /* StatsAveragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CEB2BAFC41200F2141E /* StatsAveragesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +124,8 @@
 		07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		07F28CE52BAB5FD700F2141E /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegStatsDetailView.swift; sourceTree = "<group>"; };
+		07F28CE92BAFBF7800F2141E /* CollapsableContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableContent.swift; sourceTree = "<group>"; };
+		07F28CEB2BAFC41200F2141E /* StatsAveragesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAveragesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 				07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */,
 				07F28CE12BAB5D6900F2141E /* BackButton.swift */,
 				07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */,
+				07F28CE92BAFBF7800F2141E /* CollapsableContent.swift */,
+				07F28CEB2BAFC41200F2141E /* StatsAveragesView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				07F28CDE2BAB381700F2141E /* CGFloat+.swift in Sources */,
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
 				07F28CE62BAB5FD700F2141E /* View+.swift in Sources */,
+				07F28CEA2BAFBF7800F2141E /* CollapsableContent.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,
 				077D45952B48A11B000831B0 /* ScoreView.swift in Sources */,
 				075E0E622B55DC670064AE0B /* ViewStyles.swift in Sources */,
@@ -445,6 +452,7 @@
 				077D459B2B48A5F6000831B0 /* InGameStatsBar.swift in Sources */,
 				07F28CDC2BAB341600F2141E /* StatsLegListItemView.swift in Sources */,
 				077D45992B48A4FF000831B0 /* CommonScoresPad.swift in Sources */,
+				07F28CEC2BAFC41200F2141E /* StatsAveragesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
