@@ -24,16 +24,18 @@ struct CollapsableContent<Content: View>: View {
             HStack {
                 Text(title)
                     .font(.title3SemiBold)
+                    .foregroundStyle(Color.secondaryDark)
                 
                 Spacer()
                 
                 Text(showingContent ? "Collapse" : "Expand")
                     .font(.bodySemiBold)
+                    .foregroundStyle(Color.primaryDark)
                 
                 Image(systemName: showingContent ?  "chevron.up.circle" : "chevron.down.circle")
                     .font(.bodySemiBold)
+                    .foregroundStyle(Color.primaryDark)
             }
-            .foregroundStyle(Color.primaryDark)
             .padding(.bottom, .small)
             .contentShape(Rectangle())
             .onTapGesture {
