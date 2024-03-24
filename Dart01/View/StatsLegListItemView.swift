@@ -66,7 +66,7 @@ struct StatsLegListItemView: View {
             
         }
         .padding(.medium)
-        .background(Color(.neutralXxlight))
+        .background(Color(.neutralXlight))
     }
 }
 

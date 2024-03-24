@@ -47,7 +47,6 @@ struct LegStatsDetailView: View {
                 Section("Scores") {
                     ForEach(leg.scores, id: \.self) { score in
                         Text("\(score)")
-                            .listRowBackground(Color(.neutralXxlight))
                     }
                 }
                 
