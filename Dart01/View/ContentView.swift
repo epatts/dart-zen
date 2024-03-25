@@ -72,7 +72,7 @@ struct ContentView: View {
                             Text("Clicking anywhere in the stats bar takes you to a new statistics screen! Or press the graph icon in the upper right.")
                                 .multilineTextAlignment(.leading)
                                 .font(.bodyRegular)
-                                .foregroundColor(Color.textBase)
+                                .foregroundColor(Color.textXlight)
                         )))
                     }
                     

@@ -41,21 +41,27 @@ struct TipPopover: ViewModifier {
     func body(content: Content) -> some View {
         content
             .popover(isPresented: $showingTip) {
-                VStack {
-                    parentView
-                        .lineLimit(nil)
-                        .fixedSize(horizontal: false, vertical: true)
+                ZStack {
+                    // Scaled-up background
+                    Color(.neutralXdark)
+                        .scaleEffect(1.5)
                     
-                    Button {
-                        showingTip = false
-                    } label: {
-                        Text("Got it!")
-                            .font(.subheadlineSemiBold)
-                            .foregroundStyle(Color(.textXlight))
+                    VStack {
+                        parentView
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                        
+                        Button {
+                            showingTip = false
+                        } label: {
+                            Text("Got it!")
+                                .font(.subheadlineSemiBold)
+                                .foregroundStyle(Color(.textXlight))
+                        }
+                        .padding(.extraSmall)
+                        .background(Color(.primaryDark))
+                        .clipShape(.capsule)
                     }
-                    .padding(.extraSmall)
-                    .background(Color(.primaryDark))
-                    .clipShape(.capsule)
                 }
                     .frame(minWidth: 300, maxHeight: 600)
                     .padding(.vertical, .extraExtraLarge)
