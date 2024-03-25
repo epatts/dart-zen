@@ -10,6 +10,8 @@ import SwiftData
 import Pow
 
 struct ContentView: View {
+    @AppStorage(UserDefaults.Keys.showingStatsPopover.rawValue) var showingStatsPopover: Bool = true
+    
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) var context
     
@@ -64,6 +66,14 @@ struct ContentView: View {
                     } label: {
                         InGameStatsBar(viewModel: viewModel, legs: legs.count)
                             .padding(.horizontal)
+                    }
+                    .if(showingStatsPopover) { view in
+                        view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
+                            Text("Clicking anywhere in the stats bar takes you to a new statistics screen! Or press the graph icon in the upper right.")
+                                .multilineTextAlignment(.leading)
+                                .font(.bodyRegular)
+                                .foregroundColor(Color.textBase)
+                        )))
                     }
                     
                     Divider()
@@ -129,6 +139,14 @@ struct ContentView: View {
                 Image(systemName: "gearshape.circle.fill")
                     .font(.title2Regular)
                     .foregroundStyle(Color(.primaryDark))
+                
+                Button {
+                    viewModel.showStatsSheet = true
+                } label: {
+                    Image(systemName: "chart.line.uptrend.xyaxis.circle.fill")
+                        .font(.title2Regular)
+                        .foregroundStyle(Color(.primaryDark))
+                }
             }
         }
         .sheet(isPresented: $viewModel.showStatsSheet) {

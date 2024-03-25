@@ -55,6 +55,7 @@
 		07F28CE82BAB68A600F2141E /* LegStatsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */; };
 		07F28CEA2BAFBF7800F2141E /* CollapsableContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CE92BAFBF7800F2141E /* CollapsableContent.swift */; };
 		07F28CEC2BAFC41200F2141E /* StatsAveragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CEB2BAFC41200F2141E /* StatsAveragesView.swift */; };
+		07F28CF12BB21DFD00F2141E /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CF02BB21DFD00F2141E /* UserDefaults+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		07F28CE72BAB68A600F2141E /* LegStatsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegStatsDetailView.swift; sourceTree = "<group>"; };
 		07F28CE92BAFBF7800F2141E /* CollapsableContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsableContent.swift; sourceTree = "<group>"; };
 		07F28CEB2BAFC41200F2141E /* StatsAveragesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAveragesView.swift; sourceTree = "<group>"; };
+		07F28CF02BB21DFD00F2141E /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				07F28CDF2BAB38DC00F2141E /* Font+.swift */,
 				07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */,
 				07F28CE52BAB5FD700F2141E /* View+.swift */,
+				07F28CF02BB21DFD00F2141E /* UserDefaults+.swift */,
 			);
 			path = Dart01;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				075E0E622B55DC670064AE0B /* ViewStyles.swift in Sources */,
 				077D45A02B48A878000831B0 /* Stats.swift in Sources */,
 				07F28CDA2BAB33FA00F2141E /* StatsMenuView.swift in Sources */,
+				07F28CF12BB21DFD00F2141E /* UserDefaults+.swift in Sources */,
 				07E6F95F2B4231D900F69020 /* Theme.swift in Sources */,
 				077DC00B2B3F546C0024B293 /* UtilFunctions.swift in Sources */,
 				07F28CE22BAB5D6900F2141E /* BackButton.swift in Sources */,
