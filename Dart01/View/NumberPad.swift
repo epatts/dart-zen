@@ -17,7 +17,7 @@ struct NumberPad: View {
             ForEach(0...3, id: \.self) { row in
                 HStack (spacing: 2) {
                     ForEach(numbers[(row * 3)...(row * 3 + 2)], id: \.self) { number in
-                        Button (number) {
+                        Button {
                             if number == "←" {
                                 if !viewModel.scoreString.isEmpty {
                                     viewModel.scoreString.removeLast()
@@ -37,6 +37,8 @@ struct NumberPad: View {
                                 }
                                 viewModel.startTimer()
                             }
+                        } label: {
+                            Text(number)
                         }
                         .buttonStyle(NumberPadButtonStyle())
                     }

@@ -46,6 +46,7 @@ struct EditableNumber: View {
                     }
                     .keyboardType(.numberPad)
                     .focused($isInputActive)
+                    .padding(.leading)
                     .toolbar {
                         ToolbarItemGroup(placement: .keyboard) {
                             

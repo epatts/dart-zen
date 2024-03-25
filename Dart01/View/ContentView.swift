@@ -59,16 +59,16 @@ struct ContentView: View {
                         .padding(.horizontal)
                     }
                     
-                    Divider()
-                        .overlay(Color(.neutralXdark))
-                        .padding(.vertical, 10)
-                    
                     Button {
                         viewModel.showStatsSheet = true
                     } label: {
                         InGameStatsBar(viewModel: viewModel, legs: legs.count)
                             .padding(.horizontal)
                     }
+                    
+                    Divider()
+                        .overlay(Color(.neutralXdark))
+                        .padding(.vertical, 10)
                     
                     Spacer()
                     
