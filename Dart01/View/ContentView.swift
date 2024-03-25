@@ -126,7 +126,9 @@ struct ContentView: View {
             }
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Text("")
+                Image(systemName: "gearshape.circle.fill")
+                    .font(.title2Regular)
+                    .foregroundStyle(Color(.primaryDark))
             }
         }
         .sheet(isPresented: $viewModel.showStatsSheet) {
