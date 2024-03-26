@@ -14,8 +14,9 @@ struct ContentView: View {
     
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) var context
-    
-    @EnvironmentObject private var screenSize: ScreenSize
+        
+    @State var height = UIScreen.main.bounds.height
+    @State var width = UIScreen.main.bounds.width
     
     @ObservedObject var viewModel = ScoreViewModel()
         
@@ -26,10 +27,8 @@ struct ContentView: View {
             ZStack {
                 if !viewModel.checkedOut {
                     ScoreView(viewModel: viewModel, score: viewModel.total)
-                        .environmentObject(screenSize)
                 } else {
                     ScoreView(viewModel: viewModel, score: viewModel.total)
-                        .environmentObject(screenSize)
                 }
             }
             
@@ -75,7 +74,7 @@ struct ContentView: View {
                 .padding(.vertical, 10)
                             
             NumberPad(viewModel: viewModel)
-                .frame(height: screenSize.height / 3.1)
+                .frame(height: height / 3.1)
             
             Divider()
                 .overlay(Color(.neutralXdark))
@@ -90,22 +89,17 @@ struct ContentView: View {
                             .foregroundColor(Color.textXlight)
                     )))
                 }
-                .frame(height: screenSize.height / 5)
+                .frame(height: height / 5)
         }
-        .frame(width: screenSize.width, height: screenSize.height)
-//        .alert("How many darts did you take at a double?", isPresented: $viewModel.showingDartsAtDoublePopup) {
-//            ForEach(viewModel.getDartsAtDoubleOptions(), id: \.self) { i in
-//                Button("\(i)") {
-//                    viewModel.addToDartsAtDoubleTotal(i, context: context)
-//                }
-//            }
-//            
-//            Button("Cancel", role: .cancel) {
-//                viewModel.undoLastScore()
-//            }
-//        } message: {
-//            Text("")
-//        }
+        .frame(width: width, height: height)
+        .onRotate { _ in
+            Task {
+                withAnimation {
+                    height = UIScreen.main.bounds.height
+                    width = UIScreen.main.bounds.width
+                }
+            }
+        }
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
             ForEach(viewModel.getDartsToCheckoutOptions(), id: \.self) { i in
                 Button("\(i)") {
@@ -179,5 +173,4 @@ struct ContentView: View {
                 }
                 .navigationViewStyle(.stack)
                 .modelContainer(container)
-                .environmentObject(ScreenSize())
 }

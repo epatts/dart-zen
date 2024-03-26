@@ -13,20 +13,29 @@ struct ScoreView: View {
     var score: Int
     let maxFont: CGFloat = 200
     
-    @EnvironmentObject private var screenSize: ScreenSize
+    @State var height = UIScreen.main.bounds.height
+    @State var width = UIScreen.main.bounds.width
     
     var body: some View {
         HStack(alignment: .center,spacing: 0) {
             Spacer()
             
             Text("\(score)")
-                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? screenSize.height / 5.37 : screenSize.height / 4.2))
+                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? height / 5.37 : height / 4.2))
                 .contentTransition(.numericText(countsDown: true))
-                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (screenSize.height / 4) * -0.1645 : (screenSize.height / 4) * -0.219)
+                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (height / 4) * -0.1645 : (height / 4) * -0.219)
                 .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                 .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
             
             Spacer()
+        }
+        .onRotate { _ in
+            Task {
+                withAnimation {
+                    height = UIScreen.main.bounds.height
+                    width = UIScreen.main.bounds.width
+                }
+            }
         }
         .changeEffect(
             .rise(origin: UnitPoint(x: 0.5, y: 0.15)) {
@@ -49,5 +58,4 @@ struct ScoreView: View {
 
 #Preview {
     ScoreView(viewModel: ScoreViewModel(), score: 501)
-        .environmentObject(ScreenSize())
 }
