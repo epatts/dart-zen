@@ -71,8 +71,8 @@ struct ContentView: View {
                 .padding(.vertical, 10)
                             
             NumberPad(viewModel: viewModel)
-                .frame(width: UIScreen.main.bounds.size.width,
-                       height: UIScreen.main.bounds.size.height / 3.1)
+                .frame(width: .screenWidth,
+                       height: .screenHeight / 3.1)
             
             Divider()
                 .overlay(Color(.neutralXdark))
@@ -87,8 +87,8 @@ struct ContentView: View {
                             .foregroundColor(Color.textXlight)
                     )))
                 }
-                .frame(width: UIScreen.main.bounds.size.width,
-                       height: UIScreen.main.bounds.size.height / 5)
+                .frame(width: .screenWidth,
+                       height: .screenHeight / 5)
         }
         .padding(.horizontal, .medium)
         .frame(maxHeight: .infinity)

@@ -22,5 +22,9 @@ extension CGFloat {
     static var extraLarge = Theme.Spacing.extraLarge
 
     static var extraExtraLarge = Theme.Spacing.extraExtraLarge
+    
+    static var screenWidth = UIScreen.main.bounds.size.width
+    
+    static var screenHeight = UIScreen.main.bounds.size.height
 
 }

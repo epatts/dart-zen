@@ -18,9 +18,9 @@ struct ScoreView: View {
             Spacer()
             
             Text("\(score)")
-                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? UIScreen.main.bounds.size.height / 5.07 : UIScreen.main.bounds.size.height / 4))
+                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? .screenHeight / 5.07 : .screenHeight / 4))
                 .contentTransition(.numericText(countsDown: true))
-                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (UIScreen.main.bounds.size.height / 4) * -0.1645 : (UIScreen.main.bounds.size.height / 4) * -0.219)
+                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (.screenHeight / 4) * -0.1645 : (.screenHeight / 4) * -0.219)
                 .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                 .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
             
