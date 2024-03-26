@@ -23,6 +23,7 @@ struct CommonScoresPad: View {
                 }
             }
         }
+        .padding(.horizontal, .extraExtraSmall)
         .onAppear {
             viewModel.setUpCommonScores(commonScorePads)
         }

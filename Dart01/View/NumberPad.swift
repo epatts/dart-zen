@@ -45,6 +45,7 @@ struct NumberPad: View {
                 }
             }
         }
+        .padding(.horizontal, .extraExtraSmall)
     }
 }
 

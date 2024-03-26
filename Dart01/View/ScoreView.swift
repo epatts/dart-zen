@@ -11,19 +11,20 @@ import Pow
 struct ScoreView: View {
     @ObservedObject var viewModel: ScoreViewModel
     var score: Int
+    let maxFont: CGFloat = 200
     
     var body: some View {
-        GeometryReader { geo in
+        HStack(alignment: .center,spacing: 0) {
+            Spacer()
+            
             Text("\(score)")
-                .font(.custom("Raleway-SemiBold", size: geo.size.height * 1, relativeTo: .largeTitle))
-                .frame(maxWidth: .infinity)
+                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? UIScreen.main.bounds.size.height / 5.07 : UIScreen.main.bounds.size.height / 4))
                 .contentTransition(.numericText(countsDown: true))
-                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? geo.size.height * -0.1645 : geo.size.height * -0.219)
+                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (UIScreen.main.bounds.size.height / 4) * -0.1645 : (UIScreen.main.bounds.size.height / 4) * -0.219)
                 .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                 .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
-                .onTapGesture {
-                    print("\(geo.size.height)")
-                }
+            
+            Spacer()
         }
         .changeEffect(
             .rise(origin: UnitPoint(x: 0.5, y: 0.15)) {
