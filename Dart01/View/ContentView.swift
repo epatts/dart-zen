@@ -20,8 +20,6 @@ struct ContentView: View {
     @ObservedObject var viewModel = ScoreViewModel()
         
     @Query(sort: \Leg.average) var legs: [Leg]
-    
-    let minScreenHeight: CGFloat = 600
         
     var body: some View {
         VStack (alignment: .center, spacing: 0) {
@@ -77,24 +75,22 @@ struct ContentView: View {
                 .padding(.vertical, 10)
                             
             NumberPad(viewModel: viewModel)
-                .frame(height: screenSize.height / (screenSize.height > minScreenHeight ? 3.1 : 2))
+                .frame(height: screenSize.height / 3.1)
             
-            if screenSize.height > minScreenHeight {
-                Divider()
-                    .overlay(Color(.neutralXdark))
-                    .padding(.vertical, 10)
-                
-                CommonScoresPad(viewModel: viewModel)
-                    .if(showingStatsPopover) { view in
-                        view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
-                            Text("Hold down on any quick access score to customize its value.")
-                                .multilineTextAlignment(.leading)
-                                .font(.bodyRegular)
-                                .foregroundColor(Color.textXlight)
-                        )))
-                    }
-                    .frame(height: screenSize.height / 5)
-            }
+            Divider()
+                .overlay(Color(.neutralXdark))
+                .padding(.vertical, 10)
+            
+            CommonScoresPad(viewModel: viewModel)
+                .if(showingStatsPopover) { view in
+                    view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
+                        Text("Hold down on any quick access score to customize its value.")
+                            .multilineTextAlignment(.leading)
+                            .font(.bodyRegular)
+                            .foregroundColor(Color.textXlight)
+                    )))
+                }
+                .frame(height: screenSize.height / 5)
         }
         .frame(width: screenSize.width, height: screenSize.height)
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
