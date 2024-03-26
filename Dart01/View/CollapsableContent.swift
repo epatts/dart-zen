@@ -24,13 +24,9 @@ struct CollapsableContent<Content: View>: View {
             HStack {
                 Text(title)
                     .font(.title3SemiBold)
-                    .foregroundStyle(Color.secondaryDark)
+                    .foregroundStyle(Color.textBase)
                 
                 Spacer()
-                
-                Text(showingContent ? "Collapse" : "Expand")
-                    .font(.bodySemiBold)
-                    .foregroundStyle(Color.primaryDark)
                 
                 Image(systemName: showingContent ?  "chevron.up.circle" : "chevron.down.circle")
                     .font(.bodySemiBold)

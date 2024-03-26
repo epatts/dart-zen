@@ -16,8 +16,10 @@ struct StatsMenuView: View {
     
     @Query(sort: \Leg.date, order: .reverse) var legs: [Leg]
     
+    @State var showingDeleteConfirmationAlert = false
+    
     var body: some View {
-        VStack (alignment: .leading, spacing: 0) {
+        VStack (alignment: .center, spacing: 0) {
             if !legs.isEmpty {
                 
                 VStack (alignment: .leading, spacing: 0) {                    
@@ -32,6 +34,17 @@ struct StatsMenuView: View {
                             }
                             .padding(.vertical, .medium)
                 }
+                
+                CollapsableContent(
+                    title: "Scores",
+                    content: StatsBigScoreDistributionView(viewModel: viewModel))
+                
+                
+                Divider()
+                    .overlay {
+                        Color(.neutralXdark)
+                    }
+                    .padding(.vertical, .medium)
                 
                 CollapsableContent(
                     title: "Legs",
@@ -65,6 +78,15 @@ struct StatsMenuView: View {
                 )
                 
                 Spacer()
+                
+                Button() {
+                    showingDeleteConfirmationAlert = true
+                } label: {
+                    Text("Delete All")
+                        .font(.bodySemiBold)
+                        .foregroundStyle(Color(.errorBase))
+                }
+                .padding(.top, .medium)
             } else {
                 Text("Go play some darts!")
                     .foregroundStyle(Color(.textLight))
@@ -73,15 +95,15 @@ struct StatsMenuView: View {
         }
         .padding(.medium)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.neutralXlight))
+        .background(Color(.neutralXxlight))
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItemGroup(placement: .topBarLeading) {
+            ToolbarItemGroup(placement: .topBarTrailing) {
                 Button() {
                     dismiss()
                 } label: {
-                    Text("Close")
+                    Image(systemName: "xmark")
                         .font(.bodySemiBold)
                         .foregroundStyle(Color(.primaryDark))
                 }
@@ -92,22 +114,20 @@ struct StatsMenuView: View {
                     .foregroundStyle(Color(.textBase))
                     .font(.title3SemiBold)
             }
-            
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                Button() {
-                    do {
-                        try context.delete(model: Leg.self)
-                    } catch {
-                        print("Failed to delete legs.")
-                    }
-                    
-                    viewModel.resetStats()
-                } label: {
-                    Text("Delete All")
-                        .font(.bodySemiBold)
-                        .foregroundStyle(Color(.primaryDark))
+        }
+        .alert("Are you sure?", isPresented: $showingDeleteConfirmationAlert) {
+            Button("Delete", role: .destructive) {
+                do {
+                    try context.delete(model: Leg.self)
+                } catch {
+                    print("Failed to delete legs.")
                 }
+                
+                viewModel.resetStats()
             }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("You will not be able to recover your statistics once they are deleted.")
         }
     }
 }
@@ -117,7 +137,7 @@ struct StatsMenuView: View {
         let container = try! ModelContainer(for: Leg.self, configurations: config)
 
         for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5 - Double((i * 4)), numDarts: 18 + i, dartsAtDouble: 3, completed: true, date: Date.now)
             container.mainContext.insert(leg)
         }
 
