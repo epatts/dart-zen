@@ -57,7 +57,6 @@ class ScoreViewModel: ObservableObject {
                 
                 for score in leg.scores.prefix(3) {
                     total9DartScore += score
-                    bigScoreTotals.inputScore(score)
                 }
                 
                 for score in leg.scores {
@@ -114,6 +113,7 @@ class ScoreViewModel: ObservableObject {
         }
         
         scoreHistory.append(score ?? 0)
+        bigScoreTotals.inputScore(score ?? 0)
 
         if scoreHistory.count < 4 {
             setFirst9Average(score ?? 0, dartsThrownOnTurn: numDarts)
