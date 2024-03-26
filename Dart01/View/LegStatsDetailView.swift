@@ -33,16 +33,16 @@ struct LegStatsDetailView: View {
                     LabeledContent("First 9 Average", value: getFirst9Average(), format: .number.precision(.fractionLength(2)))
                 }
                 
-                Section("Checkout") {
-                    if let last = leg.scores.last {
-                        LabeledContent("Checkout Score", value: "\(last)")
-                    }
-                    
-                    
-                    LabeledContent("Darts at Double", value: leg.dartsAtDouble, format: .number)
-                                        
-                    LabeledContent("Checkout %", value: 1 / Double(leg.dartsAtDouble), format: .percent.precision(.fractionLength(1)))
-                }
+//                Section("Checkout") {
+//                    if let last = leg.scores.last {
+//                        LabeledContent("Checkout Score", value: "\(last)")
+//                    }
+//                    
+//                    
+//                    LabeledContent("Darts at Double", value: leg.dartsAtDouble, format: .number)
+//                                        
+//                    LabeledContent("Checkout %", value: 1 / Double(leg.dartsAtDouble), format: .percent.precision(.fractionLength(1)))
+//                }
                 
                 Section("Scores") {
                     ForEach(leg.scores, id: \.self) { score in
