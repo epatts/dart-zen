@@ -66,14 +66,6 @@ struct ContentView: View {
                     InGameStatsBar(viewModel: viewModel, legs: legs.count)
                         .padding(.horizontal)
                 }
-                .if(showingStatsPopover) { view in
-                    view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
-                        Text("Clicking anywhere in the stats bar takes you to a new statistics screen! Or press the graph icon in the upper right.")
-                            .multilineTextAlignment(.leading)
-                            .font(.bodyRegular)
-                            .foregroundColor(Color.textXlight)
-                    )))
-                }
                 
                 Divider()
                     .overlay(Color(.neutralXdark))
@@ -88,6 +80,14 @@ struct ContentView: View {
                     .padding(.vertical, 10)
                 
                 CommonScoresPad(viewModel: viewModel)
+                    .if(showingStatsPopover) { view in
+                        view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
+                            Text("Hold down on any quick access score to customize its value.")
+                                .multilineTextAlignment(.leading)
+                                .font(.bodyRegular)
+                                .foregroundColor(Color.textXlight)
+                        )))
+                    }
             }
             .frame(minHeight: proxy.size.height)
         }

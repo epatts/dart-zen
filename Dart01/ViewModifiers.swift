@@ -44,7 +44,7 @@ struct TipPopover: ViewModifier {
                 ZStack {
                     // Scaled-up background
                     Color(.neutralXdark)
-                        .scaleEffect(1.5)
+                        .scaleEffect(3)
                     
                     VStack {
                         parentView
