@@ -133,9 +133,9 @@ struct ContentView: View {
             }
             
             ToolbarItemGroup(placement: .topBarTrailing) {
-                Image(systemName: "gearshape.circle.fill")
-                    .font(.title2Regular)
-                    .foregroundStyle(Color(.primaryDark))
+//                Image(systemName: "gearshape.circle.fill")
+//                    .font(.title2Regular)
+//                    .foregroundStyle(Color(.primaryDark))
                 
                 Button {
                     viewModel.showStatsSheet = true
