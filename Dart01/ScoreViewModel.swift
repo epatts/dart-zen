@@ -108,11 +108,8 @@ class ScoreViewModel: ObservableObject {
     }
     
     func checkout(_ score: Int?, _ numDarts: Int, context: ModelContext) {
-        scoreHistory.append(score ?? 0)
-
         withAnimation {
             checkedOut.toggle()
-            total -= total
         }
         
         if scoreHistory.count < 4 {
@@ -218,6 +215,16 @@ class ScoreViewModel: ObservableObject {
         }
     }
     
+    func getDartsToCheckoutOptions() -> [Int] {
+        if CheckoutNumbers.shared.isThreeDartCheckout(scoreHistory.last ?? 0) {
+            return [3]
+        } else if CheckoutNumbers.shared.isTwoDartCheckout(scoreHistory.last ?? 0) {
+            return [2, 3]
+        } else {
+            return [1, 2, 3]
+        }
+    }
+    
     private func calculateNewScore(_ score: Int) {
         if score >= 0 && score <= 180 {
             if total - score > 1 {
@@ -236,8 +243,12 @@ class ScoreViewModel: ObservableObject {
                 }
                 
                 bigScoreTotals.inputScore(score)
+                
             } else if total - score == 0 {
-                showingCheckoutPopup = true
+                withAnimation {
+                    total -= score
+                }
+                scoreHistory.append(score)
             } else {
                 scoreIsInvalid.toggle()
             }

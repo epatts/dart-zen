@@ -41,8 +41,11 @@ struct StatsLegListItemView: View {
                             Text("Checkout")
                                 .font(.bodySemiBold)
                             
-                            Text("\(1 / Double(leg.dartsAtDouble) * 100, specifier: "%.0f") %")
+                            Text("\(leg.checkoutScore ?? 0)")
                                 .font(.bodyRegular)
+                            
+//                            Text("\(1 / Double(leg.dartsAtDouble) * 100, specifier: "%.0f") %")
+//                                .font(.bodyRegular)
                         }
                         
                         Spacer()
@@ -74,7 +77,7 @@ struct StatsLegListItemView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Leg.self, configurations: config)
 
-    let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+    let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], checkoutScore: 40, average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
         
     return StatsLegListItemView(leg: leg)
         .modelContainer(container)

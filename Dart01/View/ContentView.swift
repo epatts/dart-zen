@@ -93,15 +93,24 @@ struct ContentView: View {
                 .frame(height: screenSize.height / 5)
         }
         .frame(width: screenSize.width, height: screenSize.height)
+//        .alert("How many darts did you take at a double?", isPresented: $viewModel.showingDartsAtDoublePopup) {
+//            ForEach(viewModel.getDartsAtDoubleOptions(), id: \.self) { i in
+//                Button("\(i)") {
+//                    viewModel.addToDartsAtDoubleTotal(i, context: context)
+//                }
+//            }
+//            
+//            Button("Cancel", role: .cancel) {
+//                viewModel.undoLastScore()
+//            }
+//        } message: {
+//            Text("")
+//        }
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
-            Button("1") {
-                viewModel.checkout(viewModel.scoreHistory.last, 1, context: context)
-            }
-            Button("2") {
-                viewModel.checkout(viewModel.scoreHistory.last, 2, context: context)
-            }
-            Button("3") {
-                viewModel.checkout(viewModel.scoreHistory.last, 3, context: context)
+            ForEach(viewModel.getDartsToCheckoutOptions(), id: \.self) { i in
+                Button("\(i)") {
+                    viewModel.checkout(viewModel.scoreHistory.last, i, context: context)
+                }
             }
             Button("Cancel", role: .cancel) {
                 viewModel.undoLastScore()

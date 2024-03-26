@@ -26,9 +26,9 @@ struct StatsAveragesView: View {
                         .foregroundStyle(Color(.textBase))
                         .font(.bodySemiBold)
                     
-                    Text("Checkout %")
-                        .foregroundStyle(Color(.textBase))
-                        .font(.bodySemiBold)
+//                    Text("Checkout %")
+//                        .foregroundStyle(Color(.textBase))
+//                        .font(.bodySemiBold)
                 }
                 
                 HStack (alignment: .top) {
@@ -47,9 +47,9 @@ struct StatsAveragesView: View {
                             .foregroundStyle(Color(.textBase))
                             .font(.bodySemiBold)
                         
-                        Text("\(0, specifier: "%.2f")")
-                            .foregroundStyle(Color(.textBase))
-                            .font(.bodySemiBold)
+//                        Text("\(viewModel.checkoutAverage * 100, specifier: "%.2f") %")
+//                            .foregroundStyle(Color(.textBase))
+//                            .font(.bodySemiBold)
                     }
                     
                     Spacer()
@@ -67,9 +67,9 @@ struct StatsAveragesView: View {
                             .foregroundStyle(Color(.textBase))
                             .font(.bodySemiBold)
                         
-                        Text("\(0, specifier: "%.2f")")
-                            .foregroundStyle(Color(.textBase))
-                            .font(.bodySemiBold)
+//                        Text("\((viewModel.checkoutAverageHistory.max() ?? 0) * 100, specifier: "%.2f") %")
+//                            .foregroundStyle(Color(.textBase))
+//                            .font(.bodySemiBold)
                     }
                     
                     Spacer()
@@ -87,9 +87,9 @@ struct StatsAveragesView: View {
                             .foregroundStyle(Color(.textBase))
                             .font(.bodySemiBold)
                         
-                        Text("\(0, specifier: "%.2f")")
-                            .foregroundStyle(Color(.textBase))
-                            .font(.bodySemiBold)
+//                        Text("\((viewModel.checkoutAverageHistory.min() ?? 0) * 100, specifier: "%.2f") %")
+//                            .foregroundStyle(Color(.textBase))
+//                            .font(.bodySemiBold)
                     }
                 }
             }
