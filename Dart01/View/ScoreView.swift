@@ -13,14 +13,16 @@ struct ScoreView: View {
     var score: Int
     let maxFont: CGFloat = 200
     
+    @EnvironmentObject private var screenSize: ScreenSize
+    
     var body: some View {
         HStack(alignment: .center,spacing: 0) {
             Spacer()
             
             Text("\(score)")
-                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? .screenHeight / 5.07 : .screenHeight / 4))
+                .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? screenSize.height / 5.07 : screenSize.height / 4))
                 .contentTransition(.numericText(countsDown: true))
-                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (.screenHeight / 4) * -0.1645 : (.screenHeight / 4) * -0.219)
+                .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (screenSize.height / 4) * -0.1645 : (screenSize.height / 4) * -0.219)
                 .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                 .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
             
@@ -47,4 +49,5 @@ struct ScoreView: View {
 
 #Preview {
     ScoreView(viewModel: ScoreViewModel(), score: 501)
+        .environmentObject(ScreenSize())
 }

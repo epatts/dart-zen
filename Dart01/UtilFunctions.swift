@@ -29,6 +29,11 @@ struct DeviceRotationViewModifier: ViewModifier {
     }
 }
 
+class ScreenSize: ObservableObject {
+    @Published var width: CGFloat = UIScreen.main.bounds.width
+    @Published var height: CGFloat = UIScreen.main.bounds.height
+}
+
 public extension Publishers {
     static var keyboardHeight: AnyPublisher<CGFloat, Never> {
         let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)

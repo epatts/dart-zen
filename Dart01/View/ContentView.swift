@@ -15,17 +15,23 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) var context
     
+    @EnvironmentObject private var screenSize: ScreenSize
+    
     @ObservedObject var viewModel = ScoreViewModel()
         
     @Query(sort: \Leg.average) var legs: [Leg]
+    
+    let minScreenHeight: CGFloat = 600
         
     var body: some View {
         VStack (alignment: .center, spacing: 0) {
             ZStack {
                 if !viewModel.checkedOut {
                     ScoreView(viewModel: viewModel, score: viewModel.total)
+                        .environmentObject(screenSize)
                 } else {
                     ScoreView(viewModel: viewModel, score: viewModel.total)
+                        .environmentObject(screenSize)
                 }
             }
             
@@ -71,27 +77,26 @@ struct ContentView: View {
                 .padding(.vertical, 10)
                             
             NumberPad(viewModel: viewModel)
-                .frame(width: .screenWidth,
-                       height: .screenHeight / 3.1)
+                .frame(height: screenSize.height / (screenSize.height > minScreenHeight ? 3.1 : 2))
             
-            Divider()
-                .overlay(Color(.neutralXdark))
-                .padding(.vertical, 10)
-            
-            CommonScoresPad(viewModel: viewModel)
-                .if(showingStatsPopover) { view in
-                    view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
-                        Text("Hold down on any quick access score to customize its value.")
-                            .multilineTextAlignment(.leading)
-                            .font(.bodyRegular)
-                            .foregroundColor(Color.textXlight)
-                    )))
-                }
-                .frame(width: .screenWidth,
-                       height: .screenHeight / 5)
+            if screenSize.height > minScreenHeight {
+                Divider()
+                    .overlay(Color(.neutralXdark))
+                    .padding(.vertical, 10)
+                
+                CommonScoresPad(viewModel: viewModel)
+                    .if(showingStatsPopover) { view in
+                        view.modifier(TipPopover(showingTip: $showingStatsPopover, parentView: AnyView(
+                            Text("Hold down on any quick access score to customize its value.")
+                                .multilineTextAlignment(.leading)
+                                .font(.bodyRegular)
+                                .foregroundColor(Color.textXlight)
+                        )))
+                    }
+                    .frame(height: screenSize.height / 5)
+            }
         }
-        .padding(.horizontal, .medium)
-        .frame(maxHeight: .infinity)
+        .frame(width: screenSize.width, height: screenSize.height)
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
             Button("1") {
                 viewModel.checkout(viewModel.scoreHistory.last, 1, context: context)
@@ -169,4 +174,5 @@ struct ContentView: View {
                 }
                 .navigationViewStyle(.stack)
                 .modelContainer(container)
+                .environmentObject(ScreenSize())
 }
