@@ -38,51 +38,46 @@ struct EditableNumber: View {
     }
     
     var body: some View {
-        if isEditing {
-            Button {} label: {
-                TextField("", text: $score.scoreString)
-                    .onSubmit {
-                        submit()
-                    }
-                    .keyboardType(.numberPad)
-                    .focused($isInputActive)
-                    .padding(.leading)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
+        Button {
+            
+        } label: {
+            Text(score.scoreString)
+        }
+        .buttonStyle(CommonScoreButtonStyle())
+        .simultaneousGesture(LongPressGesture().onEnded { _ in
+            self.isEditing = true
+        })
+        .simultaneousGesture(TapGesture().onEnded {
+            viewModel.handleScore(score.scoreString)
+            viewModel.numberTapWorkItem?.cancel()
+            viewModel.scoreString.removeAll()
+        })
+        .alert("Enter a new quick access score", isPresented: $isEditing) {
+            TextField(score.scoreString, text: $score.scoreString)
+                .keyboardType(.numberPad)
+                .focused($isInputActive)
+                .toolbar {
+                    ToolbarItemGroup(placement: .keyboard) {
+                        
+                        Spacer()
+                        
+                        Button("Cancel") {
+                            isInputActive = false
                             
-                            Spacer()
+                            self.isEditing = false
                             
-                            Button("Cancel") {
-                                isInputActive = false
-                                
-                                self.isEditing = false
-                                
-                                score.scoreString = lastNumber
-                            }
-                                                        
-                            Button("Done") {
-                                submit()
-                            }
-                            .padding(.leading)
+                            score.scoreString = lastNumber
                         }
+                        
+                        Button("Done") {
+                            submit()
+                        }
+                        .padding(.leading)
                     }
-            }
-            .buttonStyle(CommonScoreTextFieldStyle())
-        } else {
-            Button {
-                
-            } label: {
-                Text(score.scoreString)
-            }
-            .buttonStyle(CommonScoreButtonStyle())
-            .simultaneousGesture(LongPressGesture().onEnded { _ in
-                self.isEditing = true
-            })
-            .simultaneousGesture(TapGesture().onEnded {
-                viewModel.handleScore(score.scoreString)
-                viewModel.numberTapWorkItem?.cancel()
-                viewModel.scoreString.removeAll()
-            })
+                }
+            Button("OK", action: submit)
+        } message: {
+            Text("Previous value was \(score.scoreString)")
         }
     }
 }
