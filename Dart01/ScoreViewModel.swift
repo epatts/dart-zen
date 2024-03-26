@@ -110,8 +110,11 @@ class ScoreViewModel: ObservableObject {
     func checkout(_ score: Int?, _ numDarts: Int, context: ModelContext) {
         withAnimation {
             checkedOut.toggle()
+            total -= total
         }
         
+        scoreHistory.append(score ?? 0)
+
         if scoreHistory.count < 4 {
             setFirst9Average(score ?? 0, dartsThrownOnTurn: numDarts)
         }
@@ -248,7 +251,6 @@ class ScoreViewModel: ObservableObject {
                 withAnimation {
                     total -= score
                 }
-                scoreHistory.append(score)
             } else {
                 scoreIsInvalid.toggle()
             }
