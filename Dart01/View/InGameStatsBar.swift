@@ -25,7 +25,7 @@ struct InGameStatsBar: View {
             Spacer()
             
             VStack (alignment: .center, spacing: 5) {
-                Text("Darts thrown: \(viewModel.scoreHistory.count * 3)")
+                Text("\(kDartsThrown): \(viewModel.scoreHistory.count * 3)")
                     .font(.bodySemiBold)
                 
                 HStack {

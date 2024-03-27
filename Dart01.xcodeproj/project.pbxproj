@@ -46,6 +46,7 @@
 		07E6F9872B4737CE00F69020 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */; };
 		07E6F9892B47573600F69020 /* Todo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9882B47573600F69020 /* Todo.rtf */; };
 		07EF3E4C2BB3514F007F986F /* StatsBigScoreDistributionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF3E4B2BB3514F007F986F /* StatsBigScoreDistributionView.swift */; };
+		07EF3E5A2BB4C7FB007F986F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EF3E592BB4C7FB007F986F /* Constants.swift */; };
 		07F28CDA2BAB33FA00F2141E /* StatsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CD92BAB33FA00F2141E /* StatsMenuView.swift */; };
 		07F28CDC2BAB341600F2141E /* StatsLegListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */; };
 		07F28CDE2BAB381700F2141E /* CGFloat+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F28CDD2BAB381700F2141E /* CGFloat+.swift */; };
@@ -119,6 +120,7 @@
 		07E6F9752B4737CE00F69020 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
 		07E6F9882B47573600F69020 /* Todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Todo.rtf; sourceTree = "<group>"; };
 		07EF3E4B2BB3514F007F986F /* StatsBigScoreDistributionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsBigScoreDistributionView.swift; sourceTree = "<group>"; };
+		07EF3E592BB4C7FB007F986F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		07F28CD92BAB33FA00F2141E /* StatsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsMenuView.swift; sourceTree = "<group>"; };
 		07F28CDB2BAB341600F2141E /* StatsLegListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsLegListItemView.swift; sourceTree = "<group>"; };
 		07F28CDD2BAB381700F2141E /* CGFloat+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+.swift"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		077DBFDD2B3F37AF0024B293 /* Dart01 */ = {
 			isa = PBXGroup;
 			children = (
+				07EF3E582BB4C7D8007F986F /* Extensions */,
 				077D459E2B48A84B000831B0 /* Model */,
 				077D45932B48A103000831B0 /* View */,
 				07E6F9632B4736E300F69020 /* Fonts */,
@@ -219,14 +222,10 @@
 				077DC00A2B3F546C0024B293 /* UtilFunctions.swift */,
 				077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */,
 				07E6F95E2B4231D900F69020 /* Theme.swift */,
-				07E6F9602B42320300F69020 /* Color+.swift */,
 				07E6F9882B47573600F69020 /* Todo.rtf */,
 				075E0E612B55DC670064AE0B /* ViewStyles.swift */,
-				07F28CDD2BAB381700F2141E /* CGFloat+.swift */,
-				07F28CDF2BAB38DC00F2141E /* Font+.swift */,
 				07F28CE32BAB5E9300F2141E /* ViewModifiers.swift */,
-				07F28CE52BAB5FD700F2141E /* View+.swift */,
-				07F28CF02BB21DFD00F2141E /* UserDefaults+.swift */,
+				07EF3E592BB4C7FB007F986F /* Constants.swift */,
 			);
 			path = Dart01;
 			sourceTree = "<group>";
@@ -279,6 +278,18 @@
 				07E6F9732B4737CE00F69020 /* Raleway-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		07EF3E582BB4C7D8007F986F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				07E6F9602B42320300F69020 /* Color+.swift */,
+				07F28CDD2BAB381700F2141E /* CGFloat+.swift */,
+				07F28CDF2BAB38DC00F2141E /* Font+.swift */,
+				07F28CE52BAB5FD700F2141E /* View+.swift */,
+				07F28CF02BB21DFD00F2141E /* UserDefaults+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,6 +454,7 @@
 				07F28CE42BAB5E9300F2141E /* ViewModifiers.swift in Sources */,
 				07E6F9612B42320300F69020 /* Color+.swift in Sources */,
 				077DBFE12B3F37AF0024B293 /* ContentView.swift in Sources */,
+				07EF3E5A2BB4C7FB007F986F /* Constants.swift in Sources */,
 				07F28CDE2BAB381700F2141E /* CGFloat+.swift in Sources */,
 				07EF3E4C2BB3514F007F986F /* StatsBigScoreDistributionView.swift in Sources */,
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
