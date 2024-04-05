@@ -251,6 +251,8 @@ class ScoreViewModel: ObservableObject {
                 withAnimation {
                     total -= score
                 }
+                
+                showingCheckoutPopup = true
             } else {
                 scoreIsInvalid.toggle()
             }
