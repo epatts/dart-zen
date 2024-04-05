@@ -13,7 +13,7 @@ struct Dart01App: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
 //                ContentView()
                 SessionMenu()
             }

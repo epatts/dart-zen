@@ -106,7 +106,7 @@ class ScoreViewModel: ObservableObject {
         return total / 3
     }
     
-    func checkout(_ score: Int?, _ numDarts: Int, context: ModelContext) {
+    func checkout(_ score: Int?, _ numDarts: Int, session: Session) {
         withAnimation {
             checkedOut.toggle()
             total -= total
@@ -125,7 +125,9 @@ class ScoreViewModel: ObservableObject {
         
         let gameAverage = Double(ScoreViewModel.GAME_MODE) / Double(dartsThrown) * 3
         
-        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: gameAverage, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
+//        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: gameAverage, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
+        
+        session.legs.append(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: gameAverage, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
         
         averageHistory.append(gameAverage)
         first9AverageHistory.append(getFirst9Average())
@@ -251,6 +253,8 @@ class ScoreViewModel: ObservableObject {
                 withAnimation {
                     total -= score
                 }
+                
+                showingCheckoutPopup = true
             } else {
                 scoreIsInvalid.toggle()
             }

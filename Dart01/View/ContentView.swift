@@ -54,7 +54,7 @@ struct ContentView: View {
                                 .padding(.bottom, 10)
                         }
                         .onTapGesture {
-                            viewModel.checkout(viewModel.total, number, context: context)
+                            viewModel.checkout(viewModel.total, number, session: session)
                         }
                         
                         if number < 3 || viewModel.getCheckoutType() == 2 {
@@ -107,7 +107,7 @@ struct ContentView: View {
         .alert("Game shot!", isPresented: $viewModel.showingCheckoutPopup) {
             ForEach(viewModel.getDartsToCheckoutOptions(), id: \.self) { i in
                 Button("\(i)") {
-                    viewModel.checkout(viewModel.scoreHistory.last, i, context: context)
+                    viewModel.checkout(viewModel.scoreHistory.last, i, session: session)
                 }
             }
             Button("Cancel", role: .cancel) {
@@ -157,7 +157,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $viewModel.showStatsSheet) {
             NavigationView {
-                StatsMenuView(viewModel: viewModel)
+                StatsMenuView(viewModel: viewModel, session: session)
             }
         }
     }
