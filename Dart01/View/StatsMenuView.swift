@@ -50,29 +50,29 @@ struct StatsMenuView: View {
                     title: "Legs",
                     content: 
                         List {
-                        ForEach(legs) { leg in
-                            VStack (spacing: 0) {
-                                StatsLegListItemView(leg: leg)
-                                
-                                Divider()
-                                    .overlay(Color(.neutralXdark))
+                            ForEach(legs) { leg in
+                                VStack (spacing: 0) {
+                                    StatsLegListItemView(leg: leg)
+                                    
+                                    Divider()
+                                        .overlay(Color(.neutralXdark))
+                                }
+                                .overlay {
+                                    NavigationLink("", destination: LegStatsDetailView(leg: leg))
+                                        .opacity(0)
+                                }
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .listRowInsets(EdgeInsets())
                             }
-                            .overlay {
-                                NavigationLink("", destination: LegStatsDetailView(leg: leg))
-                                    .opacity(0)
+                            .onDelete { indexSet in
+                                for index in indexSet {
+                                    context.delete(legs[index])
+                                    try? context.save()
+                                    viewModel.resetStats()
+                                    viewModel.setUpData(legs)
+                                }
                             }
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets())
-                        }
-                        .onDelete { indexSet in
-                            for index in indexSet {
-                                context.delete(legs[index])
-                                try? context.save()
-                                viewModel.resetStats()
-                                viewModel.setUpData(legs)
-                            }
-                        }
                     }
                         .listStyle(.plain)
                 )

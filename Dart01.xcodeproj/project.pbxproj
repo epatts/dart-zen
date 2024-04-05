@@ -24,6 +24,7 @@
 		077DBFFC2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */; };
 		077DC00B2B3F546C0024B293 /* UtilFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC00A2B3F546C0024B293 /* UtilFunctions.swift */; };
 		077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */; };
+		07D5F8F32BC04EE8002557DD /* SessionMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D5F8F22BC04EE8002557DD /* SessionMenu.swift */; };
 		07E6F95F2B4231D900F69020 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E6F95E2B4231D900F69020 /* Theme.swift */; };
 		07E6F9612B42320300F69020 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E6F9602B42320300F69020 /* Color+.swift */; };
 		07E6F9762B4737CE00F69020 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07E6F9642B4737CD00F69020 /* Raleway-Thin.ttf */; };
@@ -97,6 +98,7 @@
 		077DBFFB2B3F37B20024B293 /* Dart01UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dart01UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		077DC00A2B3F546C0024B293 /* UtilFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilFunctions.swift; sourceTree = "<group>"; };
 		077DC00C2B3F5B060024B293 /* ScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewModel.swift; sourceTree = "<group>"; };
+		07D5F8F22BC04EE8002557DD /* SessionMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionMenu.swift; sourceTree = "<group>"; };
 		07E6F95E2B4231D900F69020 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		07E6F9602B42320300F69020 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		07E6F9622B47364A00F69020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				07F28CE92BAFBF7800F2141E /* CollapsableContent.swift */,
 				07F28CEB2BAFC41200F2141E /* StatsAveragesView.swift */,
 				07EF3E4B2BB3514F007F986F /* StatsBigScoreDistributionView.swift */,
+				07D5F8F22BC04EE8002557DD /* SessionMenu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				07F28CDE2BAB381700F2141E /* CGFloat+.swift in Sources */,
 				07EF3E4C2BB3514F007F986F /* StatsBigScoreDistributionView.swift in Sources */,
 				077DC00D2B3F5B060024B293 /* ScoreViewModel.swift in Sources */,
+				07D5F8F32BC04EE8002557DD /* SessionMenu.swift in Sources */,
 				07F28CE62BAB5FD700F2141E /* View+.swift in Sources */,
 				07F28CEA2BAFBF7800F2141E /* CollapsableContent.swift in Sources */,
 				077DBFDF2B3F37AF0024B293 /* Dart01App.swift in Sources */,

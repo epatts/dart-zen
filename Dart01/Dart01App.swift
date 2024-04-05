@@ -14,10 +14,11 @@ struct Dart01App: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+//                ContentView()
+                SessionMenu()
             }
             .navigationViewStyle(.stack)
         }
-        .modelContainer(for: [Leg.self, CommonScorePad.self])
+        .modelContainer(for: [Leg.self, CommonScorePad.self, Session.self])
     }
 }

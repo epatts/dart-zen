@@ -20,7 +20,10 @@ struct ContentView: View {
     
     @ObservedObject var viewModel = ScoreViewModel()
         
-    @Query(sort: \Leg.average) var legs: [Leg]
+    //@Query(sort: \Leg.average) 
+//    var legs: [Leg]
+    
+    @Bindable var session: Session
         
     var body: some View {
         VStack (alignment: .center, spacing: 0) {
@@ -65,7 +68,7 @@ struct ContentView: View {
             Button {
                 viewModel.showStatsSheet = true
             } label: {
-                InGameStatsBar(viewModel: viewModel, legs: legs.count)
+                InGameStatsBar(viewModel: viewModel, legs: session.legs.count)
                     .padding(.horizontal)
             }
             
@@ -91,6 +94,7 @@ struct ContentView: View {
                 }
                 .frame(height: height / 5)
         }
+        .navigationBarTitleDisplayMode(.inline)
         .frame(width: width, height: height)
         .onRotate { _ in
             Task {
@@ -113,7 +117,7 @@ struct ContentView: View {
             Text("How many darts did it take you to checkout?")
         }
         .onAppear {
-            viewModel.setUpData(legs)
+            viewModel.setUpData(session.legs)
         }
         .background(Color(.neutralXlight))
         .toolbar {
@@ -161,16 +165,21 @@ struct ContentView: View {
 
 #Preview {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
+    let container = try! ModelContainer(for: Leg.self, Session.self, CommonScorePad.self, configurations: config)
 
-        for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
-            container.mainContext.insert(leg)
-        }
+    var legs: [Leg] = []
+    
+    for i in 1..<4 {
+        legs.append(Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5 + Double(i * 2), numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now))
+    }
+    
+    let session = Session(legs: legs, darts: Dart(brand: "Winmau"), name: "Main Session")
+    
+    container.mainContext.insert(session)
 
-        return NavigationView {
-                    ContentView()
-                }
-                .navigationViewStyle(.stack)
-                .modelContainer(container)
+    return NavigationView {
+        ContentView(session: session)
+            }
+            .navigationViewStyle(.stack)
+            .modelContainer(container)
 }

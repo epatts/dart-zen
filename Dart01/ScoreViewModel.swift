@@ -26,7 +26,7 @@ class ScoreViewModel: ObservableObject {
     @Published var undoingScore = false
     @Published var checkedOut = false
     @Published var bigScoreTotals = BigScoreTotals()
-    
+        
     @Published var commonScores = [
         Score(scoreString: "26"),
         Score(scoreString: "41"),

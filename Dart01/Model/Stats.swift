@@ -9,6 +9,38 @@ import SwiftUI
 import SwiftData
 
 @Model
+class Session {
+    var legs: [Leg]
+    var darts: Dart?
+    var name: String
+    
+    init(legs: [Leg], darts: Dart? = nil, name: String = "New Session") {
+        self.legs = legs
+        self.darts = darts
+        self.name = name
+    }
+}
+
+@Model
+class Dart {
+    var brand: String
+    var model: String?
+    var weight: Double?
+    var datePurchased: Date?
+    var stem: String?
+    var flight: String?
+    
+    init(brand: String, model: String? = nil, weight: Double? = nil, datePurchased: Date? = nil, stem: String? = nil, flight: String? = nil) {
+        self.brand = brand
+        self.model = model
+        self.weight = weight
+        self.datePurchased = datePurchased
+        self.stem = stem
+        self.flight = flight
+    }
+}
+
+@Model
 class Leg {
     var gameType: GameType
     var scores: [Int]
