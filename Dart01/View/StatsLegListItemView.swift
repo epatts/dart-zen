@@ -13,9 +13,7 @@ struct StatsLegListItemView: View {
     
     var body: some View {
         VStack (alignment: .center, spacing: 0) {
-            
             HStack {
-                
                 VStack (spacing: .extraSmall) {
                     HStack {
                         if let legDate = leg.date {
@@ -69,6 +67,8 @@ struct StatsLegListItemView: View {
             
         }
         .padding(.medium)
+        .background(Color(.neutralDark))
+        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 10, height: 10)))
     }
 }
 

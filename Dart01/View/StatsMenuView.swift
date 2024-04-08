@@ -55,13 +55,14 @@ struct StatsMenuView: View {
                                 StatsLegListItemView(leg: leg)
                                 
                                 Divider()
-                                    .overlay(Color(.neutralXdark))
+                                    .overlay(Color(.neutralXlight))
+                                    .padding(.vertical, .extraExtraSmall)
                             }
                             .overlay {
                                 NavigationLink("", destination: LegStatsDetailView(leg: leg))
                                     .opacity(0)
                             }
-                            .listRowBackground(Color(.neutralXxlight))
+                            .listRowBackground(Color(.neutralXlight))
                             .listRowSeparator(.hidden)
                             .listRowInsets(EdgeInsets())
                         }

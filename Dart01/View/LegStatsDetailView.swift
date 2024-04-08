@@ -57,7 +57,7 @@ struct LegStatsDetailView: View {
                         }
                     }
                 }
-                .listRowBackground(Color(.neutralXxlight))
+                .listRowBackground(Color(.neutralDark))
             }
             .scrollContentBackground(.hidden)
             .listStyle(.plain)

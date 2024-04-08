@@ -32,7 +32,8 @@ struct NumberPadButtonStyle: ButtonStyle {
             .font(.titleSemiBold)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background ( ZStack {
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 16)
+//                    .fill(Color(.primaryDark))
                     .fill(Color(.neutralXxlight))
                     .glow()
             })
