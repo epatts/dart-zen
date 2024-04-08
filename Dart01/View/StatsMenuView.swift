@@ -53,10 +53,7 @@ struct StatsMenuView: View {
                         ForEach(legs) { leg in
                             VStack (spacing: 0) {
                                 StatsLegListItemView(leg: leg)
-                                
-                                Divider()
-                                    .overlay(Color(.neutralXlight))
-                                    .padding(.vertical, .extraExtraSmall)
+                                    .padding([.vertical, .trailing], .extraExtraSmall)
                             }
                             .overlay {
                                 NavigationLink("", destination: LegStatsDetailView(leg: leg))
