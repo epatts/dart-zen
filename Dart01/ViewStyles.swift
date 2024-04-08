@@ -15,9 +15,10 @@ struct CommonScoreButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background ( ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.secondaryDark))
+                    .fill(Color(.neutralXlight))
+                    .glow(color: Color(.neutralDark))
             })
-            .foregroundStyle(Color(.textXlight))
+            .foregroundStyle(Color(.textBase))
             .opacity(configuration.isPressed ? 0.75 : 1)
             .conditionalEffect(
                 .pushDown,
@@ -32,10 +33,10 @@ struct NumberPadButtonStyle: ButtonStyle {
             .font(.titleSemiBold)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background ( ZStack {
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 16)
                     .fill(Color(.primaryDark))
             })
-            .foregroundStyle(Color(.neutralXxlight))
+            .foregroundStyle(Color(.textBase))
             .opacity(configuration.isPressed ? 0.75 : 1)
             .conditionalEffect(
                 .pushDown,

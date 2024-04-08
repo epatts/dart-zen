@@ -13,9 +13,9 @@ struct NumberPad: View {
     let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "←", "0", "Enter"]
 
     var body: some View {
-        VStack (spacing: 2) {
+        VStack (spacing: 10) {
             ForEach(0...3, id: \.self) { row in
-                HStack (spacing: 2) {
+                HStack (spacing: 10) {
                     ForEach(numbers[(row * 3)...(row * 3 + 2)], id: \.self) { number in
                         Button {
                             if number == "←" {
@@ -51,4 +51,6 @@ struct NumberPad: View {
 
 #Preview {
     NumberPad(viewModel: ScoreViewModel())
+        .frame(maxHeight: 300)
+        .background(Color(.neutralXlight))
 }

@@ -14,9 +14,9 @@ struct CommonScoresPad: View {
     @Query var commonScorePads: [CommonScorePad]
     
     var body: some View {
-        VStack (spacing: 2) {
+        VStack (spacing: 10) {
             ForEach(0...2, id: \.self) { row in
-                HStack (spacing: 2) {
+                HStack (spacing: 10) {
                     ForEach(viewModel.commonScores[(row * 4)...(row * 4 + 3)], id: \.self) { score in
                         EditableNumber(viewModel: viewModel, lastNumber: score.scoreString, score: score)
                     }

@@ -105,7 +105,7 @@ struct StatsMenuView: View {
         }
         .padding(.medium)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.neutralXxlight))
+        .background(Color(.neutralXlight))
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
