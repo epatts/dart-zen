@@ -61,7 +61,7 @@ struct StatsMenuView: View {
                                 NavigationLink("", destination: LegStatsDetailView(leg: leg))
                                     .opacity(0)
                             }
-                            .listRowBackground(Color.clear)
+                            .listRowBackground(Color(.neutralXxlight))
                             .listRowSeparator(.hidden)
                             .listRowInsets(EdgeInsets())
                         }
@@ -95,7 +95,7 @@ struct StatsMenuView: View {
         }
         .padding(.medium)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(.neutralXxlight))
+        .background(Color(.neutralXlight))
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

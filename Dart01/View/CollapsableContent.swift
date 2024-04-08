@@ -30,7 +30,7 @@ struct CollapsableContent<Content: View>: View {
                 
                 Image(systemName: showingContent ?  "chevron.up.circle" : "chevron.down.circle")
                     .font(.bodySemiBold)
-                    .foregroundStyle(Color.primaryDark)
+                    .foregroundStyle(Color.secondaryDark)
             }
             .padding(.bottom, .small)
             .contentShape(Rectangle())

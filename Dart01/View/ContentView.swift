@@ -127,11 +127,11 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "arrow.uturn.backward")
                                 .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                                .foregroundStyle(Color(.primaryDark))
+                                .foregroundStyle(Color(.secondaryDark))
                             
                             Text("Undo")
                                 .font(Theme.Fonts.ralewaySemiBold(.body, .body))
-                                .foregroundStyle(Color(.primaryDark))
+                                .foregroundStyle(Color(.secondaryDark))
                         }
                     }
                 }
@@ -147,7 +147,7 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "chart.line.uptrend.xyaxis.circle.fill")
                         .font(.title2Regular)
-                        .foregroundStyle(Color(.primaryDark))
+                        .foregroundStyle(Color(.secondaryDark))
                 }
             }
         }

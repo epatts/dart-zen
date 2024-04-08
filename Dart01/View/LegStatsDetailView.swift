@@ -25,36 +25,39 @@ struct LegStatsDetailView: View {
         VStack {
             
             Form {
-                Section("Statistics") {
-                    LabeledContent("Number of darts", value: "\(leg.numDarts)")
-                                                            
-                    LabeledContent("3-Dart Average", value: leg.average, format: .number.precision(.fractionLength(2)))
+                Group {
+                    Section("Statistics") {
+                        LabeledContent("Number of darts", value: "\(leg.numDarts)")
+                        
+                        LabeledContent("3-Dart Average", value: leg.average, format: .number.precision(.fractionLength(2)))
+                        
+                        LabeledContent("First 9 Average", value: getFirst9Average(), format: .number.precision(.fractionLength(2)))
+                    }
                     
-                    LabeledContent("First 9 Average", value: getFirst9Average(), format: .number.precision(.fractionLength(2)))
-                }
-                
-//                Section("Checkout") {
-//                    if let last = leg.scores.last {
-//                        LabeledContent("Checkout Score", value: "\(last)")
-//                    }
-//                    
-//                    
-//                    LabeledContent("Darts at Double", value: leg.dartsAtDouble, format: .number)
-//                                        
-//                    LabeledContent("Checkout %", value: 1 / Double(leg.dartsAtDouble), format: .percent.precision(.fractionLength(1)))
-//                }
-                
-                Section("Scores") {
-                    ForEach(leg.scores, id: \.self) { score in
-                        Text("\(score)")
+                    //                Section("Checkout") {
+                    //                    if let last = leg.scores.last {
+                    //                        LabeledContent("Checkout Score", value: "\(last)")
+                    //                    }
+                    //
+                    //
+                    //                    LabeledContent("Darts at Double", value: leg.dartsAtDouble, format: .number)
+                    //
+                    //                    LabeledContent("Checkout %", value: 1 / Double(leg.dartsAtDouble), format: .percent.precision(.fractionLength(1)))
+                    //                }
+                    
+                    Section("Scores") {
+                        ForEach(leg.scores, id: \.self) { score in
+                            Text("\(score)")
+                        }
+                    }
+                    
+                    if let date = leg.date {
+                        Section() {
+                            LabeledContent("Date", value: "\(date.formatted())")
+                        }
                     }
                 }
-                
-                if let date = leg.date {
-                    Section() {
-                        LabeledContent("Date", value: "\(date.formatted())")
-                    }
-                }
+                .listRowBackground(Color(.neutralXxlight))
             }
             .scrollContentBackground(.hidden)
             .listStyle(.plain)

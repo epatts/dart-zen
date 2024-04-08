@@ -23,6 +23,7 @@ struct ScoreView: View {
             Text("\(score)")
                 .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score) ? height / 5.37 : height / 4.2))
                 .contentTransition(.numericText(countsDown: true))
+                .foregroundStyle(Color(.textBase))
                 .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score) ? (height / 4) * -0.1645 : (height / 4) * -0.219)
                 .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                 .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
@@ -44,7 +45,8 @@ struct ScoreView: View {
                 } else {
                     if let last = viewModel.scoreHistory.last, last != 0 {
                         Text("\(last)")
-                            .foregroundStyle(viewModel.scoreHistory.last ?? 0 == 180 ? Color(.primaryDark) : Color(.textLight))
+                            .foregroundStyle(Color(.neutralXlight))
+                            .glow(color: Color(.primaryDark), radius: 5)
                             .font(.customSemiBold(
                                 (Double(viewModel.scoreHistory.last ?? 0) > 20) ? (CGFloat(integerLiteral: (viewModel.scoreHistory.last ?? 400)).squareRoot()) * 4 : 18
                             ))
@@ -58,4 +60,6 @@ struct ScoreView: View {
 
 #Preview {
     ScoreView(viewModel: ScoreViewModel(), score: 501)
+        .frame(maxHeight: .infinity)
+        .background(Color(.neutralXlight))
 }

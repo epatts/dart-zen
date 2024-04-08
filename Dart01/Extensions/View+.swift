@@ -12,3 +12,12 @@ extension View {
         modifier(BackButtonWithTitleNavBarStyle(title: title))
     }
 }
+
+extension View {
+    func glow(color: Color = Color(.primaryDark), radius: CGFloat = 5) -> some View {
+        self
+            .shadow(color: color, radius: radius / 3)
+            .shadow(color: color, radius: radius / 3)
+            .shadow(color: color, radius: radius / 3)
+    }
+}
