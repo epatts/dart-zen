@@ -15,7 +15,8 @@ struct CommonScoreButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background ( ZStack {
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.neutralDark))
+                    .fill(Color(.neutralXlight))
+                    .glow(color: Color(.neutralDark))
             })
             .foregroundStyle(Color(.textBase))
             .opacity(configuration.isPressed ? 0.75 : 1)
@@ -33,9 +34,7 @@ struct NumberPadButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background ( ZStack {
                 RoundedRectangle(cornerRadius: 16)
-//                    .fill(Color(.primaryDark))
-                    .fill(Color(.neutralXxlight))
-                    .glow()
+                    .fill(Color(.primaryDark))
             })
             .foregroundStyle(Color(.textBase))
             .opacity(configuration.isPressed ? 0.75 : 1)
