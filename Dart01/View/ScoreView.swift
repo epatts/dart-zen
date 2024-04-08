@@ -46,7 +46,7 @@ struct ScoreView: View {
                     if let last = viewModel.scoreHistory.last, last != 0 {
                         Text("\(last)")
                             .foregroundStyle(Color(.neutralXlight))
-                            .glow(color: Color(.textBase), radius: 5)
+                            .glow(color: Color(.primaryDark), radius: 3)
                             .font(.customSemiBold(
                                 (Double(viewModel.scoreHistory.last ?? 0) > 20) ? (CGFloat(integerLiteral: (viewModel.scoreHistory.last ?? 400)).squareRoot()) * 4 : 18
                             ))

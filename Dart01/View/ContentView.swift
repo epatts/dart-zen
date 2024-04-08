@@ -86,7 +86,7 @@ struct ContentView: View {
                         Text("Hold down on any quick access score to customize its value.")
                             .multilineTextAlignment(.leading)
                             .font(.bodyRegular)
-                            .foregroundColor(Color.textXlight)
+                            .foregroundColor(Color(.textBase))
                     )))
                 }
                 .frame(height: height / 5)

@@ -43,7 +43,7 @@ struct TipPopover: ViewModifier {
             .popover(isPresented: $showingTip) {
                 ZStack {
                     // Scaled-up background
-                    Color(.neutralXdark)
+                    Color(.neutralDark)
                         .scaleEffect(3)
                     
                     VStack {
@@ -56,10 +56,10 @@ struct TipPopover: ViewModifier {
                         } label: {
                             Text("Got it!")
                                 .font(.subheadlineSemiBold)
-                                .foregroundStyle(Color(.textXlight))
+                                .foregroundStyle(Color(.textBase))
                         }
                         .padding(.extraSmall)
-                        .background(Color(.primaryDark))
+                        .background(Color(.secondaryDark))
                         .clipShape(.capsule)
                     }
                 }
