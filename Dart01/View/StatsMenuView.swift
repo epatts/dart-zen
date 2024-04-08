@@ -64,7 +64,8 @@ struct StatsMenuView: View {
                                     StatsLegListItemView(leg: leg)
                                     
                                     Divider()
-                                        .overlay(Color(.neutralXdark))
+                                        .overlay(Color(.neutralXlight))
+                                        .padding(.vertical, .extraExtraSmall)
                                 }
                                 .overlay {
                                     NavigationLink("", destination: LegStatsDetailView(leg: leg))
