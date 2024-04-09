@@ -20,8 +20,8 @@ struct ContentView: View {
     
     @ObservedObject var viewModel = ScoreViewModel()
         
-    @Query(sort: \Leg.average) var legs: [Leg]
-        
+    @Query(sort: \Leg.date, order: .reverse) var legs: [Leg]
+
     var body: some View {
         VStack (alignment: .center, spacing: 0) {
             ZStack {
@@ -164,7 +164,7 @@ struct ContentView: View {
     let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
 
         for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+            let leg = Leg(legNumber: i, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
             container.mainContext.insert(leg)
         }
 

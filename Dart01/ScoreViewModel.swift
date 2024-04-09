@@ -49,11 +49,17 @@ class ScoreViewModel: ObservableObject {
         var totalDarts: Int = 0
         var total9DartScore: Int = 0
         
+        var legIndex = legs.count
+        
         if !legs.isEmpty {
             for leg in legs {
                 totalScore += leg.gameType.rawValue
                 totalDarts += leg.numDarts
                 legsPlayed += 1
+                
+                leg.legNumber = legIndex
+                
+                legIndex -= 1
                 
                 for score in leg.scores.prefix(3) {
                     total9DartScore += score
@@ -125,7 +131,7 @@ class ScoreViewModel: ObservableObject {
         
         let gameAverage = Double(ScoreViewModel.GAME_MODE) / Double(dartsThrown) * 3
         
-        context.insert(Leg(gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: gameAverage, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
+        context.insert(Leg(legNumber: legsPlayed + 1, gameType: ._501, scores: scoreHistory, checkoutScore: scoreHistory.last, average: gameAverage, numDarts: dartsThrown, dartsAtDouble: 3, completed: true, date: Date.now))
         
         averageHistory.append(gameAverage)
         first9AverageHistory.append(getFirst9Average())

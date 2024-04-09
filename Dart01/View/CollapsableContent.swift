@@ -35,7 +35,9 @@ struct CollapsableContent<Content: View>: View {
             .padding(.bottom, .small)
             .contentShape(Rectangle())
             .onTapGesture {
-                showingContent.toggle()
+                withAnimation {
+                    showingContent.toggle()
+                }
             }
             
             if showingContent {

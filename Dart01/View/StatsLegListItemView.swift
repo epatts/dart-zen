@@ -76,7 +76,7 @@ struct StatsLegListItemView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Leg.self, configurations: config)
 
-    let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], checkoutScore: 40, average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+    let leg = Leg(legNumber: 1, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], checkoutScore: 40, average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
         
     return StatsLegListItemView(leg: leg)
         .modelContainer(container)

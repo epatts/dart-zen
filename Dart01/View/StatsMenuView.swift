@@ -12,33 +12,33 @@ struct StatsMenuView: View {
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) private var dismiss
     
+    @State var height = UIScreen.main.bounds.height
+    @State var width = UIScreen.main.bounds.width
+    
     @ObservedObject var viewModel: ScoreViewModel
     
     @Query(sort: \Leg.date, order: .reverse) var legs: [Leg]
-    
-    @State var showingDeleteConfirmationAlert = false
-    
+        
     var body: some View {
         VStack (alignment: .center, spacing: 0) {
             if !legs.isEmpty {
                 
-                VStack (alignment: .leading, spacing: 0) {                    
-                        CollapsableContent(
-                            title: "Stats",
-                            content: StatsAveragesView(viewModel: viewModel))
-                        
-                        
-                        Divider()
-                            .overlay {
-                                Color(.neutralXdark)
-                            }
-                            .padding(.vertical, .medium)
+                VStack (alignment: .leading, spacing: 0) {
+                    CollapsableContent(
+                        title: "Stats",
+                        content: StatsAveragesView(viewModel: viewModel))
+                    
+                    
+                    Divider()
+                        .overlay {
+                            Color(.neutralXdark)
+                        }
+                        .padding(.vertical, .medium)
                 }
                 
                 CollapsableContent(
                     title: "Scores",
                     content: StatsBigScoreDistributionView(viewModel: viewModel))
-                
                 
                 Divider()
                     .overlay {
@@ -47,44 +47,33 @@ struct StatsMenuView: View {
                     .padding(.vertical, .medium)
                 
                 CollapsableContent(
-                    title: "Legs",
-                    content: 
-                        List {
-                        ForEach(legs) { leg in
-                            VStack (spacing: 0) {
-                                StatsLegListItemView(leg: leg)
-                                    .padding([.vertical, .trailing], .extraExtraSmall)
-                            }
-                            .overlay {
-                                NavigationLink("", destination: LegStatsDetailView(leg: leg))
-                                    .opacity(0)
-                            }
-                            .listRowBackground(Color(.neutralXlight))
-                            .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets())
-                        }
-                        .onDelete { indexSet in
-                            for index in indexSet {
-                                context.delete(legs[index])
-                                try? context.save()
-                                viewModel.resetStats()
-                                viewModel.setUpData(legs)
-                            }
-                        }
-                    }
-                        .listStyle(.plain)
+                    title: "Graph",
+                    content: Graph(legs: legs.reversed())
                 )
                 
-                Spacer()
+                Divider()
+                    .overlay {
+                        Color(.neutralXdark)
+                    }
+                    .padding(.vertical, .medium)
                 
-                Button() {
-                    showingDeleteConfirmationAlert = true
-                } label: {
-                    Text("Delete All")
-                        .font(.bodySemiBold)
-                        .foregroundStyle(Color(.errorBase))
+                NavigationLink {
+                    LegsList(viewModel: viewModel)
+                } label : {
+                    HStack (spacing: 0) {
+                        Text("View Legs List")
+                            .font(.title3SemiBold)
+                            .foregroundStyle(Color.textBase)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .font(.bodySemiBold)
+                            .foregroundStyle(Color.secondaryDark)
+                    }
                 }
-                .padding(.top, .medium)
+                
+                Spacer()
             } else {
                 Text("Go play some darts!")
                     .foregroundStyle(Color(.textLight))
@@ -113,20 +102,6 @@ struct StatsMenuView: View {
                     .font(.title3SemiBold)
             }
         }
-        .alert("Are you sure?", isPresented: $showingDeleteConfirmationAlert) {
-            Button("Delete", role: .destructive) {
-                do {
-                    try context.delete(model: Leg.self)
-                } catch {
-                    print("Failed to delete legs.")
-                }
-                
-                viewModel.resetStats()
-            }
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("You will not be able to recover your statistics once they are deleted.")
-        }
     }
 }
 
@@ -134,14 +109,17 @@ struct StatsMenuView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try! ModelContainer(for: Leg.self, configurations: config)
 
-        for i in 1..<4 {
-            let leg = Leg(gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5 - Double((i * 4)), numDarts: 18 + i, dartsAtDouble: 3, completed: true, date: Date.now)
-            container.mainContext.insert(leg)
-        }
+    var legs = [Leg]()
 
-        return NavigationView {
-            StatsMenuView(viewModel: ScoreViewModel())
-        }
-        .navigationViewStyle(.stack)
-        .modelContainer(container)
+    for i in 1..<10 {
+        let leg = Leg(legNumber: i, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: Double.random(in: 40..<70), numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+        container.mainContext.insert(leg)
+        legs.append(leg)
+    }
+
+    return NavigationView {
+        StatsMenuView(viewModel: ScoreViewModel())
+    }
+    .navigationViewStyle(.stack)
+    .modelContainer(container)
 }

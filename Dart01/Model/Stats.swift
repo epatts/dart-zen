@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class Leg {
+    var legNumber: Int
     var gameType: GameType
     var scores: [Int]
     var checkoutScore: Int?
@@ -19,7 +20,8 @@ class Leg {
     var completed: Bool = true
     var date: Date?
     
-    init(gameType: GameType, scores: [Int], checkoutScore: Int? = nil, average: Double, numDarts: Int, dartsAtDouble: Int, completed: Bool, date: Date? = nil) {
+    init(legNumber: Int, gameType: GameType, scores: [Int], checkoutScore: Int? = nil, average: Double, numDarts: Int, dartsAtDouble: Int, completed: Bool, date: Date? = nil) {
+        self.legNumber = legNumber
         self.gameType = gameType
         self.scores = scores
         self.checkoutScore = checkoutScore
