@@ -33,6 +33,26 @@ struct Graph: View {
         return total == 0 ? 0 : total / Double(legs.count)
     }
     
+    func getMaxAverage() -> Double {
+        var avgs = [Double]()
+        
+        for leg in legs {
+            avgs.append(leg.average)
+        }
+        
+        return avgs.max() ?? 170
+    }
+    
+    func getMinAverage() -> Double {
+        var avgs = [Double]()
+        
+        for leg in legs {
+            avgs.append(leg.average)
+        }
+        
+        return avgs.min() ?? 0
+    }
+    
     func updateCursorPosition(at: CGPoint, geometry: GeometryProxy, proxy: ChartProxy) {
         guard let plotFrame = proxy.plotFrame else { return }
         
@@ -85,6 +105,7 @@ struct Graph: View {
                     }
                 }
                 .chartXScale(domain: 1...legs.count)
+                .chartYScale(domain: getMinAverage() - 10 ... getMaxAverage() + 10)
                 .chartOverlay { proxy in
                     GeometryReader { geometry in
                         Rectangle().fill(.clear).contentShape(Rectangle())
