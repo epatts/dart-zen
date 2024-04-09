@@ -9,6 +9,15 @@ import SwiftUI
 import SwiftData
 
 struct LegStatsDetailView: View {
+    @Environment(\.modelContext) var context
+    @Environment(\.dismiss) private var dismiss
+
+    @State var showingDeleteConfirmationAlert = false
+    
+    @ObservedObject var viewModel: ScoreViewModel
+    
+    @Query(sort: \Leg.date, order: .reverse) var legs: [Leg]
+    
     var leg: Leg
     
     func getFirst9Average() -> Double {
@@ -64,6 +73,27 @@ struct LegStatsDetailView: View {
         }
         .background(Color(.neutralXlight))
         .backButtonWithTitleNavBarStyle(title: "Leg Statistics")
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                Button() {
+                    showingDeleteConfirmationAlert = true
+                } label: {
+                    Image(systemName: "trash")
+                        .font(.bodySemiBold)
+                        .foregroundStyle(Color(.errorBase))
+                }
+                .padding(.top, .medium)
+                .alert("Are you sure?", isPresented: $showingDeleteConfirmationAlert) {
+                    Button("Delete", role: .destructive) {
+                        context.delete(leg)
+                        viewModel.resetStats()
+                        viewModel.setUpData(legs)
+                        dismiss()
+                    }
+                    Button("Cancel", role: .cancel) { }
+                } message: {}
+            }
+        }
     }
 }
 
@@ -74,7 +104,7 @@ struct LegStatsDetailView: View {
     let leg = Leg(legNumber: 1, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.50, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
         
     return NavigationView {
-            LegStatsDetailView(leg: leg)
+        LegStatsDetailView(viewModel: ScoreViewModel(), leg: leg)
     }
         .modelContainer(container)
 }

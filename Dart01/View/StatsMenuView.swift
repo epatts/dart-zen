@@ -48,7 +48,7 @@ struct StatsMenuView: View {
                 
                 CollapsableContent(
                     title: "Graph",
-                    content: Graph(legs: legs.reversed())
+                    content: Graph(viewModel: viewModel)
                 )
                 
                 Divider()

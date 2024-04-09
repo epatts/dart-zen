@@ -10,14 +10,17 @@ import Charts
 import SwiftData
 
 struct Graph: View {
+    @Environment(\.modelContext) var context
+
     @State var height = UIScreen.main.bounds.height
     @State var width = UIScreen.main.bounds.width
     
     @State var position: PlotPoint?
+    @State var showLine = false
     
-    var data = [46, 0, 55, 167, 59]
-    
-    var legs = [Leg]()
+    @ObservedObject var viewModel: ScoreViewModel
+        
+    @Query(sort: \Leg.date) var legs: [Leg]
     
     @State var selectedLeg: Leg?
     
@@ -53,7 +56,7 @@ struct Graph: View {
         return avgs.min() ?? 0
     }
     
-    func updateCursorPosition(at: CGPoint, geometry: GeometryProxy, proxy: ChartProxy) {
+    func updateCursorPosition(at: CGPoint, geometry: GeometryProxy, proxy: ChartProxy, fromTap: Bool = false) {
         guard let plotFrame = proxy.plotFrame else { return }
         
         let origin = geometry[plotFrame].origin
@@ -63,6 +66,9 @@ struct Graph: View {
         if let i = firstGreater {
             let index = newData[i].index
             let value = newData[i].value
+            if !fromTap {
+                showLine = true
+            }
             position = PlotPoint(index: index, value: value)
             selectedLeg = legs[i]
         }
@@ -93,9 +99,16 @@ struct Graph: View {
                     }
                     
                     if let position = position {
-                        RuleMark(x: .value("Index", position.index))
-                            .foregroundStyle(Color(.neutralXdark).opacity(1))
-                            .lineStyle(StrokeStyle(lineWidth: 2))
+                        if showLine {
+                            RuleMark(x: .value("Index", position.index))
+                                .foregroundStyle(Color(.neutralXdark).opacity(0.4))
+                        }
+                        
+                        PointMark(
+                            x: .value("", position.index),
+                            y: .value("", position.value)
+                        )
+                        .foregroundStyle(Color(.neutralXdark))
                     }
                 }
                 .chartXAxis {
@@ -114,27 +127,25 @@ struct Graph: View {
                                     updateCursorPosition(at: dragLocation.location, geometry: geometry, proxy: proxy)
                                 }
                                 .onEnded({ _ in
-                                    position = nil
-                                    selectedLeg = nil
+                                    showLine = false
                                 }))
                                 .onTapGesture { location in
-                                    updateCursorPosition(at: location, geometry: geometry, proxy: proxy)
-                                    print("\(location)")
+                                    updateCursorPosition(at: location, geometry: geometry, proxy: proxy, fromTap: true)
                                 }
                     }
                 }
                 
-                if let leg = selectedLeg {
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
+                VStack {
+                    Spacer()
+                    
+                    HStack (alignment: .bottom) {
+                        if let leg = selectedLeg {
                             NavigationLink {
-                                LegStatsDetailView(leg: leg)
+                                LegStatsDetailView(viewModel: viewModel, leg: leg)
                             } label: {
-                                HStack {
-                                    Text("Avg: \(leg.average, specifier: "%.2f")")
-                                        .font(.bodyBold)
+                                HStack (alignment: .bottom) {
+                                    Text("Leg: \(leg.average, specifier: "%.2f")")
+                                        .font(.subheadlineBold)
                                         .foregroundStyle(Color(.textBase))
                                     
                                     Image(systemName: "chevron.right")
@@ -142,22 +153,39 @@ struct Graph: View {
                                         .foregroundStyle(Color(.textBase))
                                 }
                                 .padding(.extraSmall)
-                                .background(Color(.neutralXlight))
+                                .background(Color(.neutralXlight).opacity(0.7))
                                 .clipShape(Capsule())
                             }
-                            
-                            Spacer()
                         }
+                        
+                        Spacer()
+                        
+                        HStack {
+                            Image(systemName: "line.diagonal")
+                                .font(.title2Bold)
+                                .foregroundStyle(Color(.secondaryDark))
+                                .rotationEffect(Angle(degrees: 45))
+                            
+                            Text("\(getAverage(), specifier: "%.2f") avg")
+                                .font(.subheadlineBold)
+                                .foregroundStyle(Color(.textBase))
+                        }
+                        .padding(.trailing, .extraLarge)
                     }
-                    .padding(.bottom, .extraExtraSmall)
+                    .padding(.bottom, -.extraExtraSmall)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: height / 5)
         .padding(.medium)
         .onAppear {
+            position = nil
+            selectedLeg = nil
+            newData.removeAll()
+            
             for leg in legs {
                 newData.append(PlotPoint(index: leg.legNumber, value: leg.average))
+                print("Index: \(leg.legNumber)")
             }
         }
         .background(Color(.neutralDark))
@@ -174,13 +202,12 @@ struct PlotPoint: Identifiable, Hashable {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
     
-    var legs = [Leg]()
-
     for i in 1..<20 {
         let leg = Leg(legNumber: i, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: Double.random(in: 40..<70), numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
         container.mainContext.insert(leg)
-        legs.append(leg)
     }
     
-    return Graph(legs: legs)
+    return Graph(viewModel: ScoreViewModel())
+        .padding(.medium)
+        .modelContainer(container)
 }

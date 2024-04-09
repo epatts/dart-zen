@@ -28,7 +28,7 @@ struct LegsList: View {
                                 .padding([.vertical, .trailing], .extraExtraSmall)
                         }
                         .overlay {
-                            NavigationLink("", destination: LegStatsDetailView(leg: leg))
+                            NavigationLink("", destination: LegStatsDetailView(viewModel: viewModel, leg: leg))
                                 .opacity(0)
                         }
                         .listRowBackground(Color(.neutralXlight))
