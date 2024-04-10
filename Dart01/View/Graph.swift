@@ -176,7 +176,7 @@ struct Graph: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: height / 5)
+        .frame(maxWidth: .infinity, maxHeight: height / 4)
         .padding(.medium)
         .onAppear {
             position = nil
@@ -207,7 +207,9 @@ struct PlotPoint: Identifiable, Hashable {
         container.mainContext.insert(leg)
     }
     
-    return Graph(viewModel: ScoreViewModel())
+    return NavigationStack {
+        Graph(viewModel: ScoreViewModel())
+    }
         .padding(.medium)
         .modelContainer(container)
 }
