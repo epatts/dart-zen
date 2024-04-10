@@ -26,36 +26,6 @@ struct Graph: View {
     
     @State var newData: [PlotPoint] = []
     
-    func getAverage() -> Double {
-        var total = 0.0
-        
-        for leg in legs {
-            total += leg.average
-        }
-        
-        return total == 0 ? 0 : total / Double(legs.count)
-    }
-    
-    func getMaxAverage() -> Double {
-        var avgs = [Double]()
-        
-        for leg in legs {
-            avgs.append(leg.average)
-        }
-        
-        return avgs.max() ?? 170
-    }
-    
-    func getMinAverage() -> Double {
-        var avgs = [Double]()
-        
-        for leg in legs {
-            avgs.append(leg.average)
-        }
-        
-        return avgs.min() ?? 0
-    }
-    
     func updateCursorPosition(at: CGPoint, geometry: GeometryProxy, proxy: ChartProxy, fromTap: Bool = false) {
         guard let plotFrame = proxy.plotFrame else { return }
         
@@ -82,7 +52,7 @@ struct Graph: View {
                         
                         let data = PlotPoint.init(index: leg.legNumber, value: leg.average)
                         
-                        RuleMark(y: .value("Average", getAverage()))
+                        RuleMark(y: .value("Average", viewModel.overallAverage))
                             .foregroundStyle(Color(.secondaryDark))
                         
                         LineMark(
@@ -119,7 +89,7 @@ struct Graph: View {
                 }
                 .padding(.bottom, .large)
                 .chartXScale(domain: 1...legs.count)
-                .chartYScale(domain: getMinAverage() - 10 ... getMaxAverage() + 10)
+                .chartYScale(domain: (viewModel.averageHistory.min() ?? 0) - 10 ... (viewModel.averageHistory.max() ?? 167) + 10)
                 .chartOverlay { proxy in
                     GeometryReader { geometry in
                         Rectangle().fill(.clear).contentShape(Rectangle())
@@ -167,7 +137,7 @@ struct Graph: View {
                                 .foregroundStyle(Color(.secondaryDark))
                                 .rotationEffect(Angle(degrees: 45))
                             
-                            Text("\(getAverage(), specifier: "%.2f") avg")
+                            Text("\(viewModel.overallAverage, specifier: "%.2f") avg")
                                 .font(.subheadlineBold)
                                 .foregroundStyle(Color(.textBase))
                         }

@@ -49,7 +49,7 @@ class Leg {
                         Int.random(in: 26..<140)
                     ],
                     average: Double.random(in: 40..<70),
-                    numDarts: 18,
+                    numDarts: Int.random(in: 9..<24),
                     dartsAtDouble: 3,
                     completed: true,
                     date: Date.now

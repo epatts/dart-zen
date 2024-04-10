@@ -163,10 +163,9 @@ struct ContentView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
 
-        for i in 1..<4 {
-            let leg = Leg(legNumber: i, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: 83.5, numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
-            container.mainContext.insert(leg)
-        }
+    for leg in Leg.exampleData(4) {
+        container.mainContext.insert(leg)
+    }
 
         return NavigationView {
                     ContentView()

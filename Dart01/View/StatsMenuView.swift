@@ -109,12 +109,8 @@ struct StatsMenuView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try! ModelContainer(for: Leg.self, configurations: config)
 
-    var legs = [Leg]()
-
-    for i in 1..<10 {
-        let leg = Leg(legNumber: i, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: Double.random(in: 40..<70), numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+    for leg in Leg.exampleData(20) {
         container.mainContext.insert(leg)
-        legs.append(leg)
     }
 
     return NavigationView {
