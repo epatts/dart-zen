@@ -25,18 +25,18 @@ struct ScoreView: View {
             if scores.count > 1, let score1 = scores.first, let score2 = scores.last {
                 ZStack {
                     Text("\(score2)")
-                        .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score2) ? height / 5.37 : height / (!turn1 ? 4.2 : 12.2)))
+                        .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score2) ? height / 5.37 : height / (!turn1 ? 4.2 : 16.2)))
                         .contentTransition(.numericText(countsDown: true))
                         .foregroundStyle(!turn1 ? Color(.textBase) : Color(.textXlight))
-                        .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score2) ? (height / 4) * -0.1645 : (height / (!turn1 ? 4 : 1.1)) * -0.219)
+                        .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score2) ? (height / 4) * -0.1645 : (height / (!turn1 ? 4 : 1.3)) * -0.219)
                         .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                         .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
                 
                     Text("\(score1)")
-                        .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score1) ? height / 5.37 : height / (turn1 ? 4.2 : 12.2)))
+                        .font(.custom("Raleway-SemiBold", fixedSize: CheckoutNumbers.shared.isCheckoutNumber(score1) ? height / 5.37 : height / (turn1 ? 4.2 : 16.2)))
                         .contentTransition(.numericText(countsDown: true))
                         .foregroundStyle(turn1 ? Color(.textBase) : Color(.textXlight))
-                        .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score1) ? (height / 4) * -0.1645 : (height / (turn1 ? 4 : 1.1)) * -0.219)
+                        .padding(.top, CheckoutNumbers.shared.isCheckoutNumber(score1) ? (height / 4) * -0.1645 : (height / (turn1 ? 4 : 1.3)) * -0.219)
                         .changeEffect(.shake(rate: .fast), value: viewModel.scoreIsInvalid)
                         .changeEffect(.wiggle(rate: .fast), value: viewModel.scoreIsZero)
                 }
