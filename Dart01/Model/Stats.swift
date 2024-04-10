@@ -31,6 +31,34 @@ class Leg {
         self.completed = completed
         self.date = date
     }
+    
+    static func exampleData(_ numberOfLegs: Int = 10) -> [Leg] {
+        var legs = [Leg]()
+        
+        for i in 1 ..< numberOfLegs + 1 {
+            legs.append(
+                Leg(
+                    legNumber: i,
+                    gameType: ._501,
+                    scores: [
+                        Int.random(in: 26..<140),
+                        Int.random(in: 26..<140),
+                        Int.random(in: 26..<140),
+                        Int.random(in: 26..<140),
+                        Int.random(in: 26..<140),
+                        Int.random(in: 26..<140)
+                    ],
+                    average: Double.random(in: 40..<70),
+                    numDarts: 18,
+                    dartsAtDouble: 3,
+                    completed: true,
+                    date: Date.now
+                )
+            )
+        }
+        
+        return legs
+    }
 }
 
 @Model

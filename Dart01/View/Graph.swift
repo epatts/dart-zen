@@ -117,6 +117,7 @@ struct Graph: View {
                         AxisValueLabel(format: .dateTime.month(.defaultDigits))
                     }
                 }
+                .padding(.bottom, .large)
                 .chartXScale(domain: 1...legs.count)
                 .chartYScale(domain: getMinAverage() - 10 ... getMaxAverage() + 10)
                 .chartOverlay { proxy in
@@ -153,7 +154,7 @@ struct Graph: View {
                                         .foregroundStyle(Color(.textBase))
                                 }
                                 .padding(.extraSmall)
-                                .background(Color(.neutralXlight).opacity(0.7))
+                                .background(Color(.neutralDark).opacity(0.7))
                                 .clipShape(Capsule())
                             }
                         }
@@ -172,12 +173,10 @@ struct Graph: View {
                         }
                         .padding(.trailing, .extraLarge)
                     }
-                    .padding(.bottom, -.extraExtraSmall)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: height / 4)
-        .padding(.medium)
         .onAppear {
             position = nil
             selectedLeg = nil
@@ -188,7 +187,8 @@ struct Graph: View {
                 print("Index: \(leg.legNumber)")
             }
         }
-        .background(Color(.neutralDark))
+        .background(Color(.neutralXlight))
+
     }
 }
 
@@ -202,8 +202,7 @@ struct PlotPoint: Identifiable, Hashable {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Leg.self, CommonScorePad.self, configurations: config)
     
-    for i in 1..<20 {
-        let leg = Leg(legNumber: i, gameType: ._501, scores: [100, 140, 100, 81, 60, 20], average: Double.random(in: 40..<70), numDarts: 18, dartsAtDouble: 3, completed: true, date: Date.now)
+    for leg in Leg.exampleData(20) {
         container.mainContext.insert(leg)
     }
     
