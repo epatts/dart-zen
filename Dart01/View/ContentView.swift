@@ -26,9 +26,9 @@ struct ContentView: View {
         VStack (alignment: .center, spacing: 0) {
             ZStack {
                 if !viewModel.checkedOut {
-                    ScoreView(viewModel: viewModel, score: viewModel.total)
+                    ScoreView(viewModel: viewModel, scores: [viewModel.total])
                 } else {
-                    ScoreView(viewModel: viewModel, score: viewModel.total)
+                    ScoreView(viewModel: viewModel, scores: [viewModel.total])
                 }
             }
             
