@@ -57,7 +57,7 @@ struct LegsList: View {
                     .font(.bodySemiBold)
                     .foregroundStyle(Color(.errorBase))
             }
-            .padding(.top, .medium)
+            .padding(.medium)
             .alert("Are you sure?", isPresented: $showingDeleteConfirmationAlert) {
                 Button("Delete", role: .destructive) {
                     do {

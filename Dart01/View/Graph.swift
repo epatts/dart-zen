@@ -33,6 +33,8 @@ struct Graph: View {
         guard let clickedPosition = proxy.value(atX: at.x - origin.x + .medium, as: Int.self) else { return }
         let firstGreater = legs.lastIndex(where: { $0.legNumber <= clickedPosition })
         
+//        lineDragPosition = at
+        
         if let i = firstGreater {
             let index = newData[i].index
             let value = newData[i].value
@@ -78,7 +80,19 @@ struct Graph: View {
                             x: .value("", position.index),
                             y: .value("", position.value)
                         )
-                        .foregroundStyle(Color(.neutralXdark))
+                        .symbol {
+                            ZStack {
+                                Circle()
+                                    .frame(width: 10)
+                                    .foregroundStyle(Color(.neutralXdark))
+                                    .glow(color: Color(.neutralXdark), radius: 5)
+                                    .opacity(0.5)
+                                
+                                Circle()
+                                    .frame(width: 8)
+                                    .foregroundStyle(Color(.neutralXdark))
+                            }
+                        }
                     }
                 }
                 .chartXAxis {
